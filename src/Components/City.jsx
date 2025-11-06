@@ -6,60 +6,63 @@ import { useSubdividedGeometry } from "./Usesubdividedgeometry";
 import { PerformantOceanMaterial } from "./Performantoceanmaterial";
 import { UnderwaterLand } from "./UnderwaterLand";
 import { Sea } from "./Sea";
+import { SmallSand } from "./SmallSand";
+import { InstancedTrees } from "./Improvedinstancedtrees";
+import { TreeGood } from "./TreeGood";
 
-function InstancedTrees({ meshName, jsonFile, nodes, materials }) {
-  const meshRef = useRef();
-  const dummy = new THREE.Object3D();
-  const [instances, setInstances] = useState(null);
+// function InstancedTrees({ meshName, jsonFile, nodes, materials }) {
+//   const meshRef = useRef();
+//   const dummy = new THREE.Object3D();
+//   const [instances, setInstances] = useState(null);
 
-  useEffect(() => {
-    fetch(`/tree-data/${jsonFile}`)
-      .then((res) => res.json())
-      .then((data) => setInstances(data));
-  }, [jsonFile]);
+//   useEffect(() => {
+//     fetch(`/tree-data/${jsonFile}`)
+//       .then((res) => res.json())
+//       .then((data) => setInstances(data));
+//   }, [jsonFile]);
 
-  useEffect(() => {
-    if (!instances || !meshRef.current) return;
+//   useEffect(() => {
+//     if (!instances || !meshRef.current) return;
 
-    instances.forEach((t, i) => {
-      dummy.position.set(t.position[0], t.position[1], -t.position[2]);
-      dummy.rotation.set(...t.rotation);
-      dummy.scale.set(...t.scale);
-      dummy.updateMatrix();
-      meshRef.current.setMatrixAt(i, dummy.matrix);
-    });
+//     instances.forEach((t, i) => {
+//       dummy.position.set(t.position[0], t.position[1], -t.position[2]);
+//       dummy.rotation.set(...t.rotation);
+//       dummy.scale.set(...t.scale);
+//       dummy.updateMatrix();
+//       meshRef.current.setMatrixAt(i, dummy.matrix);
+//     });
 
-    meshRef.current.instanceMatrix.needsUpdate = true;
-  }, [instances]);
+//     meshRef.current.instanceMatrix.needsUpdate = true;
+//   }, [instances]);
 
-  if (!instances) return null;
+//   if (!instances) return null;
 
-  const geometry = nodes[meshName].geometry;
-  const originalMat = materials[nodes[meshName].material.name];
+//   const geometry = nodes[meshName].geometry;
+//   const originalMat = materials[nodes[meshName].material.name];
 
-  // ✅ Force MeshBasicMaterial for tree
-  const material = new THREE.MeshBasicMaterial({
-    map: originalMat?.map || null,
-    transparent: true,
-    alphaTest: 0.5,
-    opacity: 1.0,
-    side: THREE.DoubleSide,
-  });
+//   // ✅ Force MeshBasicMaterial for tree
+//   const material = new THREE.MeshBasicMaterial({
+//     map: originalMat?.map || null,
+//     transparent: true,
+//     alphaTest: 0.5,
+//     opacity: 1.0,
+//     side: THREE.DoubleSide,
+//   });
 
-  if (material.map) {
-    material.map.anisotropy = 16;
-    material.map.minFilter = THREE.LinearMipmapLinearFilter;
-    material.map.magFilter = THREE.LinearFilter;
-    material.map.needsUpdate = true;
-  }
+//   if (material.map) {
+//     material.map.anisotropy = 16;
+//     material.map.minFilter = THREE.LinearMipmapLinearFilter;
+//     material.map.magFilter = THREE.LinearFilter;
+//     material.map.needsUpdate = true;
+//   }
 
-  return (
-    <instancedMesh ref={meshRef} args={[geometry, material, instances.length]}>
-      <primitive attach="geometry" object={geometry} />
-      <primitive attach="material" object={material} />
-    </instancedMesh>
-  );
-}
+//   return (
+//     <instancedMesh ref={meshRef} args={[geometry, material, instances.length]}>
+//       <primitive attach="geometry" object={geometry} />
+//       <primitive attach="material" object={material} />
+//     </instancedMesh>
+//   );
+// }
 
 export function City(props) {
   const { nodes, materials } = useGLTF(
@@ -131,41 +134,43 @@ export function City(props) {
         );
       })}
       <UnderwaterLand position={[0,-0.2,0]}/>
+      <SmallSand />
 
       {/* Instanced trees */}
       <InstancedTrees
         meshName="Tree-Variant-4182_Baked"
-        jsonFile="Tree-Variant-1-data2.json"
+        jsonFile="Tree-Variation-1-final.json"
         nodes={nodes}
         materials={materials}
       />
+      {/* <TreeGood /> */}
       <InstancedTrees
         meshName="Tree-Variant-6499_Baked"
-        jsonFile="Tree-Variant-2-data2.json"
+        jsonFile="Tree-Variation-2-final.json"
         nodes={nodes}
         materials={materials}
       />
       <InstancedTrees
         meshName="Tree-Variant-5442_Baked"
-        jsonFile="Tree-Variant-3-data2.json"
+        jsonFile="Tree-Variation-3-final.json"
         nodes={nodes}
         materials={materials}
       />
       <InstancedTrees
         meshName="Tree-variant-1-Baked"
-        jsonFile="Tree-Variant-4-data2.json"
+        jsonFile="Tree-Variation-4-final.json"
         nodes={nodes}
         materials={materials}
       />
       <InstancedTrees
         meshName="Tree-Variant-3807_Baked"
-        jsonFile="Tree-Variant-5-data2.json"
+        jsonFile="Tree-Variation-5-final.json"
         nodes={nodes}
         materials={materials}
       />
       <InstancedTrees
         meshName="Tree-Variant-2991_Baked"
-        jsonFile="Tree-Variant-6-data2.json"
+        jsonFile="Tree-Variation-6-final.json"
         nodes={nodes}
         materials={materials}
       />

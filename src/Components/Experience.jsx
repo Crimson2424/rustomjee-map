@@ -9,6 +9,8 @@ import { LuHotel } from "react-icons/lu";
 import { FaRegHospital } from "react-icons/fa";
 import { PiHospitalLight, PiMapPinSimpleArea } from "react-icons/pi";
 import { IoSchoolOutline } from "react-icons/io5";
+import { Environment } from "@react-three/drei";
+import HorizontalFog from "./HorizontalFog";
 
 const Experience = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -39,7 +41,15 @@ const Experience = () => {
             far: 20000,
           }}
         >
-          <color attach="background" args={["gray"]} />
+          <color attach="background" args={["#7fa4c9"]} />
+          <fog attach={"fog"} args={["#7fa4c9", 2000, 6000]} />
+          {/* <HorizontalFog
+            color="#a5b9c7"
+            density={0.0005}
+            heightFalloff={0.001}
+            waterHeight={0} // your ocean Y position
+          /> */}
+          <Environment preset="city" />
           <Scene />
         </Canvas>
 

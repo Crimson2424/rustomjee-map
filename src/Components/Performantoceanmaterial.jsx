@@ -120,6 +120,13 @@ export const usePerformantOceanMaterial = () => {
     uMaxAlpha: { value: 0.95 },
     uAbsorption: { value: new THREE.Vector3(0.15, 0.35, 0.45) },
     uDepthTint: { value: new THREE.Color('#1e6b7a') },
+
+    // **Fog uniforms**
+    uFogColor: { value: new THREE.Color() },
+    uFogNear: { value: 1 },
+    uFogFar: { value: 1000 },
+    uFogDensity: { value: 0.00025 },
+    uUseFog: { value: 0 },
   }), [environmentMap, camera]);
 
   /* ---------------- Uniform Updates ---------------- */
@@ -211,6 +218,13 @@ export const usePerformantOceanMaterial = () => {
     uniform float uMaxAlpha;
     uniform vec3  uAbsorption;
     uniform vec3  uDepthTint;
+
+    // fog
+    uniform vec3 uFogColor;
+    uniform float uFogNear;
+    uniform float uFogFar;
+    uniform float uFogDensity;
+    uniform float uUseFog;
 
     varying vec3 vNormal;
     varying vec3 vWorldPosition;
@@ -342,6 +356,22 @@ export const usePerformantOceanMaterial = () => {
 
       alpha = clamp(alpha + foam*0.15, 0.0, 1.0);
 
+      // Apply fog
+      if (uUseFog > 0.5) {
+        float depth = length(vViewPosition);
+        float fogFactor = 1.0;
+        
+        if (uUseFog < 1.5) {
+          // Linear fog
+          fogFactor = smoothstep(uFogNear, uFogFar, depth);
+        } else {
+          // Exponential squared fog
+          fogFactor = 1.0 - exp(-uFogDensity * uFogDensity * depth * depth);
+        }
+        
+        finalColor = mix(finalColor, uFogColor, fogFactor);
+      }
+
       gl_FragColor = vec4(finalColor, alpha);
     }
   `;
@@ -363,6 +393,23 @@ export const PerformantOceanMaterial = React.forwardRef((props, ref) => {
     if (!materialRef.current) return;
     mat.updateUniforms();
     materialRef.current.uniforms.uTime.value = state.clock.elapsedTime;
+
+    // Update fog uniforms from scene
+    if (mat.scene.fog) {
+      materialRef.current.uniforms.uFogColor.value.copy(mat.scene.fog.color);
+      if (mat.scene.fog.isFog) {
+        // Linear fog
+        materialRef.current.uniforms.uUseFog.value = 1;
+        materialRef.current.uniforms.uFogNear.value = mat.scene.fog.near;
+        materialRef.current.uniforms.uFogFar.value = mat.scene.fog.far;
+      } else if (mat.scene.fog.isFogExp2) {
+        // Exponential squared fog
+        materialRef.current.uniforms.uUseFog.value = 2;
+        materialRef.current.uniforms.uFogDensity.value = mat.scene.fog.density;
+      }
+    } else {
+      materialRef.current.uniforms.uUseFog.value = 0;
+    }
 
     if (!parentRef.current && materialRef.current.parent) {
       let p = materialRef.current.parent;

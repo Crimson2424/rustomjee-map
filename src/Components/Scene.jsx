@@ -33,6 +33,7 @@ const Scene = () => {
     <>
       <CameraControls />
       <City />
+      
       <directionalLight position={[0, 5, 0]} />
       <ambientLight />
 
