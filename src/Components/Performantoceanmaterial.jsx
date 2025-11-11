@@ -7,25 +7,40 @@ export const usePerformantOceanMaterial = () => {
   const { gl, scene, camera } = useThree();
 
   // Depth RT
-  const depthTarget = useMemo(() => {
-    const rt = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight, {
+  // const depthTarget = useMemo(() => {
+  //   const rt = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight, {
+  //     minFilter: THREE.LinearFilter,
+  //     magFilter: THREE.LinearFilter,
+  //     format: THREE.RGBAFormat
+  //   });
+  //   rt.depthTexture = new THREE.DepthTexture(window.innerWidth, window.innerHeight);
+  //   rt.depthTexture.format = THREE.DepthFormat;
+  //   return rt;
+  // }, []);
+
+  // Reflection RT
+  const reflectionTarget = useMemo(() => {
+    return new THREE.WebGLRenderTarget(512, 512, {
       minFilter: THREE.LinearFilter,
       magFilter: THREE.LinearFilter,
-      format: THREE.RGBAFormat
+      format: THREE.RGBAFormat,
     });
-    rt.depthTexture = new THREE.DepthTexture(window.innerWidth, window.innerHeight);
-    rt.depthTexture.format = THREE.DepthFormat;
-    return rt;
+  }, []);
+
+  // Reflection Camera
+  const reflectionCamera = useMemo(() => {
+    const cam = new THREE.PerspectiveCamera();
+    return cam;
   }, []);
 
   // Resize RT on window resize
-  useEffect(() => {
-    const resize = () => {
-      depthTarget.setSize(window.innerWidth, window.innerHeight);
-    };
-    window.addEventListener('resize', resize);
-    return () => window.removeEventListener('resize', resize);
-  }, [depthTarget]);
+  // useEffect(() => {
+  //   const resize = () => {
+  //     depthTarget.setSize(window.innerWidth, window.innerHeight);
+  //   };
+  //   window.addEventListener('resize', resize);
+  //   return () => window.removeEventListener('resize', resize);
+  // }, [depthTarget]);
 
   /* ........... Existing LEVA CONTROLS .......... */
   const controls = useControls('Ocean Waves', {
@@ -63,13 +78,20 @@ export const usePerformantOceanMaterial = () => {
     waterAlpha: { value: 0.6, min: 0.0, max: 1.0 },
   });
 
-  // NEW depth fade controls
   const depthFade = useControls('Depth Transparency', {
     depthToOpaque: { value: 4.0, min: 0.2, max: 50 },
     minAlpha: { value: 0.05, min: 0, max: 1 },
     maxAlpha: { value: 0.95, min: 0, max: 1 },
     absorption: { r: 0.15, g: 0.35, b: 0.45 },
     tint: '#1e6b7a'
+  });
+
+  // NEW: Local Reflection Controls
+  const localReflectionControls = useControls('Local Reflections', {
+    useLocalReflections: { value: true },
+    localReflectionStrength: { value: 0.8, min: 0, max: 1 },
+    reflectionFalloffDistance: { value: 20, min: 1, max: 100 },
+    reflectionResolution: { value: 512, min: 256, max: 2048, step: 256 },
   });
 
   // Environment Cubemap
@@ -114,19 +136,25 @@ export const usePerformantOceanMaterial = () => {
     uCameraNear: { value: camera.near },
     uCameraFar: { value: camera.far },
 
-    // **Depth fade uniforms**
+    // Depth fade uniforms
     uDepthToOpaque: { value: 4.0 },
     uMinAlpha: { value: 0.05 },
     uMaxAlpha: { value: 0.95 },
     uAbsorption: { value: new THREE.Vector3(0.15, 0.35, 0.45) },
     uDepthTint: { value: new THREE.Color('#1e6b7a') },
 
-    // **Fog uniforms**
+    // Fog uniforms
     uFogColor: { value: new THREE.Color() },
     uFogNear: { value: 1 },
     uFogFar: { value: 1000 },
     uFogDensity: { value: 0.00025 },
     uUseFog: { value: 0 },
+
+    // Local reflection uniforms
+    uReflectionTexture: { value: null },
+    uUseLocalReflections: { value: 0 },
+    uLocalReflectionStrength: { value: 0.8 },
+    uReflectionFalloffDistance: { value: 20 },
   }), [environmentMap, camera]);
 
   /* ---------------- Uniform Updates ---------------- */
@@ -159,6 +187,11 @@ export const usePerformantOceanMaterial = () => {
     const a = depthFade.absorption;
     uniforms.uAbsorption.value.set(a.r, a.g, a.b);
     uniforms.uDepthTint.value.set(depthFade.tint);
+
+    // Local reflections
+    uniforms.uUseLocalReflections.value = localReflectionControls.useLocalReflections ? 1 : 0;
+    uniforms.uLocalReflectionStrength.value = localReflectionControls.localReflectionStrength;
+    uniforms.uReflectionFalloffDistance.value = localReflectionControls.reflectionFalloffDistance;
   };
 
   /* ---------------- Vertex Shader ---------------- */
@@ -225,6 +258,12 @@ export const usePerformantOceanMaterial = () => {
     uniform float uFogFar;
     uniform float uFogDensity;
     uniform float uUseFog;
+
+    // local reflections
+    uniform sampler2D uReflectionTexture;
+    uniform float uUseLocalReflections;
+    uniform float uLocalReflectionStrength;
+    uniform float uReflectionFalloffDistance;
 
     varying vec3 vNormal;
     varying vec3 vWorldPosition;
@@ -305,15 +344,6 @@ export const usePerformantOceanMaterial = () => {
       vec3 refl = reflect(viewDir, n);
       refl = (inverse(viewMatrix) * vec4(refl,0.0)).xyz;
       refl.x = -refl.x;
-      vec4 env = textureCube(uEnvironmentMap, refl);
-      float fres = uFresnelScale * pow(1.0 - abs(dot(viewDir,n)), uFresnelPower);
-
-      float peakT = smoothstep(0.05,0.25,waveElev);
-      float troughT = smoothstep(-0.25,0.15,waveElev);
-      vec3 c = mix(uTroughColor, uSurfaceColor, troughT);
-      c = mix(c, uPeakColor, peakT);
-      vec3 waterColor = mix(uSurfaceColor, c, uColorMixStrength);
-      vec3 finalColor = mix(waterColor, env.rgb, fres*uReflectionStrength);
 
       vec2 uv = (vScreenPos.xy / vScreenPos.w)*0.5+0.5;
       float sd = texture2D(uDepthTexture, uv).r;
@@ -322,6 +352,34 @@ export const usePerformantOceanMaterial = () => {
       float diff = sceneD - waterD;
       bool noOcc = sd >= 0.9999;
       float wDepth = noOcc ? 0.0 : max(0.0, diff);
+
+      // Handle reflections - local vs environment
+      vec3 reflectionColor;
+      if (uUseLocalReflections > 0.5) {
+        // Sample local planar reflection with wave distortion
+        vec2 reflUV = uv + waveNorm.xz * 0.05;
+        reflUV = clamp(reflUV, 0.0, 1.0);
+        vec4 localRefl = texture2D(uReflectionTexture, reflUV);
+        vec4 envRefl = textureCube(uEnvironmentMap, refl);
+        
+        // Blend between local and environment based on distance/depth
+        float falloff = smoothstep(0.0, uReflectionFalloffDistance, wDepth);
+        reflectionColor = mix(localRefl.rgb, envRefl.rgb, falloff);
+        reflectionColor = mix(envRefl.rgb, reflectionColor, uLocalReflectionStrength);
+      } else {
+        // Use only environment map
+        vec4 env = textureCube(uEnvironmentMap, refl);
+        reflectionColor = env.rgb;
+      }
+
+      float fres = uFresnelScale * pow(1.0 - abs(dot(viewDir,n)), uFresnelPower);
+
+      float peakT = smoothstep(0.05,0.25,waveElev);
+      float troughT = smoothstep(-0.25,0.15,waveElev);
+      vec3 c = mix(uTroughColor, uSurfaceColor, troughT);
+      c = mix(c, uPeakColor, peakT);
+      vec3 waterColor = mix(uSurfaceColor, c, uColorMixStrength);
+      vec3 finalColor = mix(waterColor, reflectionColor, fres*uReflectionStrength);
 
       // Beer–Lambert attenuation
       vec3 trans = exp(-uAbsorption * wDepth);
@@ -377,7 +435,16 @@ export const usePerformantOceanMaterial = () => {
   `;
 
   return {
-    uniforms, vertexShader, fragmentShader, depthTarget, gl, scene, camera, updateUniforms
+    uniforms, 
+    vertexShader, 
+    fragmentShader, 
+    // depthTarget, 
+    reflectionTarget,
+    reflectionCamera,
+    gl, 
+    scene, 
+    camera, 
+    updateUniforms
   };
 };
 
@@ -386,6 +453,7 @@ export const PerformantOceanMaterial = React.forwardRef((props, ref) => {
   const mat = usePerformantOceanMaterial();
   const materialRef = useRef();
   const parentRef = useRef();
+  const waterYRef = useRef(1.2); // Water plane Y position
 
   React.useImperativeHandle(ref, () => materialRef.current);
 
@@ -398,12 +466,10 @@ export const PerformantOceanMaterial = React.forwardRef((props, ref) => {
     if (mat.scene.fog) {
       materialRef.current.uniforms.uFogColor.value.copy(mat.scene.fog.color);
       if (mat.scene.fog.isFog) {
-        // Linear fog
         materialRef.current.uniforms.uUseFog.value = 1;
         materialRef.current.uniforms.uFogNear.value = mat.scene.fog.near;
         materialRef.current.uniforms.uFogFar.value = mat.scene.fog.far;
       } else if (mat.scene.fog.isFogExp2) {
-        // Exponential squared fog
         materialRef.current.uniforms.uUseFog.value = 2;
         materialRef.current.uniforms.uFogDensity.value = mat.scene.fog.density;
       }
@@ -418,6 +484,34 @@ export const PerformantOceanMaterial = React.forwardRef((props, ref) => {
     }
 
     if (parentRef.current) {
+      // Render planar reflections if enabled
+      const useReflections = materialRef.current.uniforms.uUseLocalReflections.value > 0.5;
+      
+      if (useReflections) {
+        // Setup reflection camera
+        const waterY = waterYRef.current;
+        mat.reflectionCamera.copy(mat.camera);
+        mat.reflectionCamera.position.y = 2 * waterY - mat.camera.position.y;
+        mat.reflectionCamera.rotation.x = -mat.camera.rotation.x;
+        mat.reflectionCamera.rotation.y = mat.camera.rotation.y;
+        mat.reflectionCamera.rotation.z = mat.camera.rotation.z;
+        mat.reflectionCamera.updateMatrixWorld();
+        mat.reflectionCamera.projectionMatrix.copy(mat.camera.projectionMatrix);
+
+        // Render reflection
+        parentRef.current.visible = false;
+        const prevRenderTarget = mat.gl.getRenderTarget();
+        mat.gl.setRenderTarget(mat.reflectionTarget);
+        mat.gl.clear();
+        mat.gl.render(mat.scene, mat.reflectionCamera);
+        mat.gl.setRenderTarget(prevRenderTarget);
+        parentRef.current.visible = true;
+
+        // Update reflection texture uniform
+        materialRef.current.uniforms.uReflectionTexture.value = mat.reflectionTarget.texture;
+      }
+
+      // Render depth
       parentRef.current.visible = false;
       const prev = mat.gl.getRenderTarget();
       mat.gl.setRenderTarget(mat.depthTarget);
@@ -427,6 +521,18 @@ export const PerformantOceanMaterial = React.forwardRef((props, ref) => {
       materialRef.current.uniforms.uDepthTexture.value = mat.depthTarget.depthTexture;
     }
   });
+
+  // Update reflection resolution when changed
+  useEffect(() => {
+    const controls = mat.uniforms.uUseLocalReflections;
+    if (controls) {
+      const resizeReflection = () => {
+        const res = 512; // You can expose this via controls if needed
+        mat.reflectionTarget.setSize(res, res);
+      };
+      resizeReflection();
+    }
+  }, [mat]);
 
   return (
     <shaderMaterial
@@ -438,5 +544,6 @@ export const PerformantOceanMaterial = React.forwardRef((props, ref) => {
       depthWrite={false}
       {...props}
     />
+  
   );
 });

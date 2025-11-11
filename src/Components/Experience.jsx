@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import Scene from "./Scene";
 import { RiPagesLine } from "react-icons/ri";
 import { GiGreekTemple } from "react-icons/gi";
@@ -9,8 +9,8 @@ import { LuHotel } from "react-icons/lu";
 import { FaRegHospital } from "react-icons/fa";
 import { PiHospitalLight, PiMapPinSimpleArea } from "react-icons/pi";
 import { IoSchoolOutline } from "react-icons/io5";
-import { Environment } from "@react-three/drei";
-import HorizontalFog from "./HorizontalFog";
+import { Environment, Preload } from "@react-three/drei";
+import Loader from "./Loader";
 
 const Experience = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -33,6 +33,7 @@ const Experience = () => {
   return (
     <>
       <div className="h-screen w-screen">
+      <Loader /> {/* minimal overlay loader */}
         <Canvas
           camera={{
             position: [80, 120, 200],
@@ -40,6 +41,7 @@ const Experience = () => {
             near: 10,
             far: 20000,
           }}
+          shadows
         >
           <color attach="background" args={["#7fa4c9"]} />
           <fog attach={"fog"} args={["#7fa4c9", 2000, 6000]} />
@@ -50,7 +52,10 @@ const Experience = () => {
             waterHeight={0} // your ocean Y position
           /> */}
           <Environment preset="city" />
+          <Suspense fallback={null}>
           <Scene />
+          <Preload all />
+        </Suspense>
         </Canvas>
 
         {/* <div className="w-fit fixed bg-[#F5F7FA] bottom-4 left-1/2 -translate-x-1/2 flex gap-3 p-2 py-3 items-center shadow-lg rounded-lg">

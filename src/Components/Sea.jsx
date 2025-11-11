@@ -1,10 +1,10 @@
+import React from "react";
+import { MultiMaterial, useGLTF } from "@react-three/drei";
+import { PerformantOceanMaterial } from "./Performantoceanmaterial";
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
-import { PerformantOceanMaterial } from './Performantoceanmaterial'
+export function Sea({ foamObjects = [], foamRadius, foamStrength, ...props }) {
+  const { nodes } = useGLTF("models/Sea-Basicglb.glb");
 
-export function Sea(props) {
-  const { nodes, materials } = useGLTF('models/Sea-Basicglb.glb')
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -12,12 +12,17 @@ export function Sea(props) {
         receiveShadow
         geometry={nodes.Sea.geometry}
         position={[0, 1.2, 0]}
-       
       >
-        <PerformantOceanMaterial />
+        <MultiMaterial>
+          <PerformantOceanMaterial
+            foamObjects={foamObjects}
+            foamRadius={foamRadius}
+            foamStrength={foamStrength}
+          />
+        </MultiMaterial>
       </mesh>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('models/Sea-Basicglb.glb')
+useGLTF.preload("models/Sea-Basicglb.glb");
