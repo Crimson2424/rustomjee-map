@@ -1,4 +1,4 @@
-import { MeshReflectorMaterial, useGLTF, useTexture } from "@react-three/drei";
+import { MeshReflectorMaterial, useGLTF, useKTX2, useTexture } from "@react-three/drei";
 import { useState, useEffect, useRef } from "react";
 import * as THREE from "three";
 import { UnderwaterLand } from "./UnderwaterLand";
@@ -14,14 +14,9 @@ import { Yatch } from "./Yatch";
 import { FishingBoat2 } from "./FishingBoat2";
 import { Yatch2 } from "./Yatch2";
 
-
-
-
 export function City(props) {
-  const { nodes, materials } = useGLTF(
-    "models/Rustomjee-3d-without-treess.glb"
-  );
-  const { nodes2, materials2 } = useGLTF('models/Tree-v1.glb')
+  const { nodes, materials } = useGLTF("models/rustomjeeEditedmap2.glb");
+  const { nodes2, materials2 } = useGLTF("models/Tree-v1.glb");
 
   // ✅ Add Leva controls for Boat position, rotation, and scale
   const {
@@ -246,16 +241,56 @@ export function City(props) {
     [2293.2693697820346, 1.1707166385651773, -731.4912813613197],
   ];
 
-  const bakedLandTexture = useTexture("/Rustomjee-Bakes/Land-Main_Bake-3.png"); // <-- put your texture path here
-  bakedLandTexture.flipY = false;
-
-  const bakedLand2Texture = useTexture("/Rustomjee-Bakes/Land_Bake1_adjusted.png"); // <-- put your texture path here
-  bakedLand2Texture.flipY = false;
-
-  // const subdividedGeometry = useSubdividedGeometry(
-  //   nodes.Retopo_Sea.geometry,
-  //   2
-  // );
+  const {
+    bakedLandTexture,
+    bakedLand2Texture,
+    buildingTextureSet1,
+    buildingTextureSet2,
+    buildingTextureSet3,
+    buildingTextureSet4,
+    buildingTextureSet5,
+    buildingTextureSet6,
+    buildingTextureFinal,
+    roof1Texture,
+    roof2Texture,
+    roofLast,
+    bridgeTexture,
+  } = useKTX2({
+    bakedLandTexture: "/Rustomjee-Bakes/Land-Main_Bake-3_etc1s_max.ktx2",
+    bakedLand2Texture: "/Rustomjee-Bakes/Land_Bake1_adjusted_etc1s_max.ktx2",
+  
+    buildingTextureSet1: "/Rustomjee-Bakes/Building-Texture-Set-1-1_etc1s_max.ktx2",
+    buildingTextureSet2: "/Rustomjee-Bakes/Building-Texture-Set-2-2_etc1s_max.ktx2",
+    buildingTextureSet3: "/Rustomjee-Bakes/Building-Texture-Set-3_etc1s_max.ktx2",
+    buildingTextureSet4: "/Rustomjee-Bakes/Building-Texture-Set-4_etc1s_max.ktx2",
+    buildingTextureSet5: "/Rustomjee-Bakes/Building-Texture-Set-5_etc1s_max.ktx2",
+    buildingTextureSet6: "/Rustomjee-Bakes/Building-Texture-Set-6_etc1s_max.ktx2",
+  
+    buildingTextureFinal: "/Rustomjee-Bakes/Building-Texture-Final_etc1s_max.ktx2",
+  
+    roof1Texture: "/Rustomjee-Bakes/Roof-1-1_etc1s_max.ktx2",
+    roof2Texture: "/Rustomjee-Bakes/Roofs-2_etc1s_max.ktx2",
+    roofLast: "/Rustomjee-Bakes/Roof-Last_etc1s_max.ktx2",
+  
+    bridgeTexture: "/Rustomjee-Bakes/Bridge_etc1s_max.ktx2",
+  });
+  
+  // flipY = false for ALL
+  [
+    bakedLandTexture,
+    bakedLand2Texture,
+    buildingTextureSet1,
+    buildingTextureSet2,
+    buildingTextureSet3,
+    buildingTextureSet4,
+    buildingTextureSet5,
+    buildingTextureSet6,
+    buildingTextureFinal,
+    roof1Texture,
+    roof2Texture,
+    roofLast,
+    bridgeTexture,
+  ].forEach((t) => (t.flipY = false));
 
   // ✅ Convert ALL GLTF materials to MeshBasicMaterial
   Object.keys(materials).forEach((key) => {
@@ -282,7 +317,6 @@ export function City(props) {
 
       <Sea />
 
-
       {/* Buildings & scene geometry */}
       {Object.keys(nodes).map((key) => {
         const n = nodes[key];
@@ -307,14 +341,15 @@ export function City(props) {
           key === "Road-8" ||
           key === "Road-9" ||
           key === "Road-10" ||
-          key === "Plane"
+          key === "Plane"   
+          
         ) {
           mat = new THREE.MeshBasicMaterial({ color: 0x404040 }); // change color if needed
         }
 
         // if (key === "Bridge_Baked") {
         //   const originalMat = n.material; // this is the REAL material the mesh uses
-        
+
         //   mat = new THREE.MeshBasicMaterial({
         //     map: originalMat.map || null,
         //   });
@@ -328,7 +363,24 @@ export function City(props) {
           return null;
         }
 
-        if (key === "Land-Main_Baked"  || key==="Land_Baked") {
+        if (key === "Land-Main_Baked" || key === "Land_Baked") {
+          return null;
+        }
+
+        if (
+          key === "Building-Texture-Set-1_Baked" ||
+          key === "Building-Texture-Set-3_Baked" ||
+          key === "Building-Texture-Set-2_Baked" ||
+          key === "Building-Texture-Set-4_Baked" ||
+          key === "Building-Texture-Set-5_Baked" ||
+          key === "Building-Texture-Set-6_Baked" ||
+          key === "Building-Texture-Final_Baked" ||
+          key === "Bridge_Baked"
+        ) {
+          return null;
+        }
+
+        if (key === "Roof-1_Baked") {
           return null;
         }
 
@@ -348,7 +400,95 @@ export function City(props) {
       <UnderwaterLand position={[0, -0.2, 0]} />
       <SmallSand />
 
-      
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes["Building-Texture-Set-1_Baked"].geometry}
+        // material={nodes["Building-Texture-Set-1_Baked"].material}
+      >
+        <meshBasicMaterial map={buildingTextureSet1} />
+      </mesh>
+
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes["Building-Texture-Set-2_Baked"].geometry}
+      >
+        <meshBasicMaterial map={buildingTextureSet2} />
+      </mesh>
+
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes["Building-Texture-Set-3_Baked"].geometry}
+      >
+        <meshBasicMaterial map={buildingTextureSet3} />
+      </mesh>
+
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes["Building-Texture-Set-4_Baked"].geometry}
+      >
+        <meshBasicMaterial map={buildingTextureSet4} />
+      </mesh>
+
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes["Building-Texture-Set-5_Baked"].geometry}
+      >
+        <meshBasicMaterial map={buildingTextureSet5} />
+      </mesh>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes["Building-Texture-Set-6_Baked"].geometry}
+      >
+        <meshBasicMaterial map={buildingTextureSet6} />
+      </mesh>
+
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes["Building-Texture-Final_Baked"].geometry}
+      >
+        <meshBasicMaterial map={buildingTextureFinal} />
+      </mesh>
+
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes["Roof-1_Baked"].geometry}
+        // material={nodes["Roof-1_Baked"].material}
+      >
+        <meshBasicMaterial map={roof1Texture} />
+      </mesh>
+
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes["Roof-Last_Baked"].geometry}
+      >
+        <meshBasicMaterial map={roofLast} />
+      </mesh>
+
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes["Roofs-2_Baked"].geometry}
+      >
+        <meshBasicMaterial map={roof2Texture} />
+      </mesh>
+
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Bridge_Baked.geometry}
+      >
+        <meshBasicMaterial map={bridgeTexture} />
+      </mesh>
+
       {/* Add traffic system */}
 
       {/* <RoadClickSampler nodes={nodes} roadNames={roadNames} /> */}
@@ -379,8 +519,12 @@ export function City(props) {
         scale={6}
       />
       <Yatch2 position={[768, -8, 201]} rotation={[0, -0.3, 0.0]} scale={0.1} />
-      <Yatch position={[-375, -8, -678]}  scale={12} />
-      <Boat position={[-720, -8, 177]} rotation={boatRotation} scale={boatScale} />
+      <Yatch position={[-375, -8, -678]} scale={12} />
+      <Boat
+        position={[-720, -8, 177]}
+        rotation={boatRotation}
+        scale={boatScale}
+      />
       <mesh
         castShadow
         receiveShadow
@@ -395,48 +539,55 @@ export function City(props) {
         receiveShadow
         geometry={nodes.Land_Baked.geometry}
         // material={materials['Land_Baked.001']}
-        >
+      >
         <meshBasicMaterial map={bakedLand2Texture} />
       </mesh>
 
       {/* <AnotherTree position={[100,0,100]} scale={3}/> */}
 
       {/* Instanced trees */}
-      {/* <InstancedTrees
+      <InstancedTrees
         meshName="Tree-Variant-4182_Baked"
         jsonFile="Tree-Variation-4-final.json"
+        texturePath="/Rustomjee-Bakes/Tree-Variant-4182_Baked_uastc_max.ktx2"
         nodes={nodes}
         materials={materials}
-      /> */}
+      />
       {/* <TreeGood /> */}
       <InstancedTrees
         meshName="Tree-Variant-6499_Baked"
         jsonFile="Tree-Variation-6-final.json"
+        texturePath="/Rustomjee-Bakes/Tree-Variant-6499_Baked_uastc_max.ktx2"
         nodes={nodes}
         materials={materials}
       />
-     
+
       <InstancedTrees
         meshName="Tree-Variant-5442_Baked"
         jsonFile="Tree-Variation-5-final.json"
+        texturePath="/Rustomjee-Bakes/Tree-Variant-5442_Baked_uastc_max.ktx2"
+
         nodes={nodes}
         materials={materials}
       />
       <InstancedTrees
         meshName="Tree-variant-1-Baked"
         jsonFile="Tree-Variation-1-final.json"
+        texturePath="/Rustomjee-Bakes/Tree-variant-1_uastc_max.ktx2"
         nodes={nodes}
         materials={materials}
       />
       <InstancedTrees
         meshName="Tree-Variant-3807_Baked"
         jsonFile="Tree-Variation-3-final.json"
+        texturePath="/Rustomjee-Bakes/Tree-Variant-3807_Baked_uastc_max.ktx2"
         nodes={nodes}
         materials={materials}
       />
       <InstancedTrees
         meshName="Tree-Variant-2991_Baked"
         jsonFile="Tree-Variation-2-final.json"
+        texturePath="/Rustomjee-Bakes/Tree-Variant-2991_Baked_uastc_max.ktx2"
         nodes={nodes}
         materials={materials}
       />
