@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from 'three'
 import { CameraControls, ScreenSpace } from "@react-three/drei";
-import { LensFlare } from "@andersonmancini/lens-flare";
 import { BlendFunction } from 'postprocessing'
 import gsap from "gsap/all";
 import { City } from "./City";
