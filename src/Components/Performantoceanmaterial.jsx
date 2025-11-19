@@ -50,20 +50,20 @@ export const usePerformantOceanMaterial = () => {
     wavesPersistence: { value: 0.24, min: 0, max: 1, step: 0.01 },
     wavesLacunarity: { value: 2.7 , min: 1, max: 4, step: 0.1 },
     wavesIterations: { value: 6, min: 1, max: 10, step: 1 },
-  });
+  },{ collapsed: true });
 
   const colorControls = useControls('Ocean Colors', {
     troughColor: '#00f5ff',
     surfaceColor: '#488378',
     peakColor: '#4d8cb3',
     colorMixStrength: { value: 0.6, min: 0, max: 1 },
-  });
+  },{ collapsed: true });
 
   const fresnelControls = useControls('Fresnel & Reflection', {
     fresnelScale: { value: 0.7, min: 0, max: 1 },
     fresnelPower: { value: 2.8 , min: 0, max: 10 },
     reflectionStrength: { value: 0.75, min: 0, max: 1 },
-  });
+  },{ collapsed: true });
 
   const foamControls = useControls('Foam Settings', {
     foamDistance: 0.5,
@@ -72,11 +72,11 @@ export const usePerformantOceanMaterial = () => {
     foamNoiseSpeed: 0.6,
     foamCutoff: 0.5,
     foamEdgeSoftness: 0.25,
-  });
+  },{ collapsed: true });
 
   const transparencyControls = useControls('Water Alpha', {
     waterAlpha: { value: 0.6, min: 0.0, max: 1.0 },
-  });
+  },{ collapsed: true });
 
   const depthFade = useControls('Depth Transparency', {
     depthToOpaque: { value: 4.0, min: 0.2, max: 50 },
@@ -84,7 +84,7 @@ export const usePerformantOceanMaterial = () => {
     maxAlpha: { value: 0.95, min: 0, max: 1 },
     absorption: { r: 0.15, g: 0.35, b: 0.45 },
     tint: '#1e6b7a'
-  });
+  },{ collapsed: true });
 
   // NEW: Local Reflection Controls
   const localReflectionControls = useControls('Local Reflections', {
@@ -92,7 +92,7 @@ export const usePerformantOceanMaterial = () => {
     localReflectionStrength: { value: 0.8, min: 0, max: 1 },
     reflectionFalloffDistance: { value: 20, min: 1, max: 100 },
     reflectionResolution: { value: 512, min: 256, max: 2048, step: 256 },
-  });
+  },{ collapsed: true });
 
   // Environment Cubemap
   const environmentMap = useMemo(() => {

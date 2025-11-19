@@ -12,8 +12,6 @@ import { SmallSand } from "./SmallSand";
 import { InstancedTrees } from "./Improvedinstancedtrees";
 import { RoadClickSampler } from "./Roadsampler";
 import { TrafficFromSamples } from "./TrafficFromSamples";
-import { Boat } from "./Boat";
-import { useControls } from "leva";
 import { FishingBoat } from "./FishingBoat";
 import { Yatch } from "./Yatch";
 import { FishingBoat2 } from "./FishingBoat2";
@@ -26,73 +24,6 @@ export function City(props) {
   const { nodes, materials } = useGLTF("models/rustomjeeEditedmap2.glb");
   const { nodes2, materials2 } = useGLTF("models/Tree-v1.glb");
 
-  // ✅ Add Leva controls for Boat position, rotation, and scale
-  const {
-    boatPosition,
-    boatRotation,
-    boatScale,
-    boat2Position,
-    boat2Rotation,
-    boat2Scale,
-    Yatch2Position,
-    Yatch2Rotation,
-    Yatch2Scale,
-  } = useControls("Boat Controls", {
-    boatPosition: {
-      value: [-620, -8, 177],
-      step: 1,
-      joystick: "invertY",
-      label: "Position [x,y,z]",
-    },
-    boatRotation: {
-      value: [0, -0.3, 0],
-      step: 0.1,
-      label: "Rotation [x,y,z]",
-    },
-    boatScale: {
-      value: 10,
-      min: 0.1,
-      max: 10,
-      step: 0.1,
-      label: "Scale",
-    },
-    boat2Position: {
-      value: [-620, -8, 177],
-      step: 1,
-      joystick: "invertY",
-      label: "Position [x,y,z]",
-    },
-    boat2Rotation: {
-      value: [0, -0.3, 0],
-      step: 0.1,
-      label: "Rotation [x,y,z]",
-    },
-    boat2Scale: {
-      value: 6,
-      min: 0.1,
-      max: 10,
-      step: 0.1,
-      label: "Scale",
-    },
-    Yatch2Position: {
-      value: [-620, -8, 177],
-      step: 1,
-      joystick: "invertY",
-      label: "Position [x,y,z]",
-    },
-    Yatch2Rotation: {
-      value: [0, -0.3, 0],
-      step: 0.1,
-      label: "Rotation [x,y,z]",
-    },
-    Yatch2Scale: {
-      value: 6,
-      min: 0.1,
-      max: 10,
-      step: 0.1,
-      label: "Scale",
-    },
-  });
 
   const roadNames = [
     "Road-1",

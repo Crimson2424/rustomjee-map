@@ -107,7 +107,7 @@ const Scene = () => {
 
       console.log("📌 Camera Position:", pos);
       console.log("🎯 Camera Target:", target);
-    }),
+    }, { collapsed: true }),
   });
 
   // ✅ Track mouse movement for parallax
