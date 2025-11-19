@@ -26,7 +26,7 @@ export function Birds(props) {
     )
   }, [])
 
-  const radius = 500
+  const radius = 1000
   const speed = 0.1 // ✅ LOWER = SLOWER
   const height = 300
 
@@ -69,7 +69,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing"
               castShadow
@@ -77,7 +79,9 @@ export function Birds(props) {
               geometry={nodes.lwing.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing"
               castShadow
@@ -85,7 +89,9 @@ export function Birds(props) {
               geometry={nodes.rwing.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group
             name="Bird001"
@@ -100,7 +106,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing001"
               castShadow
@@ -108,7 +116,9 @@ export function Birds(props) {
               geometry={nodes.lwing001.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing001"
               castShadow
@@ -116,7 +126,9 @@ export function Birds(props) {
               geometry={nodes.rwing001.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group name="Bird002" position={[17.395, 1.493, -16.163]}>
             <mesh
@@ -127,7 +139,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing002"
               castShadow
@@ -135,7 +149,9 @@ export function Birds(props) {
               geometry={nodes.lwing002.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing002"
               castShadow
@@ -143,7 +159,9 @@ export function Birds(props) {
               geometry={nodes.rwing002.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group
             name="Bird003"
@@ -158,7 +176,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing003"
               castShadow
@@ -166,7 +186,9 @@ export function Birds(props) {
               geometry={nodes.lwing003.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing003"
               castShadow
@@ -174,7 +196,9 @@ export function Birds(props) {
               geometry={nodes.rwing003.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group
             name="Bird004"
@@ -189,7 +213,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing004"
               castShadow
@@ -197,7 +223,9 @@ export function Birds(props) {
               geometry={nodes.lwing004.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing004"
               castShadow
@@ -205,7 +233,9 @@ export function Birds(props) {
               geometry={nodes.rwing004.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group name="Bird005" position={[28.456, 3.3, -34.134]}>
             <mesh
@@ -216,7 +246,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing005"
               castShadow
@@ -224,7 +256,9 @@ export function Birds(props) {
               geometry={nodes.lwing005.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing005"
               castShadow
@@ -232,7 +266,9 @@ export function Birds(props) {
               geometry={nodes.rwing005.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group
             name="Bird006"
@@ -247,7 +283,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing006"
               castShadow
@@ -255,7 +293,9 @@ export function Birds(props) {
               geometry={nodes.lwing006.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing006"
               castShadow
@@ -263,7 +303,9 @@ export function Birds(props) {
               geometry={nodes.rwing006.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group
             name="Bird007"
@@ -278,7 +320,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing007"
               castShadow
@@ -286,7 +330,9 @@ export function Birds(props) {
               geometry={nodes.lwing007.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing007"
               castShadow
@@ -294,7 +340,9 @@ export function Birds(props) {
               geometry={nodes.rwing007.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group
             name="Bird008"
@@ -309,7 +357,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing008"
               castShadow
@@ -317,7 +367,9 @@ export function Birds(props) {
               geometry={nodes.lwing008.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing008"
               castShadow
@@ -325,7 +377,9 @@ export function Birds(props) {
               geometry={nodes.rwing008.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group
             name="Bird009"
@@ -340,7 +394,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing009"
               castShadow
@@ -348,7 +404,9 @@ export function Birds(props) {
               geometry={nodes.lwing009.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing009"
               castShadow
@@ -356,7 +414,9 @@ export function Birds(props) {
               geometry={nodes.rwing009.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group name="Bird010" position={[-53.895, 3.667, -63.396]}>
             <mesh
@@ -367,7 +427,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing010"
               castShadow
@@ -375,7 +437,9 @@ export function Birds(props) {
               geometry={nodes.lwing010.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing010"
               castShadow
@@ -383,7 +447,9 @@ export function Birds(props) {
               geometry={nodes.rwing010.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group
             name="Bird011"
@@ -398,7 +464,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing011"
               castShadow
@@ -406,7 +474,9 @@ export function Birds(props) {
               geometry={nodes.lwing011.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing011"
               castShadow
@@ -414,7 +484,9 @@ export function Birds(props) {
               geometry={nodes.rwing011.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
           <group
             name="Bird012"
@@ -429,7 +501,9 @@ export function Birds(props) {
               material={materials.Material}
               position={[-0.094, -0.001, -1.684]}
               scale={5.881}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="lwing012"
               castShadow
@@ -437,7 +511,9 @@ export function Birds(props) {
               geometry={nodes.lwing012.geometry}
               material={materials.Material}
               position={[1.159, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
             <mesh
               name="rwing012"
               castShadow
@@ -445,7 +521,9 @@ export function Birds(props) {
               geometry={nodes.rwing012.geometry}
               material={materials.Material}
               position={[-1.354, 0, 0]}
-            />
+            >
+              <meshBasicMaterial />
+            </mesh>
           </group>
         </group>
       </group>

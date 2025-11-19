@@ -121,6 +121,7 @@ export function TrafficFromSamples({
 
           {samples.map((p, i) => (
             <mesh
+            userData={{ lensflare: 'no-occlusion' }}
               key={`pt-${i}`}
               position={[p[0], p[1] + 0.12, p[2]]}
             >
@@ -132,7 +133,7 @@ export function TrafficFromSamples({
       )}
 
       {/* Instanced particles (single-color material; additive blending for glow) */}
-      <instancedMesh ref={instancedRef} args={[null, null, particles.length]}>
+      <instancedMesh userData={{ lensflare: 'no-occlusion' }} ref={instancedRef} args={[null, null, particles.length]}>
         {/* use a thin box to create directionality; adjust size via scale */}
         <boxGeometry args={[0.6, 0.2, 1.0]} />
         <meshBasicMaterial

@@ -1,7 +1,12 @@
-import { MeshReflectorMaterial, useGLTF, useKTX2, useTexture } from "@react-three/drei";
+import {
+  MeshReflectorMaterial,
+  useGLTF,
+  useKTX2,
+  useTexture,
+} from "@react-three/drei";
 import { useState, useEffect, useRef } from "react";
 import * as THREE from "three";
-import { UnderwaterLand } from "./UnderwaterLand";
+import { Underwaterland } from "./UnderwaterLand";
 import { Sea } from "./Sea";
 import { SmallSand } from "./SmallSand";
 import { InstancedTrees } from "./Improvedinstancedtrees";
@@ -13,6 +18,9 @@ import { FishingBoat } from "./FishingBoat";
 import { Yatch } from "./Yatch";
 import { FishingBoat2 } from "./FishingBoat2";
 import { Yatch2 } from "./Yatch2";
+import AllPaths from "./AllPaths";
+import { NewBridges } from "./NewBridges";
+import { MainBuilding } from "./MainBuilding";
 
 export function City(props) {
   const { nodes, materials } = useGLTF("models/rustomjeeEditedmap2.glb");
@@ -241,6 +249,173 @@ export function City(props) {
     [2293.2693697820346, 1.1707166385651773, -731.4912813613197],
   ];
 
+  const newBridgeSamples1 = [
+    [-116.33261210165529, 9.586506590806716, 374.41986862261],
+    [-152.42060947126356, 11.613587926354052, 382.4341242134942],
+    [-209.18298103628013, 15.07559243865341, 392.65596596316027],
+    [-281.229725514484, 18.832764789729676, 398.8564711703457],
+    [-345.29888734009, 22.212396187612907, 403.16705170057685],
+    [-415.643576584102, 25.00681039368308, 406.53729600220686],
+    [-478.86782241613355, 25.853181223841087, 413.66994424898985],
+    [-517.9035484424094, 25.83745148772135, 415.79695297406033],
+    [-568.4143522851032, 25.824558516766214, 413.09890879246996],
+    [-621.8539768455084, 25.841814070312065, 406.5430930717721],
+    [-680.562754013235, 25.827656445306896, 394.211854844114],
+    [-727.3883094354114, 25.82570350455921, 382.41262449619717],
+    [-774.4159267304535, 25.867598878579766, 369.89549090341643],
+    [-827.6537559062122, 25.86186115577905, 350.5272275580355],
+    [-883.2811270591083, 25.864380542505355, 327.24065878552756],
+    [-913.8392592505611, 25.86964692961808, 312.8131255056742],
+    [-948.0774344737301, 25.882226383093776, 295.6626372729661],
+    [-991.3691112988458, 25.902852635153575, 269.2093383001047],
+    [-1029.5502644051408, 25.873346867914275, 238.6980934459516],
+    [-1045.251915789575, 25.90719207270865, 224.7560799383955],
+    [-1064.7787244594924, 25.925204219081078, 205.9959770130681],
+    [-1080.1745290258718, 25.929254842427493, 185.14588538456155],
+    [-1094.3409188884812, 25.925229580568097, 165.0182065241952],
+    [-1106.9504587995361, 25.94487720971585, 142.5751467984319],
+    [-1117.2576431661619, 25.914954110109473, 120.12740226966343],
+    [-1135.1231902889754, 25.943241071353835, 74.2503478516428],
+    [-1147.23128111503, 25.917483562886385, 25.422306587417552],
+    [-1157.4334496362749, 25.962248236581498, -23.848134892017697],
+    [-1161.71827173472, 25.918692763713235, -74.17353452657335],
+    [-1165.1787410521606, 25.935466356411208, -125.32982166692273],
+    [-1167.60801445573, 25.959167599533625, -174.91040708512628],
+    [-1166.8688300820081, 25.934749942454683, -226.8572498243193],
+    [-1163.4431798509859, 25.913754582987647, -327.81436758782365],
+    [-1159.9547202840513, 25.90526983936061, -377.8662602211043],
+    [-1142.0548463293608, 25.914515964127727, -530.5529857836154],
+    [-1124.8328670426326, 25.94028552611908, -682.761328465549],
+    [-1100.021532563831, 25.913397490375498, -885.1864140781327],
+    [-1069.1745695083273, 25.892180039429487, -1139.1150284969845],
+    [-1056.0575394079988, 25.908827481990837, -1256.8559225744211],
+    [-1049.768847008555, 26.173583145141603, -1315.103859830484],
+    [-1040.2821060670576, 26.173583145141603, -1365.7443502876886],
+    [-1028.3331531550293, 26.173583145141603, -1415.4027939625212],
+    [-1012.97058876648, 26.17358314514163, -1462.672231788145],
+    [-994.1409874429928, 26.173583145141574, -1510.5726253066077],
+    [-972.7843202744957, 26.17358314514163, -1554.441846735881],
+    [-946.9705065615608, 26.173583145141603, -1596.9753459365202],
+    [-917.6824129433489, 26.17358314514166, -1636.150315722536],
+    [-881.4954347883909, 26.17358314514166, -1669.7209090847591],
+    [-840.5374882131014, 26.173583145141603, -1695.466369648644],
+    [-795.3543487536967, 26.173583145141603, -1708.671245255293],
+    [-760.4266263201202, 26.173583145141603, -1713.8307801712344],
+    [-550.7952731512478, 26.17358314514166, -1712.557399707286],
+    [-449.69367982729545, 20.860854197735303, -1710.1597397639598],
+    [-346.06351371632127, 15.755605743790904, -1707.4193149937255],
+    [-57.586868047002554, 1.082655231862641, -1700.425629392441],
+  ];
+
+  const newBridgeSamples2 = [
+    [-201.4863106984867, 15.131013406808444, 417.46180869467935],
+    [-258.43156000063937, 18.245189609943278, 424.30734646722703],
+    [-310.2022081219702, 21.05813161954819, 428.0520143194917],
+    [-361.6873121297058, 23.45087253653031, 431.69347760372693],
+    [-412.63211295396695, 25.536482205253375, 434.60094265187945],
+    [-463.4397204010602, 26.237777559463094, 439.48269036932834],
+    [-515.4477792257267, 26.27486770348963, 443.20783349666635],
+    [-567.8695327955115, 26.30128580923161, 441.68198977394604],
+    [-619.3558937268917, 26.221624063193754, 433.7089092696806],
+    [-670.276573122896, 26.256305559369988, 425.10474973424243],
+    [-720.9041245442595, 26.224807297992296, 412.1091631381878],
+    [-769.3551882684446, 26.22460363663617, 398.7967842955877],
+    [-820.2552137679395, 26.32816458604651, 383.31310168779237],
+    [-867.3541655232912, 26.265829345814208, 363.65641777734345],
+    [-914.536256813205, 26.252033167947044, 341.6877802180352],
+    [-959.9056317895365, 26.20225068482483, 316.92267000630636],
+    [-1005.4269827601329, 26.291894070530585, 290.39482399105145],
+    [-1047.0441152033186, 26.293977779777205, 258.9162341075371],
+    [-1085.620448250751, 26.303472146867417, 219.97538663595878],
+    [-1114.432010473101, 26.192509057628452, 176.3083757668719],
+    [-1138.8961438184833, 26.233469012530687, 131.38350564727807],
+    [-1157.649399965026, 26.243638605379655, 81.26898090537179],
+    [-1170.947294229844, 26.25876686220624, 30.835217171124896],
+    [-1179.6133527225197, 26.235115981123837, -20.754425336783243],
+    [-1185.9439187128196, 26.26664242294606, -72.05234332566215],
+    [-1189.7892497765642, 26.289571438013066, -122.89306502858562],
+    [-1190.8249841393422, 26.258961409675234, -175.9422385153648],
+    [-1191.1568763093646, 26.27736634264397, -227.2662379840258],
+    [-1189.2456900191514, 26.223642786254626, -276.4387285462835],
+    [-1188.199069726326, 26.25762884813491, -328.94610985564395],
+    [-1187.3477778333854, 26.183640232764045, -355.8691903428644],
+    [-1184.6961274460655, 26.26855357090022, -380.6527607060598],
+    [-1178.8066458572148, 26.25008566150427, -430.6917589006407],
+    [-1160.9824829678514, 26.27872444840204, -583.3985452608977],
+    [-1131.7820471035448, 26.303741188266255, -837.0491627766478],
+    [-1101.1396082461351, 26.272317050700675, -1090.5409341013165],
+    [-1077.8535935910663, 26.310512926401653, -1293.619883400881],
+    [-1052.7817923362313, 26.25890990828702, -1497.4812662378718],
+    [-1023.1603716156706, 26.299715744525482, -1752.7332482666989],
+    [-987.5578623552647, 26.313346774774228, -2055.5904793459194],
+    [-938.1833301967163, 26.2275367532535, -2460.2784793031515],
+    [-901.2045567647883, 26.29066621155857, -2765.766855555721],
+    [-857.4573896295724, 26.731631393432675, -3070.867281558747],
+    [-791.7742008904875, 26.731631393432618, -3526.5596778422987],
+    [-724.3085911234548, 26.78678185002627, -4030.9647324009966],
+    [-698.9346568872279, 26.731631393432732, -4285.755097558807],
+    [-693.5239192698018, 26.73163139343256, -4337.951519517612],
+    [-685.8231370312897, 26.731631393432618, -4439.330165541742],
+    [-682.3388270072905, 26.731631393432675, -4490.257017568214],
+    [-679.6071248499084, 26.731631393432675, -4541.437571733513],
+    [-676.4663151878699, 26.28145411640332, -4642.814587385015],
+    [-675.2611275849536, 26.173583145141603, -4694.5411786490695],
+    [-675.402472839447, 26.173583145141603, -4795.433012694923],
+    [-678.3367133635315, 25.615531082153264, -4897.644871944205],
+    [-684.1985780818613, 25.083115222902503, -4998.860853177421],
+    [-692.8566587640398, 24.516973696687213, -5101.614323881631],
+    [-705.5247816344281, 23.941378707885743, -5202.337140853113],
+    [-719.7791795682383, 22.919702237338978, -5302.035424329852],
+    [-738.7410893066813, 22.29216206408091, -5402.739591364172],
+    [-758.5738139458281, 21.709174270629884, -5503.244401693806],
+    [-780.6386329830648, 20.641513312895707, -5603.707945431526],
+    [-804.2573125596218, 20.101887805832742, -5702.632166197764],
+    [-827.2563910174408, 20.035025711059514, -5801.0836423468445],
+    [-863.2644128846623, 19.47697364807129, -5950.292576836693],
+    [-880.4221829167477, 19.476973648071347, -6025.905048179635],
+    [-920.178801771749, 20.5676630183151, -6199.272766986014],
+    [-968.2561418651071, 21.692099334759003, -6399.111576053572],
+    [-1002.3829022144464, 22.77987126903764, -6545.706045679852],
+  ];
+
+  const newBridgeSamples3 = [
+    [-11.032612025099297, 6.702194645120183, 397.85778028391906],
+    [-44.49359991679012, 10.502005972747606, 430.251562349963],
+    [-71.96476307126977, 14.940831325954855, 464.81032499289995],
+    [-105.48661292529869, 19.95161368377816, 511.4754293502974],
+    [-130.3105537888423, 23.56161805598438, 550.7337012137659],
+    [-152.94324936020894, 25.968224737246143, 591.396948073414],
+    [-157.95492532675053, 25.98778239531506, 603.5183581622978],
+    [-172.6837017425587, 26.06849218222578, 628.350589289742],
+    [-180.89672834217163, 25.980720648797725, 640.5239605794486],
+    [-212.11709839846117, 25.66590482523031, 674.7951586744684],
+    [-253.48204154526866, 24.789869605624002, 705.5038503306132],
+    [-301.8036956263222, 23.319784436752112, 724.1661434913303],
+    [-351.0802660238096, 21.99136853860932, 731.7717100218733],
+    [-401.1693083917271, 20.63748356252938, 728.0622819017563],
+    [-462.2086901743369, 19.68814765930176, 706.1090270644827],
+    [-494.0944660114328, 19.699700921248617, 688.4673586336703],
+    [-531.7776625289989, 20.132552906087593, 654.2822442611941],
+    [-559.1093976287157, 20.640138398384575, 614.5688907841695],
+    [-583.887152184243, 21.937086149339674, 566.6601987429967],
+    [-607.4145517878023, 23.26696305524666, 522.5132651437034],
+    [-636.1616728867921, 24.206960734449577, 479.41826426683383],
+    [-672.2210589544575, 25.21085948969738, 443.50148394352163],
+  ];
+
+  const newBridgeSamples4 = [
+    [-1034.6178659649017, 26.173583145141603, -1475.8543716775366],
+    [-1014.8740811821776, 26.173583145141603, -1526.1169268028698],
+    [-964.1222400389338, 26.173583145141603, -1616.5604861912088],
+    [-933.0009393317218, 26.173583145141603, -1655.9221762131929],
+    [-894.814445695858, 26.173583145141603, -1691.4140409282045],
+    [-847.5617944984497, 26.173583145141603, -1719.1178828306183],
+    [-805.9936967489648, 26.173583145141603, -1731.694623182224],
+    [-579.0597722389471, 26.17358314514166, -1738.482829500208],
+    [-319.1936000095866, 14.310843637497266, -1733.1794435154188],
+    [-110.81537458481944, 4.042808678030549, -1728.6307847902208],
+  ];
+
   const {
     bakedLandTexture,
     bakedLand2Texture,
@@ -255,26 +430,37 @@ export function City(props) {
     roof2Texture,
     roofLast,
     bridgeTexture,
+    newBridgeOneTexture,
+    newBridgeTwoTexture,
   } = useKTX2({
     bakedLandTexture: "/Rustomjee-Bakes/Land-Main_Bake-3_etc1s_max.ktx2",
     bakedLand2Texture: "/Rustomjee-Bakes/Land_Bake1_adjusted_etc1s_max.ktx2",
-  
-    buildingTextureSet1: "/Rustomjee-Bakes/Building-Texture-Set-1-1_etc1s_max.ktx2",
-    buildingTextureSet2: "/Rustomjee-Bakes/Building-Texture-Set-2-2_etc1s_max.ktx2",
-    buildingTextureSet3: "/Rustomjee-Bakes/Building-Texture-Set-3_etc1s_max.ktx2",
-    buildingTextureSet4: "/Rustomjee-Bakes/Building-Texture-Set-4_etc1s_max.ktx2",
-    buildingTextureSet5: "/Rustomjee-Bakes/Building-Texture-Set-5_etc1s_max.ktx2",
-    buildingTextureSet6: "/Rustomjee-Bakes/Building-Texture-Set-6_etc1s_max.ktx2",
-  
-    buildingTextureFinal: "/Rustomjee-Bakes/Building-Texture-Final_etc1s_max.ktx2",
-  
+
+    buildingTextureSet1:
+      "/Rustomjee-Bakes/Building-Texture-Set-1-1_etc1s_max.ktx2",
+    buildingTextureSet2:
+      "/Rustomjee-Bakes/Building-Texture-Set-2-2_etc1s_max.ktx2",
+    buildingTextureSet3:
+      "/Rustomjee-Bakes/Building-Texture-Set-3_etc1s_max.ktx2",
+    buildingTextureSet4:
+      "/Rustomjee-Bakes/Building-Texture-Set-4_etc1s_max.ktx2",
+    buildingTextureSet5:
+      "/Rustomjee-Bakes/Building-Texture-Set-5_etc1s_max.ktx2",
+    buildingTextureSet6:
+      "/Rustomjee-Bakes/Building-Texture-Set-6_etc1s_max.ktx2",
+
+    buildingTextureFinal:
+      "/Rustomjee-Bakes/Building-Texture-Final_etc1s_max.ktx2",
+
     roof1Texture: "/Rustomjee-Bakes/Roof-1-1_etc1s_max.ktx2",
     roof2Texture: "/Rustomjee-Bakes/Roofs-2_etc1s_max.ktx2",
     roofLast: "/Rustomjee-Bakes/Roof-Last_etc1s_max.ktx2",
-  
+
     bridgeTexture: "/Rustomjee-Bakes/Bridge_etc1s_max.ktx2",
+    newBridgeOneTexture: "/Rustomjee-Bakes/NewBridge-1_etc1s_max.ktx2",
+    newBridgeTwoTexture: "/Rustomjee-Bakes/NewBridge-2_etc1s_max.ktx2",
   });
-  
+
   // flipY = false for ALL
   [
     bakedLandTexture,
@@ -341,8 +527,7 @@ export function City(props) {
           key === "Road-8" ||
           key === "Road-9" ||
           key === "Road-10" ||
-          key === "Plane"   
-          
+          key === "Plane"
         ) {
           mat = new THREE.MeshBasicMaterial({ color: 0x404040 }); // change color if needed
         }
@@ -355,7 +540,7 @@ export function City(props) {
         //   });
         // }
 
-        if (key === "Sea_Land_2") {
+        if (key === "Sea_Land_2" || key === "Cube") {
           return null;
         }
 
@@ -390,6 +575,7 @@ export function City(props) {
             // receiveShadow
             key={key}
             geometry={n.geometry}
+            userData={{ lensflare: "no-occlusion" }}
             material={mat}
             position={n.position}
             rotation={n.rotation}
@@ -397,10 +583,16 @@ export function City(props) {
           />
         );
       })}
-      <UnderwaterLand position={[0, -0.2, 0]} />
-      <SmallSand />
+      <Underwaterland />
+      <NewBridges
+        newBridgeOneTexture={newBridgeOneTexture}
+        newBridgeTwoTexture={newBridgeTwoTexture}
+      />
+      <MainBuilding />
+      {/* <SmallSand /> */}
 
       <mesh
+        userData={{ lensflare: "no-occlusion" }}
         castShadow
         receiveShadow
         geometry={nodes["Building-Texture-Set-1_Baked"].geometry}
@@ -410,6 +602,7 @@ export function City(props) {
       </mesh>
 
       <mesh
+        userData={{ lensflare: "no-occlusion" }}
         castShadow
         receiveShadow
         geometry={nodes["Building-Texture-Set-2_Baked"].geometry}
@@ -418,6 +611,7 @@ export function City(props) {
       </mesh>
 
       <mesh
+        userData={{ lensflare: "no-occlusion" }}
         castShadow
         receiveShadow
         geometry={nodes["Building-Texture-Set-3_Baked"].geometry}
@@ -426,6 +620,7 @@ export function City(props) {
       </mesh>
 
       <mesh
+        userData={{ lensflare: "no-occlusion" }}
         castShadow
         receiveShadow
         geometry={nodes["Building-Texture-Set-4_Baked"].geometry}
@@ -434,6 +629,7 @@ export function City(props) {
       </mesh>
 
       <mesh
+        userData={{ lensflare: "no-occlusion" }}
         castShadow
         receiveShadow
         geometry={nodes["Building-Texture-Set-5_Baked"].geometry}
@@ -441,6 +637,7 @@ export function City(props) {
         <meshBasicMaterial map={buildingTextureSet5} />
       </mesh>
       <mesh
+        userData={{ lensflare: "no-occlusion" }}
         castShadow
         receiveShadow
         geometry={nodes["Building-Texture-Set-6_Baked"].geometry}
@@ -449,6 +646,7 @@ export function City(props) {
       </mesh>
 
       <mesh
+        userData={{ lensflare: "no-occlusion" }}
         castShadow
         receiveShadow
         geometry={nodes["Building-Texture-Final_Baked"].geometry}
@@ -457,6 +655,7 @@ export function City(props) {
       </mesh>
 
       <mesh
+        userData={{ lensflare: "no-occlusion" }}
         castShadow
         receiveShadow
         geometry={nodes["Roof-1_Baked"].geometry}
@@ -466,6 +665,7 @@ export function City(props) {
       </mesh>
 
       <mesh
+        userData={{ lensflare: "no-occlusion" }}
         castShadow
         receiveShadow
         geometry={nodes["Roof-Last_Baked"].geometry}
@@ -474,6 +674,7 @@ export function City(props) {
       </mesh>
 
       <mesh
+        userData={{ lensflare: "no-occlusion" }}
         castShadow
         receiveShadow
         geometry={nodes["Roofs-2_Baked"].geometry}
@@ -482,6 +683,7 @@ export function City(props) {
       </mesh>
 
       <mesh
+        userData={{ lensflare: "no-occlusion" }}
         castShadow
         receiveShadow
         geometry={nodes.Bridge_Baked.geometry}
@@ -492,13 +694,17 @@ export function City(props) {
       {/* Add traffic system */}
 
       {/* <RoadClickSampler nodes={nodes} roadNames={roadNames} /> */}
+      {/* <PathDataCollector nodes={nodes} roadNames={roadNames}/> */}
+
+      <AllPaths category="portfolio" path="Parishram" />
+
       <TrafficFromSamples
         samples={mySamples}
         particleCount={140}
         particleScale={9.0}
         laneOffset={0} // optional lateral offset to create a "lane" look
         showDebug={false} // set false to hide debug lines & points
-        speedRange={[0.01, 0.01]}
+        speedRange={[0.005, 0.005]}
         reversed={true}
       />
 
@@ -508,23 +714,62 @@ export function City(props) {
         particleScale={9.0}
         laneOffset={0} // optional lateral offset to create a "lane" look
         showDebug={false} // set false to hide debug lines & points
+        speedRange={[0.005, 0.005]}
+      />
+
+      <TrafficFromSamples
+        samples={newBridgeSamples1}
+        particleCount={140}
+        particleScale={9.0}
+        laneOffset={0} // optional lateral offset to create a "lane" look
+        showDebug={false} // set false to hide debug lines & points
         speedRange={[0.01, 0.01]}
+      />
+
+      <TrafficFromSamples
+        samples={newBridgeSamples2}
+        particleCount={140}
+        particleScale={9.0}
+        laneOffset={0} // optional lateral offset to create a "lane" look
+        showDebug={false} // set false to hide debug lines & points
+        speedRange={[0.005, 0.005]}
+        reversed
+      />
+
+      <TrafficFromSamples
+        samples={newBridgeSamples3}
+        particleCount={30}
+        particleScale={9.0}
+        laneOffset={0} // optional lateral offset to create a "lane" look
+        showDebug={false} // set false to hide debug lines & points
+        speedRange={[0.03, 0.03]}
+        // reversed
+      />
+
+      <TrafficFromSamples
+        samples={newBridgeSamples4}
+        particleCount={30}
+        particleScale={9.0}
+        laneOffset={0} // optional lateral offset to create a "lane" look
+        showDebug={false} // set false to hide debug lines & points
+        speedRange={[0.03, 0.03]}
+        // reversed
       />
 
       {/* Boats Meshes  */}
       <FishingBoat position={[-600, -10, -400]} scale={6} />
       <FishingBoat2
-        position={[355, -8, 399]}
+        position={[355, -8, 500]}
         rotation={[0, 3.0, 0]}
         scale={6}
       />
-      <Yatch2 position={[768, -8, 201]} rotation={[0, -0.3, 0.0]} scale={0.1} />
+      {/* <Yatch2 position={[768, -8, 201]} rotation={[0, -0.3, 0.0]} scale={0.1} /> */}
       <Yatch position={[-375, -8, -678]} scale={12} />
-      <Boat
+      {/* <Boat
         position={[-720, -8, 177]}
         rotation={boatRotation}
         scale={boatScale}
-      />
+      /> */}
       <mesh
         castShadow
         receiveShadow
@@ -566,7 +811,6 @@ export function City(props) {
         meshName="Tree-Variant-5442_Baked"
         jsonFile="Tree-Variation-5-final.json"
         texturePath="/Rustomjee-Bakes/Tree-Variant-5442_Baked_uastc_max.ktx2"
-
         nodes={nodes}
         materials={materials}
       />
