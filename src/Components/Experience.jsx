@@ -14,6 +14,7 @@ import Loader from "./Loader";
 import { PathsProvider } from "./PathsContext";
 import UIButtons from "./UiButtons";
 
+
 const Experience = () => {
 
   return (
@@ -28,7 +29,7 @@ const Experience = () => {
             position: [80, 120, 200],
             fov: 50,
             near: 10,
-            far: 20000,
+            far: 5500,
           }}
           
           shadows

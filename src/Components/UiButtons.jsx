@@ -6,9 +6,21 @@ import { CiAt, CiHeart } from "react-icons/ci";
 import { IoSchoolOutline } from "react-icons/io5";
 import { LuHotel } from "react-icons/lu";
 import { PiHospitalLight, PiMapPinSimpleArea } from "react-icons/pi";
+import { useRef, useState, useEffect } from "react";
+import gsap from "gsap";
+import PathCard from "./PathCard";
 
 export default function UIButtons() {
-  const { setSelectedCategory, setSelectedPath, selectedCategory } = usePaths();
+  const { setSelectedCategory, setSelectedPath, selectedCategory, selectedPath } = usePaths();
+  const buttonRefs = useRef({});
+  const liquidRefs = useRef({});
+  const iconRefs = useRef({});
+  const textRefs = useRef({});
+  const containerRef = useRef(null);
+  const pathButtonsRef = useRef(null);
+  const pathCardRef = useRef(null);
+  const [pathButtonsPosition, setPathButtonsPosition] = useState({ left: 0 });
+  const [hoveredCategory, setHoveredCategory] = useState(null);
 
   const categories = [
     { id: "portfolio", icon: RiPagesLine, label: "Portfolio" },
@@ -18,47 +30,356 @@ export default function UIButtons() {
     { id: "schools", icon: IoSchoolOutline, label: "Schools" },
     { id: "hotels", icon: LuHotel, label: "Hotels" },
     { id: "hospitals", icon: PiHospitalLight, label: "Hospitals" },
-    { id: "connectivity_present", icon: PiMapPinSimpleArea, label: "Connectivity (Present)" },
-    { id: "connectivity_future", icon: PiMapPinSimpleArea, label: "Connectivity (Future)" },
+    {
+      id: "connectivity_present",
+      icon: PiMapPinSimpleArea,
+      label: "Connectivity (Present)",
+    },
+    {
+      id: "connectivity_future",
+      icon: PiMapPinSimpleArea,
+      label: "Connectivity (Future)",
+    },
   ];
 
-  return (
-    <div style={{ position: "absolute", top: 20, left: 20, zIndex: 999, color: "#fff" }}>
+  useEffect(() => {
+    if (selectedCategory && buttonRefs.current[selectedCategory]) {
+      const button = buttonRefs.current[selectedCategory];
+      const rect = button.getBoundingClientRect();
+      const container = button.closest(".flex.gap-2");
+      const containerRect = container.getBoundingClientRect();
+
+      // Calculate position relative to the container
+      const leftPosition = rect.left - containerRect.left + rect.width / 2;
+      setPathButtonsPosition({ left: leftPosition });
+    }
+  }, [selectedCategory]);
+
+  // Animate path buttons appearing/disappearing
+  useEffect(() => {
+    if (pathButtonsRef.current) {
+      if (selectedCategory) {
+        gsap.fromTo(
+          pathButtonsRef.current,
+          {
+            opacity: 0,
+            y: 20,
+            scale: 0.8,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.3,
+            ease: "back.out(1.7)",
+          }
+        );
+
+        // Animate individual path buttons
+        const buttons = pathButtonsRef.current.querySelectorAll("button");
+        gsap.fromTo(
+          buttons,
+          {
+            opacity: 0,
+            x: -20,
+          },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.3,
+            stagger: 0.05,
+            ease: "power2.out",
+          }
+        );
+      }
+    }
+  }, [selectedCategory]);
+
+  // Handle clicks outside the component
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Check if click is inside the container OR the path card
+      const isInsideContainer = containerRef.current && containerRef.current.contains(event.target);
+      const isInsidePathCard = pathCardRef.current && pathCardRef.current.contains(event.target);
       
-      {/* CATEGORY BUTTONS */}
-      <div className="flex gap-2">
+      if (!isInsideContainer && !isInsidePathCard) {
+        // Reset all button liquids
+        Object.keys(liquidRefs.current).forEach((key) => {
+          const liquid = liquidRefs.current[key];
+          const icon = iconRefs.current[key];
+          const text = textRefs.current[key];
 
-      {categories.map((cat) => (
-        
-        <button
-        className="p-2 bg-gray-900 rounded-2xl flex gap-2 items-center"
-        key={cat.id}
-        onClick={() => {
-          setSelectedCategory(cat.id);
-          setSelectedPath(null);    // close previous
-        }}
-        >
-          <cat.icon />
-          {cat.label}
-        </button>
-      ))}
-      </div>
+          if (liquid) {
+            gsap.killTweensOf(liquid);
+            gsap.to(liquid, {
+              scaleY: 0,
+              duration: 0.4,
+              ease: "power2.inOut",
+            });
+          }
 
-      {/* PATH BUTTONS */}
-      {selectedCategory && (
-        <div className="mt-10 flex gap-2">
-          {pathData[selectedCategory].map((item, i) => (
-            <button
-             className="p-2 bg-gray-700 rounded-md flex gap-2 items-center"
-              key={i}
-              onClick={() => setSelectedPath(item.name)}
-            >
-              {item.name}
-            </button>
-          ))}
-        </div>
+          if (icon) {
+            gsap.to(icon, {
+              color: "#4A5568",
+              duration: 0.3,
+            });
+          }
+
+          if (text) {
+            gsap.to(text, {
+              color: "#4A5568",
+              duration: 0.3,
+            });
+          }
+        });
+
+        setHoveredCategory(null);
+
+        if (pathButtonsRef.current) {
+          gsap.to(pathButtonsRef.current, {
+            opacity: 0,
+            y: 10,
+            scale: 0.9,
+            duration: 0.2,
+            ease: "power2.in",
+            onComplete: () => {
+              setSelectedCategory(null);
+              setSelectedPath(null);
+            },
+          });
+        } else {
+          setSelectedCategory(null);
+          setSelectedPath(null);
+        }
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setSelectedCategory, setSelectedPath]);
+
+  // Liquid hover animations
+  const handleMouseEnter = (e, catId) => {
+    setHoveredCategory(catId);
+    const liquid = liquidRefs.current[catId];
+    const icon = iconRefs.current[catId];
+    const text = textRefs.current[catId];
+
+    if (liquid) {
+      gsap.killTweensOf(liquid);
+      gsap.to(liquid, {
+        scaleY: 1,
+        duration: 0.6,
+        ease: "elastic.out(1, 0.5)",
+      });
+    }
+
+    if (icon) {
+      gsap.to(icon, {
+        color: "#FFFFFF",
+        duration: 0.3,
+      });
+    }
+
+    if (text) {
+      gsap.to(text, {
+        color: "#FFFFFF",
+        duration: 0.3,
+      });
+    }
+  };
+
+  const handleMouseLeave = (e, catId) => {
+    setHoveredCategory(null);
+    const isSelected = selectedCategory === catId;
+    const liquid = liquidRefs.current[catId];
+    const icon = iconRefs.current[catId];
+    const text = textRefs.current[catId];
+
+    if (liquid && !isSelected) {
+      gsap.killTweensOf(liquid);
+      gsap.to(liquid, {
+        scaleY: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+      });
+    }
+
+    if (!isSelected) {
+      if (icon) {
+        gsap.to(icon, {
+          color: "#4A5568",
+          duration: 0.3,
+        });
+      }
+
+      if (text) {
+        gsap.to(text, {
+          color: "#4A5568",
+          duration: 0.3,
+        });
+      }
+    }
+  };
+
+  const handleCategoryClick = (catId) => {
+    // Reset previous selected category's liquid and colors
+    if (selectedCategory && selectedCategory !== catId) {
+      const prevLiquid = liquidRefs.current[selectedCategory];
+      const prevIcon = iconRefs.current[selectedCategory];
+      const prevText = textRefs.current[selectedCategory];
+
+      if (prevLiquid) {
+        gsap.killTweensOf(prevLiquid);
+        gsap.to(prevLiquid, {
+          scaleY: 0,
+          duration: 0.4,
+          ease: "power2.inOut",
+        });
+      }
+
+      if (prevIcon) {
+        gsap.to(prevIcon, {
+          color: "#4A5568",
+          duration: 0.3,
+        });
+      }
+
+      if (prevText) {
+        gsap.to(prevText, {
+          color: "#4A5568",
+          duration: 0.3,
+        });
+      }
+    }
+
+    // Fill the new selected category
+    const liquid = liquidRefs.current[catId];
+    const icon = iconRefs.current[catId];
+    const text = textRefs.current[catId];
+
+    if (liquid) {
+      gsap.killTweensOf(liquid);
+      gsap.to(liquid, {
+        scaleY: 1,
+        duration: 0.6,
+        ease: "elastic.out(1, 0.5)",
+      });
+    }
+
+    if (icon) {
+      gsap.to(icon, {
+        color: "#FFFFFF",
+        duration: 0.3,
+      });
+    }
+
+    if (text) {
+      gsap.to(text, {
+        color: "#FFFFFF",
+        duration: 0.3,
+      });
+    }
+
+    setSelectedCategory(catId);
+    setSelectedPath(null);
+  };
+
+  const handlePathClick = (pathName) => {
+    setSelectedPath(pathName);
+  };
+
+  const handleCloseCard = () => {
+    setSelectedPath(null);
+  };
+
+  // Get the current path data
+  const getCurrentPathData = () => {
+    if (selectedCategory && selectedPath) {
+      const paths = pathData[selectedCategory];
+      return paths.find((p) => p.name === selectedPath);
+    }
+    return null;
+  };
+
+  return (
+    <>
+      {/* Path Card */}
+      {selectedPath && getCurrentPathData() && (
+        <PathCard 
+          path={getCurrentPathData()} 
+          onClose={handleCloseCard}
+          cardRef={pathCardRef}
+        />
       )}
 
-    </div>
+      <div
+        className="absolute bottom-8 z-50 left-1/2 -translate-x-1/2"
+        ref={containerRef}
+      >
+        {/* CATEGORY BUTTONS */}
+
+        <div className="flex gap-2 bg-white p-1 rounded-xs shadow-2xl text-[#4A5568] relative">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              ref={(el) => (buttonRefs.current[cat.id] = el)}
+              data-selected={selectedCategory === cat.id}
+              className="
+            p-2
+            flex flex-col items-center justify-center gap-1
+            w-fit
+            rounded-md
+            relative
+            overflow-hidden
+            "
+              onClick={() => handleCategoryClick(cat.id)}
+              onMouseEnter={(e) => handleMouseEnter(e, cat.id)}
+              onMouseLeave={(e) => handleMouseLeave(e, cat.id)}
+            >
+              {/* Liquid Fill */}
+              <div
+                ref={(el) => (liquidRefs.current[cat.id] = el)}
+                className="absolute inset-0 bg-[#CE9A52] rounded-md origin-bottom"
+                style={{ transform: "scaleY(0)" }}
+              />
+
+              {/* Content */}
+              <cat.icon
+                ref={(el) => (iconRefs.current[cat.id] = el)}
+                className="text-xl relative z-10"
+              />
+              <span
+                ref={(el) => (textRefs.current[cat.id] = el)}
+                className="text-xs text-center relative z-10"
+              >
+                {cat.label}
+              </span>
+            </button>
+          ))}
+
+          {/* PATH BUTTONS */}
+          {selectedCategory && (
+            <div
+              ref={pathButtonsRef}
+              className="absolute bottom-full p-2 mb-2 bg-white text-[#4A5568] flex flex-col rounded-md shadow-2xl gap-2 -translate-x-1/2"
+              style={{ left: `${pathButtonsPosition.left}px` }}
+            >
+              {pathData[selectedCategory].map((item, i) => (
+                <button
+                  className="p-2 rounded-md flex justify-center hover:bg-gray-200 gap-2 items-center transition-colors"
+                  key={i}
+                  onClick={() => handlePathClick(item.name)}
+                >
+                  {item.name}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </>
   );
 }

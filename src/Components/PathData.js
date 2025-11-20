@@ -2,6 +2,9 @@ export const pathData = {
     portfolio: [
       {
         name: "Parishram",
+        description: "Premium residential project featuring modern amenities, spacious layouts, and sustainable design elements. Offers panoramic city views and excellent connectivity.",
+        distance: 4.2,
+        image: null,
         points: [
           [
             -29.036276748258615,

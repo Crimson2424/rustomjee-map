@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import * as THREE from 'three'
+import * as THREE from "three";
 import { CameraControls, ScreenSpace } from "@react-three/drei";
-import { BlendFunction } from 'postprocessing'
 import gsap from "gsap/all";
 import { City } from "./City";
 import {
+  Autofocus,
   Bloom,
   ChromaticAberration,
+  DepthOfField,
   EffectComposer,
   SSAO,
   ToneMapping,
@@ -14,6 +15,7 @@ import {
 import { Birds } from "./Birds";
 import { button, folder, useControls } from "leva";
 import { useFrame } from "@react-three/fiber";
+import Effects from "./Effects";
 
 const Scene = () => {
   const birdsRef = useRef();
@@ -22,93 +24,23 @@ const Scene = () => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const targetMouse = useRef({ x: 0, y: 0 });
 
-  // const {position, glareSize, opacity, starPoints,animated} = useControls({
-  //   LensFlare: folder({
-  //     position: { value: {x:-6000, y: 300, z: 1786}, step: 1, label: "position" },
-  //     glareSize: { value: 0.35, min: 0.01, max: 1.0, label: "glareSize" },
-  //     opacity: { value: 1.0, min: 0.0, max: 1.0, label: "opacity" },
-  //     starPoints: {
-  //       value: 6.0,
-  //       step: 1.0,
-  //       min: 0,
-  //       max: 32.0,
-  //       label: "starPoints",
-  //     },
-  //     animated: { value: true, label: "animated?" },
-  //   })
-  // }
-  // )
-
-  // const lensFlareProps = useControls({
-  //   LensFlare: folder(
-  //     {
-  //       enabled: { value: true, label: "enabled?" },
-  //       opacity: { value: 1.0, min: 0.0, max: 1.0, label: "opacity" },
-  //       position: { value: { x: -25, y: 6, z: -60 }, step: 1, label: "position" },
-  //       glareSize: { value: 0.35, min: 0.01, max: 1.0, label: "glareSize" },
-  //       starPoints: {
-  //         value: 6.0,
-  //         step: 1.0,
-  //         min: 0,
-  //         max: 32.0,
-  //         label: "starPoints",
-  //       },
-  //       animated: { value: true, label: "animated?" },
-  //       followMouse: { value: false, label: "followMouse?" },
-  //       anamorphic: { value: false, label: "anamorphic?" },
-  //       colorGain: { value: new THREE.Color(56, 22, 11), label: "colorGain" },
-  
-  //       Flare: folder({
-  //         flareSpeed: {
-  //           value: 0.4,
-  //           step: 0.001,
-  //           min: 0.0,
-  //           max: 1.0,
-  //           label: "flareSpeed",
-  //         },
-  //         flareShape: {
-  //           value: 0.1,
-  //           step: 0.001,
-  //           min: 0.0,
-  //           max: 1.0,
-  //           label: "flareShape",
-  //         },
-  //         flareSize: {
-  //           value: 0.005,
-  //           step: 0.001,
-  //           min: 0.0,
-  //           max: 0.01,
-  //           label: "flareSize",
-  //         },
-  //       }),
-  
-  //       SecondaryGhosts: folder({
-  //         secondaryGhosts: { value: true, label: "secondaryGhosts?" },
-  //         ghostScale: { value: 0.1, min: 0.01, max: 1.0, label: "ghostScale" },
-  //         aditionalStreaks: { value: true, label: "aditionalStreaks?" },
-  //       }),
-  
-  //       StartBurst: folder({
-  //         starBurst: { value: true, label: "starBurst?" },
-  //         haloScale: { value: 0.5, step: 0.01, min: 0.3, max: 1.0 },
-  //       }),
-  //     },
-  //     { collapsed: true }
-  //   ),
-  // });
-
 
   useControls({
-    "Log Camera Pos/Target": button(() => {
-      if (!cameraControlRef.current) return;
+    "Log Camera Pos/Target": button(
+      () => {
+        if (!cameraControlRef.current) return;
 
-      const pos = cameraControlRef.current.getPosition();
-      const target = cameraControlRef.current.getTarget();
+        const pos = cameraControlRef.current.getPosition();
+        const target = cameraControlRef.current.getTarget();
 
-      console.log("📌 Camera Position:", pos);
-      console.log("🎯 Camera Target:", target);
-    }, { collapsed: true }),
+        console.log("📌 Camera Position:", pos);
+        console.log("🎯 Camera Target:", target);
+      },
+      { collapsed: true }
+    ),
   });
+
+  
 
   // ✅ Track mouse movement for parallax
   useEffect(() => {
@@ -116,7 +48,7 @@ const Scene = () => {
       // Normalize mouse position to -1 to 1 range
       const x = (event.clientX / window.innerWidth) * 2 - 1;
       const y = -(event.clientY / window.innerHeight) * 2 + 1;
-      
+
       targetMouse.current = { x, y };
     };
 
@@ -151,8 +83,7 @@ const Scene = () => {
 
     // ✅ Smooth animation
     // ✅ Smooth animation to final position
-    cam.setLookAt(x, y, z, tx, ty, tz, false)
-
+    cam.setLookAt(x, y, z, tx, ty, tz, false);
 
     // Handle user interaction - pause auto-rotate when user controls camera
     const onControlStart = () => {
@@ -170,7 +101,6 @@ const Scene = () => {
       cam.removeEventListener("controlstart", onControlStart);
       cam.removeEventListener("controlend", onControlEnd);
     };
-
   }, []);
 
   // ✅ Auto-rotate in animation loop (like the native example)
@@ -213,16 +143,7 @@ const Scene = () => {
     <>
       <CameraControls makeDefault ref={cameraControlRef} />
       <City />
-      {/* <EffectComposer> */}
-        {/* <SSAO />
-        <ChromaticAberration />
-        <ToneMapping />
-        <Bloom /> */}
-        {/* <Bloom /> */}
-        {/* <ChromaticAberration /> */}
-        {/* <ToneMapping  blendFunction={BlendFunction.NORMAL}/> */}
-        {/* <LensFlare enabled dirtTextureFile={"/lensDirtTexture.png"} position={position} glareSize={glareSize} opacity starPoints animated/> */}
-      {/* </EffectComposer> */}
+      <Effects />
       <directionalLight position={[0, 5, 0]} />
       <ambientLight />
 
