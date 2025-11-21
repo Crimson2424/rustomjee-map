@@ -103,20 +103,20 @@ const Scene = () => {
     };
   }, []);
 
-  // ✅ Auto-rotate in animation loop (like the native example)
-  useFrame((state, delta) => {
-    if (!cameraControlRef.current) return;
+  // // ✅ Auto-rotate in animation loop (like the native example)
+  // useFrame((state, delta) => {
+  //   if (!cameraControlRef.current) return;
 
-    const cam = cameraControlRef.current;
+  //   const cam = cameraControlRef.current;
 
-    // Auto-rotate by incrementing azimuth angle
-    if (!disableAutoRotate.current) {
-      cam.azimuthAngle -= 5 * delta * THREE.MathUtils.DEG2RAD;
-    }
+  //   // Auto-rotate by incrementing azimuth angle
+  //   if (!disableAutoRotate.current) {
+  //     cam.azimuthAngle -= 5 * delta * THREE.MathUtils.DEG2RAD;
+  //   }
 
-    // Update camera controls
-    cam.update(delta);
-  });
+  //   // Update camera controls
+  //   cam.update(delta);
+  // });
 
   useEffect(() => {
     if (!birdsRef.current) return;
