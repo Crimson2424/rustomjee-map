@@ -16,6 +16,7 @@ import { Birds } from "./Birds";
 import { button, folder, useControls } from "leva";
 import { useFrame } from "@react-three/fiber";
 import Effects from "./Effects";
+import CameraAnimations from "./CameraAnimations";
 
 const Scene = () => {
   const birdsRef = useRef();
@@ -103,7 +104,7 @@ const Scene = () => {
     };
   }, []);
 
-  // // ✅ Auto-rotate in animation loop (like the native example)
+  // ✅ Auto-rotate in animation loop (like the native example)
   // useFrame((state, delta) => {
   //   if (!cameraControlRef.current) return;
 
@@ -142,6 +143,7 @@ const Scene = () => {
   return (
     <>
       <CameraControls makeDefault ref={cameraControlRef} />
+      <CameraAnimations cameraControlRef={cameraControlRef}/>
       <City />
       <Effects />
       <directionalLight position={[0, 5, 0]} />

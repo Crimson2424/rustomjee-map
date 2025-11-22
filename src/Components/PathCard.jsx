@@ -131,7 +131,7 @@ export default function PathCard({ path, onClose, cardRef }) {
         internalCardRef.current = el;
         if (cardRef) cardRef.current = el;
       }}
-      className="absolute left-0 top-0  w-96 bg-white rounded-md shadow-2xl overflow-hidden z-40"
+      className="absolute left-0 top-0  w-75 h-full bg-white rounded-md shadow-2xl overflow-hidden z-40"
     >
       {/* Close Button */}
       <button
@@ -167,15 +167,15 @@ export default function PathCard({ path, onClose, cardRef }) {
         </p>
 
         {/* Distance Display */}
-        <div className="bg-[#CE9A52] bg-opacity-10 rounded-lg p-4 mb-4">
+        <div className="bg-[#4A5568] text-white bg-opacity-10 rounded-lg p-4 mb-4">
           <div className="flex justify-between items-center">
             <div>
-              <p className="text-xs text-gray-500 mb-1">Distance</p>
-              <p className="text-2xl font-bold text-[#CE9A52]">{getDistance()}</p>
+              <p className="text-xs  mb-1">Distance</p>
+              <p className="text-2xl font-bold ">{getDistance()}</p>
             </div>
             <div>
-              <p className="text-xs text-gray-500 mb-1">Est. Time</p>
-              <p className="text-2xl font-bold text-[#CE9A52]">{getTime()}</p>
+              <p className="text-xs  mb-1">Est. Time</p>
+              <p className="text-2xl font-bold ">{getTime()}</p>
             </div>
           </div>
         </div>
@@ -193,7 +193,7 @@ export default function PathCard({ path, onClose, cardRef }) {
                   transition-all duration-300 relative overflow-hidden
                   ${
                     selectedTransport === mode.id
-                      ? "bg-[#CE9A52] text-white shadow-lg"
+                      ? "bg-[#4A5568] text-white shadow-lg"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }
                 `}

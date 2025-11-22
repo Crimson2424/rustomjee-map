@@ -342,7 +342,7 @@ export default function UIButtons() {
               {/* Liquid Fill */}
               <div
                 ref={(el) => (liquidRefs.current[cat.id] = el)}
-                className="absolute inset-0 bg-[#CE9A52] rounded-md origin-bottom"
+                className="absolute inset-0 bg-[#4A5568] rounded-md origin-bottom"
                 style={{ transform: "scaleY(0)" }}
               />
 
@@ -369,7 +369,7 @@ export default function UIButtons() {
             >
               {pathData[selectedCategory].map((item, i) => (
                 <button
-                  className="p-2 rounded-md flex justify-center hover:bg-gray-200 gap-2 items-center transition-colors"
+                  className={`p-2 rounded-md flex justify-center  ${item.name === selectedPath ? 'bg-[#4A5568] text-white': 'hover:bg-gray-200'}  gap-2 items-center transition-colors`}
                   key={i}
                   onClick={() => handlePathClick(item.name)}
                 >

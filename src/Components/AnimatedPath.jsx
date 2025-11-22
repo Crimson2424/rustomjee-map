@@ -157,7 +157,7 @@ export default function AnimatedPath({
   if (!points || points.length < 2) return null;
 
   return (
-    <mesh ref={meshRef} geometry={geometry}>
+    <mesh ref={meshRef} geometry={geometry} position={[0,15,0]}>
       <primitive object={shaderMaterial} ref={materialRef} attach="material" />
     </mesh>
   );

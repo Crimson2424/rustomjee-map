@@ -368,17 +368,17 @@ export function City(props) {
     bakedLand2Texture: "/Rustomjee-Bakes/Land_Bake1_adjusted_etc1s_max.ktx2",
 
     buildingTextureSet1:
-      "/Rustomjee-Bakes/Building-Texture-Set-1-1_etc1s_max.ktx2",
+      "/Rustomjee-Bakes/Building-Texture-Set-1-1-2_etc1s_max.ktx2",
     buildingTextureSet2:
-      "/Rustomjee-Bakes/Building-Texture-Set-2-2_etc1s_max.ktx2",
+      "/Rustomjee-Bakes/Building-Texture-Set-2-2-2_etc1s_max.ktx2",
     buildingTextureSet3:
-      "/Rustomjee-Bakes/Building-Texture-Set-3_etc1s_max.ktx2",
+      "/Rustomjee-Bakes/Building-Texture-Set-3-1_etc1s_max.ktx2",
     buildingTextureSet4:
-      "/Rustomjee-Bakes/Building-Texture-Set-4_etc1s_max.ktx2",
+      "/Rustomjee-Bakes/Building-Texture-Set-4-1_etc1s_max.ktx2",
     buildingTextureSet5:
-      "/Rustomjee-Bakes/Building-Texture-Set-5_etc1s_max.ktx2",
+      "/Rustomjee-Bakes/Building-Texture-Set-5-1_etc1s_max.ktx2",
     buildingTextureSet6:
-      "/Rustomjee-Bakes/Building-Texture-Set-6_etc1s_max.ktx2",
+      "/Rustomjee-Bakes/Building-Texture-Set-6-1_etc1s_max.ktx2",
 
     buildingTextureFinal:
       "/Rustomjee-Bakes/Building-Texture-Final_etc1s_max.ktx2",
@@ -387,9 +387,9 @@ export function City(props) {
     roof2Texture: "/Rustomjee-Bakes/Roofs-2_etc1s_max.ktx2",
     roofLast: "/Rustomjee-Bakes/Roof-Last_etc1s_max.ktx2",
 
-    bridgeTexture: "/Rustomjee-Bakes/Bridge_etc1s_max.ktx2",
-    newBridgeOneTexture: "/Rustomjee-Bakes/NewBridge-1_etc1s_max.ktx2",
-    newBridgeTwoTexture: "/Rustomjee-Bakes/NewBridge-2_etc1s_max.ktx2",
+    bridgeTexture: "/Rustomjee-Bakes/Bridge-1_etc1s_max.ktx2",
+    newBridgeOneTexture: "/Rustomjee-Bakes/NewBridge-1-1_etc1s_max.ktx2",
+    newBridgeTwoTexture: "/Rustomjee-Bakes/NewBridge-2-1_etc1s_max.ktx2",
   });
 
   // flipY = false for ALL
@@ -460,7 +460,7 @@ export function City(props) {
           key === "Road-10" ||
           key === "Plane"
         ) {
-          mat = new THREE.MeshBasicMaterial({ color: 0x404040 }); // change color if needed
+          mat = new THREE.MeshBasicMaterial({ color: '#4f4e4e' }); // change color if needed
         }
 
         // if (key === "Bridge_Baked") {
