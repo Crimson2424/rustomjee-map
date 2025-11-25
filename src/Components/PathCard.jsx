@@ -65,44 +65,62 @@ export default function PathCard({ path, onClose, cardRef }) {
   }, []);
 
   // Handle path change with animation
-  useEffect(() => {
-    if (path.name !== currentPath.name && !isAnimating) {
-      setIsAnimating(true);
-      
-      // Slide out current card
-      if (internalCardRef.current) {
-        gsap.to(internalCardRef.current, {
-          x: -400,
-          opacity: 0,
-          duration: 0.4,
-          ease: "power3.in",
-          onComplete: () => {
-            // Update to new path
-            setCurrentPath(path);
-            setSelectedTransport("car"); // Reset transport mode
-            
-            // Slide in new card
-            gsap.fromTo(
-              internalCardRef.current,
-              {
-                x: -400,
-                opacity: 0,
-              },
-              {
-                x: 0,
-                opacity: 1,
-                duration: 0.5,
-                ease: "power3.out",
-                onComplete: () => {
-                  setIsAnimating(false);
-                }
+ // Handle path change with animation
+useEffect(() => {
+  if (path.name !== currentPath.name && !isAnimating) {
+    setIsAnimating(true);
+    
+    // Preload the new image
+    const preloadImage = (src) => {
+      return new Promise((resolve) => {
+        if (!src) {
+          resolve();
+          return;
+        }
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = resolve; // Resolve even on error to not block animation
+        img.src = src;
+      });
+    };
+
+    // Slide out current card
+    if (internalCardRef.current) {
+      gsap.to(internalCardRef.current, {
+        x: -400,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power3.in",
+        onComplete: async () => {
+          // Preload new image before updating state
+          await preloadImage(path.image);
+          
+          // Update to new path
+          setCurrentPath(path);
+          setSelectedTransport("car");
+          
+          // Slide in new card (image is now cached)
+          gsap.fromTo(
+            internalCardRef.current,
+            {
+              x: -400,
+              opacity: 0,
+            },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.5,
+              ease: "power3.out",
+              onComplete: () => {
+                setIsAnimating(false);
               }
-            );
-          },
-        });
-      }
+            }
+          );
+        },
+      });
     }
-  }, [path, currentPath.name, isAnimating]);
+  }
+}, [path, currentPath.name, isAnimating]);
 
   const handleClose = () => {
     if (internalCardRef.current) {
