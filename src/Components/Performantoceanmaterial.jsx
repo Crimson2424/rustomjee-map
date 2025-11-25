@@ -1,76 +1,44 @@
 import React, { useRef, useMemo } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
-import { useControls } from 'leva';
 import * as THREE from 'three';
 
 export const usePerformantOceanMaterial = () => {
   const { scene, camera } = useThree();
 
-  /* ........... Existing LEVA CONTROLS .......... */
-  const controls = useControls('Ocean Waves', {
-    wavesAmplitude: { value: 0.04 , min: 0, max: 2.0, step: 0.01 },
-    wavesSpeed: { value: 0.11, min: 0, max: 2, step: 0.01 },
-    wavesFrequency: { value: 0.04, min: -1, max: 5, step: 0.001 },
-    wavesPersistence: { value: 0.24, min: 0, max: 1, step: 0.01 },
-    wavesLacunarity: { value: 2.7 , min: 1, max: 4, step: 0.1 },
-    wavesIterations: { value: 6, min: 1, max: 10, step: 1 },
-  },{ collapsed: true });
-
-  const colorControls = useControls('Ocean Colors', {
-    troughColor: '#00f5ff',
-    surfaceColor: '#488378',
-    peakColor: '#4d8cb3',
-    colorMixStrength: { value: 0.6, min: 0, max: 1 },
-  },{ collapsed: true });
-
-  const fresnelControls = useControls('Fresnel & Reflection', {
-    fresnelScale: { value: 0.7, min: 0, max: 1 },
-    fresnelPower: { value: 2.8 , min: 0, max: 10 },
-    reflectionStrength: { value: 0.75, min: 0, max: 1 },
-  },{ collapsed: true });
-
-  const transparencyControls = useControls('Water Alpha', {
-    waterAlpha: { value: 0.25, min: 0.0, max: 1.0 },
-  },{ collapsed: true });
-
-  const depthFade = useControls('Depth Transparency', {
-    depthToOpaque: { value: 4.0, min: 0.2, max: 50 },
-    minAlpha: { value: 0.05, min: 0, max: 1 },
-    maxAlpha: { value: 0.95, min: 0, max: 1 },
-    absorption: { r: 0.15, g: 0.35, b: 0.45 },
-    tint: '#1e6b7a'
-  },{ collapsed: true });
+  
 
   // Environment Cubemap
   const environmentMap = useMemo(() => {
     const loader = new THREE.CubeTextureLoader();
+    loader.setPath('/environment/');
+    
     return loader.load([
-      'https://threejs.org/examples/textures/cube/SwedishRoyalCastle/px.jpg',
-      'https://threejs.org/examples/textures/cube/SwedishRoyalCastle/nx.jpg',
-      'https://threejs.org/examples/textures/cube/SwedishRoyalCastle/py.jpg',
-      'https://threejs.org/examples/textures/cube/SwedishRoyalCastle/ny.jpg',
-      'https://threejs.org/examples/textures/cube/SwedishRoyalCastle/pz.jpg',
-      'https://threejs.org/examples/textures/cube/SwedishRoyalCastle/nz.jpg',
+      'px.jpg',
+      'nx.jpg',
+      'py.jpg',
+      'ny.jpg',
+      'pz.jpg',
+      'nz.jpg',
     ]);
   }, []);
 
   /* ------------------- Uniforms ------------------- */
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
-    uWavesAmplitude: { value: 0 },
-    uWavesSpeed: { value: 0 },
-    uWavesFrequency: { value: 0 },
-    uWavesPersistence: { value: 0 },
-    uWavesLacunarity: { value: 0 },
-    uWavesIterations: { value: 0 },
-    uWaterAlpha: { value: 0.6 },
-    uTroughColor: { value: new THREE.Color() },
-    uSurfaceColor: { value: new THREE.Color() },
-    uPeakColor: { value: new THREE.Color() },
+    uWavesAmplitude: { value: 0.04 },
+    uWavesSpeed: { value: 0.11 },
+    uWavesFrequency: { value: 0.04 },
+    uWavesPersistence: { value: 0.24 },
+    uWavesLacunarity: { value: 2.7 },
+    uWavesIterations: { value: 6 },
+    uWaterAlpha: { value:0.25 },
+    uTroughColor: { value: new THREE.Color('#00f5ff') },
+    uSurfaceColor: { value: new THREE.Color('#488378') },
+    uPeakColor: { value: new THREE.Color('#4d8cb3') },
     uColorMixStrength: { value: 0 },
-    uFresnelScale: { value: 0 },
-    uFresnelPower: { value: 0 },
-    uReflectionStrength: { value: 0 },
+    uFresnelScale: { value: 0.7 },
+    uFresnelPower: { value: 2.8 },
+    uReflectionStrength: { value: 0.75 },
     uEnvironmentMap: { value: environmentMap },
 
     // Depth fade uniforms
@@ -87,101 +55,6 @@ export const usePerformantOceanMaterial = () => {
     uFogDensity: { value: 0.00025 },
     uUseFog: { value: 0 },
   }), [environmentMap]);
-
-  // Cache for uniform updates - only update when values change
-  const uniformCache = useRef({});
-
-  /* ---------------- Optimized Uniform Updates ---------------- */
-  const updateUniforms = () => {
-    const cache = uniformCache.current;
-    
-    // Only update if values have changed
-    if (cache.wavesAmplitude !== controls.wavesAmplitude) {
-      uniforms.uWavesAmplitude.value = controls.wavesAmplitude;
-      cache.wavesAmplitude = controls.wavesAmplitude;
-    }
-    if (cache.wavesSpeed !== controls.wavesSpeed) {
-      uniforms.uWavesSpeed.value = controls.wavesSpeed;
-      cache.wavesSpeed = controls.wavesSpeed;
-    }
-    if (cache.wavesFrequency !== controls.wavesFrequency) {
-      uniforms.uWavesFrequency.value = controls.wavesFrequency;
-      cache.wavesFrequency = controls.wavesFrequency;
-    }
-    if (cache.wavesPersistence !== controls.wavesPersistence) {
-      uniforms.uWavesPersistence.value = controls.wavesPersistence;
-      cache.wavesPersistence = controls.wavesPersistence;
-    }
-    if (cache.wavesLacunarity !== controls.wavesLacunarity) {
-      uniforms.uWavesLacunarity.value = controls.wavesLacunarity;
-      cache.wavesLacunarity = controls.wavesLacunarity;
-    }
-    if (cache.wavesIterations !== controls.wavesIterations) {
-      uniforms.uWavesIterations.value = controls.wavesIterations;
-      cache.wavesIterations = controls.wavesIterations;
-    }
-    
-    if (cache.troughColor !== colorControls.troughColor) {
-      uniforms.uTroughColor.value.set(colorControls.troughColor);
-      cache.troughColor = colorControls.troughColor;
-    }
-    if (cache.surfaceColor !== colorControls.surfaceColor) {
-      uniforms.uSurfaceColor.value.set(colorControls.surfaceColor);
-      cache.surfaceColor = colorControls.surfaceColor;
-    }
-    if (cache.peakColor !== colorControls.peakColor) {
-      uniforms.uPeakColor.value.set(colorControls.peakColor);
-      cache.peakColor = colorControls.peakColor;
-    }
-    if (cache.colorMixStrength !== colorControls.colorMixStrength) {
-      uniforms.uColorMixStrength.value = colorControls.colorMixStrength;
-      cache.colorMixStrength = colorControls.colorMixStrength;
-    }
-    
-    if (cache.fresnelScale !== fresnelControls.fresnelScale) {
-      uniforms.uFresnelScale.value = fresnelControls.fresnelScale;
-      cache.fresnelScale = fresnelControls.fresnelScale;
-    }
-    if (cache.fresnelPower !== fresnelControls.fresnelPower) {
-      uniforms.uFresnelPower.value = fresnelControls.fresnelPower;
-      cache.fresnelPower = fresnelControls.fresnelPower;
-    }
-    if (cache.reflectionStrength !== fresnelControls.reflectionStrength) {
-      uniforms.uReflectionStrength.value = fresnelControls.reflectionStrength;
-      cache.reflectionStrength = fresnelControls.reflectionStrength;
-    }
-    
-    if (cache.waterAlpha !== transparencyControls.waterAlpha) {
-      uniforms.uWaterAlpha.value = transparencyControls.waterAlpha;
-      cache.waterAlpha = transparencyControls.waterAlpha;
-    }
-
-    // Depth fade
-    if (cache.depthToOpaque !== depthFade.depthToOpaque) {
-      uniforms.uDepthToOpaque.value = depthFade.depthToOpaque;
-      cache.depthToOpaque = depthFade.depthToOpaque;
-    }
-    if (cache.minAlpha !== depthFade.minAlpha) {
-      uniforms.uMinAlpha.value = depthFade.minAlpha;
-      cache.minAlpha = depthFade.minAlpha;
-    }
-    if (cache.maxAlpha !== depthFade.maxAlpha) {
-      uniforms.uMaxAlpha.value = depthFade.maxAlpha;
-      cache.maxAlpha = depthFade.maxAlpha;
-    }
-    
-    const a = depthFade.absorption;
-    const absKey = `${a.r}_${a.g}_${a.b}`;
-    if (cache.absorption !== absKey) {
-      uniforms.uAbsorption.value.set(a.r, a.g, a.b);
-      cache.absorption = absKey;
-    }
-    
-    if (cache.tint !== depthFade.tint) {
-      uniforms.uDepthTint.value.set(depthFade.tint);
-      cache.tint = depthFade.tint;
-    }
-  };
 
   /* ---------------- Vertex Shader ---------------- */
   const vertexShader = `
@@ -225,7 +98,7 @@ export const usePerformantOceanMaterial = () => {
     uniform float uDepthToOpaque;
     uniform float uMinAlpha;
     uniform float uMaxAlpha;
-    uniform vec3  uAbsorption;
+    // uniform vec3  uAbsorption;
     uniform vec3  uDepthTint;
 
     // fog
@@ -332,13 +205,6 @@ export const usePerformantOceanMaterial = () => {
       // Simplified depth-based tinting using view distance as proxy
       float viewDepth = length(vViewPosition);
       float depthFactor = smoothstep(0.0, uDepthToOpaque, viewDepth);
-      
-      // Beer–Lambert attenuation based on view depth
-      vec3 trans = exp(-uAbsorption * viewDepth * 0.1);
-      vec3 absorbed = finalColor * trans;
-      float maxTrans = max(max(trans.r, trans.g), trans.b);
-      vec3 tinted = mix(absorbed, uDepthTint, clamp(1.0 - maxTrans, 0.0, 1.0));
-      finalColor = tinted;
 
       // Alpha calculation using view depth
       float alphaDepth = smoothstep(0.0, uDepthToOpaque * 2.0, viewDepth);
@@ -366,7 +232,7 @@ export const usePerformantOceanMaterial = () => {
     fragmentShader, 
     scene, 
     camera, 
-    updateUniforms
+    
   };
 };
 
@@ -380,7 +246,7 @@ export const PerformantOceanMaterial = React.forwardRef((props, ref) => {
   useFrame((state) => {
     if (!materialRef.current) return;
     
-    mat.updateUniforms();
+   
     materialRef.current.uniforms.uTime.value = state.clock.elapsedTime;
 
     // Update fog uniforms only when fog exists

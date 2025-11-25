@@ -8,12 +8,12 @@ export default function AllPaths({}) {
   const { selectedPath, selectedCategory } = usePaths();
   
 
-  console.log(pathData)
+  
   // safety check
   const selected = Array.isArray(pathData[selectedCategory]) ? pathData[selectedCategory] : [];
   const filteredPath = selectedPath?selected.filter((item)=> selectedPath===item.name) : selected
 
-  console.log(selected)
+  
 
   return (
     <>

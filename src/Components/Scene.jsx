@@ -13,8 +13,6 @@ import {
   ToneMapping,
 } from "@react-three/postprocessing";
 import { Birds } from "./Birds";
-import { button, folder, useControls } from "leva";
-import { useFrame } from "@react-three/fiber";
 import Effects from "./Effects";
 import CameraAnimations from "./CameraAnimations";
 
@@ -25,21 +23,21 @@ const Scene = () => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const targetMouse = useRef({ x: 0, y: 0 });
 
+  //if you want to log camera positions
+  // useControls({
+  //   "Log Camera Pos/Target": button(
+  //     () => {
+  //       if (!cameraControlRef.current) return;
 
-  useControls({
-    "Log Camera Pos/Target": button(
-      () => {
-        if (!cameraControlRef.current) return;
+  //       const pos = cameraControlRef.current.getPosition();
+  //       const target = cameraControlRef.current.getTarget();
 
-        const pos = cameraControlRef.current.getPosition();
-        const target = cameraControlRef.current.getTarget();
-
-        console.log("📌 Camera Position:", pos);
-        console.log("🎯 Camera Target:", target);
-      },
-      { collapsed: true }
-    ),
-  });
+  //       console.log("📌 Camera Position:", pos);
+  //       console.log("🎯 Camera Target:", target);
+  //     },
+  //     { collapsed: true }
+  //   ),
+  // });
 
   
 
@@ -119,30 +117,12 @@ const Scene = () => {
   //   cam.update(delta);
   // });
 
-  useEffect(() => {
-    if (!birdsRef.current) return;
-
-    // Animate with GSAP
-    gsap.to(birdsRef.current.group.position, {
-      x: 30,
-      y: 20,
-      duration: 5,
-      ease: "power2.inOut",
-      yoyo: true,
-      repeat: -1,
-    });
-
-    gsap.to(birdsRef.current.behavior, {
-      maxSpeed: 5,
-      separationForce: 2.5,
-      duration: 3,
-      yoyo: true,
-      repeat: -1,
-    });
-  }, []);
   return (
     <>
-      <CameraControls makeDefault ref={cameraControlRef} />
+      <CameraControls makeDefault ref={cameraControlRef} 
+      mouseButtons={{left:0, middle:0, right:0, wheel:0}} 
+      touches={{one:0, two:0, three:0}}
+      />
       <CameraAnimations cameraControlRef={cameraControlRef}/>
       <City />
       <Effects />

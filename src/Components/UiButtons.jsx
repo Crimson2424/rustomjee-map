@@ -33,13 +33,9 @@ export default function UIButtons() {
     {
       id: "connectivity_present",
       icon: PiMapPinSimpleArea,
-      label: "Connectivity (Present)",
+      label: "Connectivity",
     },
-    {
-      id: "connectivity_future",
-      icon: PiMapPinSimpleArea,
-      label: "Connectivity (Future)",
-    },
+    
   ];
 
   useEffect(() => {
@@ -316,12 +312,12 @@ export default function UIButtons() {
       )}
 
       <div
-        className="absolute bottom-8 z-50 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 z-50 left-1/2 -translate-x-1/2 max-sm:bottom-2 max-md:bottom-2 max-lg:bottom-2 max-xl:bottom-2 max-2xl:bottom-2"
         ref={containerRef}
       >
         {/* CATEGORY BUTTONS */}
 
-        <div className="flex gap-2 bg-white p-1 rounded-xs shadow-2xl text-[#4A5568] relative">
+        <div className="flex gap-2 bg-white p-1 rounded-xs shadow-2xl text-[#4A5568] relative max-sm:gap-0.5 max-sm:p-0.5 max-md:gap-0.5 max-md:p-0.5 max-lg:gap-0.5 max-lg:p-1 max-xl:gap-0.5 max-xl:p-1">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -330,10 +326,22 @@ export default function UIButtons() {
               className="
             p-2
             flex flex-col items-center justify-center gap-1
-            w-fit
             rounded-md
             relative
             overflow-hidden
+            max-sm:p-1
+            max-sm:rounded-sm
+            max-sm:gap-0
+            max-sm:px-0.5
+            max-md:p-1
+            max-md:rounded-sm
+            max-md:gap-0
+            max-md:px-0.5
+            max-lg:p-1
+            max-lg:rounded-xs
+            max-lg:gap-0
+            max-lg:px-0.5
+            
             "
               onClick={() => handleCategoryClick(cat.id)}
               onMouseEnter={(e) => handleMouseEnter(e, cat.id)}
@@ -342,18 +350,18 @@ export default function UIButtons() {
               {/* Liquid Fill */}
               <div
                 ref={(el) => (liquidRefs.current[cat.id] = el)}
-                className="absolute inset-0 bg-[#4A5568] rounded-md origin-bottom"
+                className="absolute inset-0 bg-[#4A5568] rounded-md origin-bottom max-sm:rounded-sm max-md:rounded-sm max-lg:rounded-xs  max-xl:rounded-xs"
                 style={{ transform: "scaleY(0)" }}
               />
 
               {/* Content */}
               <cat.icon
                 ref={(el) => (iconRefs.current[cat.id] = el)}
-                className="text-xl relative z-10"
+                className="text-xl  z-10 max-sm:text-xs max-md:text-xs max-lg:text-sm max-xl:text-md  max-2xl:text-lg"
               />
               <span
                 ref={(el) => (textRefs.current[cat.id] = el)}
-                className="text-xs text-center relative z-10"
+                className="text-xs text-center  z-10 max-sm:text-[10px] max-md:text-[12px] max-lg:text-[14px] max-xl:text-[16px] "
               >
                 {cat.label}
               </span>
@@ -364,12 +372,12 @@ export default function UIButtons() {
           {selectedCategory && (
             <div
               ref={pathButtonsRef}
-              className="absolute bottom-full p-2 mb-2 bg-white text-[#4A5568] flex flex-col rounded-md shadow-2xl gap-2 -translate-x-1/2"
+              className="absolute bottom-full p-2 mb-2 bg-white text-[#4A5568] flex flex-col rounded-md shadow-2xl gap-2 -translate-x-1/2 max-sm:p-1 max-sm:gap-0.5 max-sm:rounded-xs max-md:p-1 max-md:gap-0.5 max-md:rounded-xs max-lg:p-1 max-lg:gap-0.5 max-lg:rounded-xs max-xl:p-2 max-xl:gap-0.5 max-xl:rounded-xs"
               style={{ left: `${pathButtonsPosition.left}px` }}
             >
               {pathData[selectedCategory].map((item, i) => (
                 <button
-                  className={`p-2 rounded-md flex justify-center  ${item.name === selectedPath ? 'bg-[#4A5568] text-white': 'hover:bg-gray-200'}  gap-2 items-center transition-colors`}
+                  className={`p-2 rounded-md flex justify-center text-nowrap ${item.name === selectedPath ? 'bg-[#4A5568] text-white': 'hover:bg-gray-200'}  gap-2 items-center transition-colors max-sm:p-0.5 max-sm:rounded-xs max-sm:text-[10px] max-sm:gap-0.5 max-md:p-0.5 max-md:rounded-xs max-md:text-[12px] max-md:gap-0.5 max-lg:p-1 max-lg:rounded-xs max-lg:text-[16px] max-lg:gap-0.5 max-xl:p-1 max-xl:rounded-xs max-xl:text-[18px] max-xl:gap-0.5  max-2xl:p-2 max-2xl:rounded-sm max-2xl:text-[20px] max-2xl:gap-0.5`}
                   key={i}
                   onClick={() => handlePathClick(item.name)}
                 >

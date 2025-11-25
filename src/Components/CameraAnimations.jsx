@@ -106,6 +106,8 @@ const categorycamera = {
 
 const CameraAnimations = ({ cameraControlRef }) => {
   const disableAutoRotate = useRef(false);
+  const rotationOffset = useRef(0); // Track rotation offset for smooth resume
+  const lastTime = useRef(0);
   const { selectedPath, selectedCategory } = usePaths();
 
   const goToPosition = (px, py, pz, tx, ty, tz) => {
@@ -113,58 +115,64 @@ const CameraAnimations = ({ cameraControlRef }) => {
     const cam = cameraControlRef.current;
     cam.smoothTime = 0.7;
 
-    cam.setLookAt(
-      cam.camera.position.x,
-      cam.camera.position.y,
-      cam.camera.position.z,
-      tx,
-      ty,
-      tz,
-      true
-    );
-
+    // Just one setLookAt call for smooth transition
     cam.setLookAt(px, py, pz, tx, ty, tz, true);
   };
 
   const resetPosition = () => {
-    const x = -1844.5376947483708; // final camera position
+    const x = -1844.5376947483708;
     const y = 563.2002337610148;
     const z = 881.884785452135;
 
-    const tx = 13.893999128697848; // target
+    const tx = 13.893999128697848;
     const ty = -92.36630585124054;
     const tz = 112.90388205168148;
 
-    // First align to current pos quickly so animation starts clean
     goToPosition(x, y, z, tx, ty, tz);
   };
 
-    useEffect(() => {
-      const cameraData = selectedPath? pathData[selectedCategory].find((path)=>path.name === selectedPath) : categorycamera[selectedCategory];
+  useEffect(() => {
+    const cameraData = selectedPath
+      ? pathData[selectedCategory].find((path) => path.name === selectedPath)
+      : categorycamera[selectedCategory];
 
-      if (cameraData) {
-        const { x: px, y: py, z: pz } = cameraData.position;
-        const { x: tx, y: ty, z: tz } = cameraData.target;
+    if (cameraData) {
+      const { x: px, y: py, z: pz } = cameraData.position;
+      const { x: tx, y: ty, z: tz } = cameraData.target;
 
-        goToPosition(px, py, pz, tx, ty, tz);
-      } else {
-        resetPosition();
+      // Store current azimuth angle before transitioning
+      if (cameraControlRef.current) {
+        rotationOffset.current = cameraControlRef.current.azimuthAngle;
       }
-    }, [selectedCategory, selectedPath]);
 
-    // ✅ Auto-rotate in animation loop (like the native example)
+      goToPosition(px, py, pz, tx, ty, tz);
+    } else {
+      // When returning to auto-rotate, capture current angle for smooth resume
+      if (cameraControlRef.current) {
+        rotationOffset.current = cameraControlRef.current.azimuthAngle;
+        lastTime.current = 0; // Reset time tracking
+      }
+      resetPosition();
+    }
+  }, [selectedCategory, selectedPath]);
+
   useFrame((state, delta) => {
     if (!cameraControlRef.current) return;
-    if( selectedCategory || selectedPath) return;
+    if (selectedCategory || selectedPath) return;
 
     const cam = cameraControlRef.current;
 
-    // Auto-rotate by incrementing azimuth angle
     if (!disableAutoRotate.current) {
-      cam.azimuthAngle -= 5 * delta * THREE.MathUtils.DEG2RAD;
+      const rotationSpeed = 0.1; // Positive for counter-clockwise
+      
+      // Smoothly continue rotation from where it left off
+      lastTime.current += delta;
+      const rotation = lastTime.current * rotationSpeed;
+      
+      // Add offset and normalize to 0-2π range
+      cam.azimuthAngle = (rotationOffset.current - rotation) % (Math.PI * 2);
     }
 
-    // Update camera controls
     cam.update(delta);
   });
 

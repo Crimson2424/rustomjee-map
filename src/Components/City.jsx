@@ -2,27 +2,22 @@ import {
   MeshReflectorMaterial,
   useGLTF,
   useKTX2,
-  useTexture,
 } from "@react-three/drei";
-import { useState, useEffect, useRef } from "react";
 import * as THREE from "three";
 import { Underwaterland } from "./UnderwaterLand";
 import { Sea } from "./Sea";
-import { SmallSand } from "./SmallSand";
 import { InstancedTrees } from "./Improvedinstancedtrees";
 import { RoadClickSampler } from "./Roadsampler";
 import { TrafficFromSamples } from "./TrafficFromSamples";
 import { FishingBoat } from "./FishingBoat";
 import { Yatch } from "./Yatch";
 import { FishingBoat2 } from "./FishingBoat2";
-import { Yatch2 } from "./Yatch2";
 import AllPaths from "./AllPaths";
 import { NewBridges } from "./NewBridges";
 import { MainBuilding } from "./MainBuilding";
 
 export function City(props) {
   const { nodes, materials } = useGLTF("models/rustomjeeEditedmap2.glb");
-  const { nodes2, materials2 } = useGLTF("models/Tree-v1.glb");
 
 
   const roadNames = [
@@ -383,9 +378,9 @@ export function City(props) {
     buildingTextureFinal:
       "/Rustomjee-Bakes/Building-Texture-Final_etc1s_max.ktx2",
 
-    roof1Texture: "/Rustomjee-Bakes/Roof-1-1_etc1s_max.ktx2",
-    roof2Texture: "/Rustomjee-Bakes/Roofs-2_etc1s_max.ktx2",
-    roofLast: "/Rustomjee-Bakes/Roof-Last_etc1s_max.ktx2",
+    roof1Texture: "/Rustomjee-Bakes/Roof-1-1-1_etc1s_max.ktx2",
+    roof2Texture: "/Rustomjee-Bakes/Roofs-2-1_etc1s_max.ktx2",
+    roofLast: "/Rustomjee-Bakes/Roof-Last-1_etc1s_max.ktx2",
 
     bridgeTexture: "/Rustomjee-Bakes/Bridge-1_etc1s_max.ktx2",
     newBridgeOneTexture: "/Rustomjee-Bakes/NewBridge-1-1_etc1s_max.ktx2",
@@ -460,7 +455,7 @@ export function City(props) {
           key === "Road-10" ||
           key === "Plane"
         ) {
-          mat = new THREE.MeshBasicMaterial({ color: '#4f4e4e' }); // change color if needed
+          mat = new THREE.MeshBasicMaterial({ color: '#324357' }); // change color if needed
         }
 
         // if (key === "Bridge_Baked") {

@@ -3,9 +3,15 @@ export const pathData = {
     {
       name: "Parishram",
       description:
-        "Premium residential project featuring modern amenities, spacious layouts, and sustainable design elements. Offers panoramic city views and excellent connectivity.",
-      distance: 4.2,
-      image: null,
+        "Rustomjee Parishram is a high-class residential project that answers all the needs of luxury living in Pali Hill. Designed by the acclaimed Rustomjee developers.",
+      distance: 3.6,
+      image:  "/images/parishram.webp",
+      transport: {
+        car: 16,      // time in minutes
+        walk: 50,    // time in minutes
+        bike: 14,    // time in minutes
+        transport: 50, // time in minutes (bus)
+      },
       position: {
         x: -1479.309764359354,
         y: 1291.7825497101649,
@@ -160,6 +166,16 @@ export const pathData = {
     },
     {
       name: "Panorama",
+      description:
+        "Situated in the reputed area of Pali Hill, Rustomjee Panorama stands strong as a testament to luxury living blended with a lucrative investment opportunity.",
+      distance: 3.4,
+      image: "/images/panorama.webp",
+      transport: {
+        car: 15 ,      // time in minutes
+        walk: 49 ,    // time in minutes
+        bike: 13 ,    // time in minutes
+        transport: 50, // time in minutes (bus)
+      },
       position: {
         x: 1318.4894056466621,
         y: 1220.6017531885072,
@@ -312,6 +328,16 @@ export const pathData = {
     },
     {
       name: "Crescent",
+      description:
+        "Rustomjee Crescent is situated in the esteemed Pali Hill district of Mumbai and is a residential development that represents opulence and refinement.",
+      distance: 3.4,
+      image: "/images/crescent.webp",
+      transport: {
+        car: 16 ,      // time in minutes
+        walk: 47 ,    // time in minutes
+        bike: 14 ,    // time in minutes
+        transport: 45, // time in minutes (bus)
+      },
       position: {
         x: 1363.3356764139378,
         y: 1638.3370921072992,
@@ -449,6 +475,16 @@ export const pathData = {
     },
     {
       name: "La Fontaine ",
+      description:
+        "The Rustomjee La Fontaine located in Bandra, is a luxurious project that has a total super-built-up area of over 50,000 sq.ft.",
+      distance: 2.0,
+      image: "/images/la fontaine.webp",
+      transport: {
+        car: 10 ,      // time in minutes
+        walk: 27 ,    // time in minutes
+        bike: 8 ,    // time in minutes
+        transport: 24, // time in minutes (bus)
+      },
       position: {
         x: -157.95802245034508,
         y: 1170.899118467383,
@@ -565,6 +601,16 @@ export const pathData = {
   historical: [
     {
       name: "Mount mary church",
+      description:
+        "The Basilica of Our Lady of the Mount, colloquially known as Mount Bandra and Mount St Mary Church is a basilica of the Roman Catholic Church.",
+      distance: 0.3,
+      image: "/images/mount mary church.webp",
+      transport: {
+        car: 1 ,      // time in minutes
+        walk: 2 ,    // time in minutes
+        bike: 1 ,    // time in minutes
+        transport: 1, // time in minutes (bus)
+      },
       position: {
         x: -1103.5790062955487,
         y: 828.2133008653791,
@@ -593,6 +639,16 @@ export const pathData = {
     },
     {
       name: "Bandra Fort",
+      description:
+        "Castella de Aguada (corruption of Castelo da Aguada, Portuguese for Fort of the Waterpoint, also known as the Bandra Fort, is a fort located in Bandra",
+      distance: 0.7,
+      image: "/images/bandra fort.webp",
+      transport: {
+        car: 3 ,      // time in minutes
+        walk: 9 ,    // time in minutes
+        bike: 3 ,    // time in minutes
+        transport: 1, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -640,6 +696,16 @@ export const pathData = {
     },
     {
       name: "St Andrews Church",
+      description:
+        "St. Andrew Church is spectacularly located at Bandra, on the western coastline of Mumbai, overlooking the Arabian Sea.",
+      distance: 1.1,
+      image: "/images/St Andrews Church.webp",
+      transport: {
+        car: 5 ,      // time in minutes
+        walk: 15 ,    // time in minutes
+        bike: 5 ,    // time in minutes
+        transport: 14, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -731,6 +797,16 @@ export const pathData = {
     },
     {
       name: "St.Anne's Church",
+      description:
+        "St. Anne's High School is located in Pali Hill area of Bandra, under the Roman Catholic Archdiocese of Mumbai.",
+      distance: 2.6,
+      image: "/images/St.Anne's Church.webp",
+      transport: {
+        car: 12 ,      // time in minutes
+        walk: 35 ,    // time in minutes
+        bike: 10 ,    // time in minutes
+        transport: 33, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -859,6 +935,16 @@ export const pathData = {
   recreational: [
     {
       name: "Bandstand Promenade",
+      description:
+        "The Bandstand Promenade is a 1.2 kilometer long walkway along the sea on the western coast of Mumbai.",
+      distance: 0.85,
+      image: "/images/Bandstand Promenade.webp",
+      transport: {
+        car: 4 ,      // time in minutes
+        walk: 11 ,    // time in minutes
+        bike: 1 ,    // time in minutes
+        transport: 1, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -910,6 +996,16 @@ export const pathData = {
     },
     {
       name: "Carter Road",
+      description:
+      "Carter Road is a popular waterfront promenade in Bandra West, known for its scenic views of the Arabian Sea, vibrant food scene, and various recreational and cultural activities.",
+    distance: 1.9,
+    image: "/images/Carter Road.webp",
+    transport: {
+      car: 10 ,      // time in minutes
+      walk: 26 ,    // time in minutes
+      bike: 9 ,    // time in minutes
+      transport: 24, // time in minutes (bus)
+    },
       position: {
         x
         : 
@@ -1049,6 +1145,16 @@ z
     },
     {
       name: "Joggers Park",
+      description:
+      "Jogger's Park is a seaside oval-shaped park with walking and jogging paths that overlooks the Arabian Sea.",
+    distance: 1.9,
+    image: "/images/Joggers Park (1).webp",
+    transport: {
+      car: 10 ,      // time in minutes
+      walk: 26 ,    // time in minutes
+      bike: 8 ,    // time in minutes
+      transport: 24, // time in minutes (bus)
+    },
       position: {
         x
         : 
@@ -1181,6 +1287,16 @@ z
     },
     {
       name: "NMACC",
+      description:
+      "The NMACC is a modern cultural hub that features a variety of venues for performing and visual arts.",
+      distance: 7.7,
+      image: "/images/NMACC.webp",
+      transport: {
+        car: 24 ,      // time in minutes
+        walk: 90 ,    // time in minutes
+        bike: 22 ,    // time in minutes
+        transport: 49, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -1364,6 +1480,16 @@ z
     },
     {
       name: "Jio World Drive",
+      description:
+      "Jio World Drive is a shopping and lifestyle destination. The 17.5-acre complex features a mix of international and Indian brands, dining options, and entertainment.",
+      distance: 5.0,
+      image:  "/images/Jio World Drive.webp",
+      transport: {
+        car: 17 ,      // time in minutes
+        walk: 65 ,    // time in minutes
+        bike: 15 ,    // time in minutes
+        transport: 40, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -1563,6 +1689,16 @@ z
     },
     {
       name: "Jio World Plaza",
+      description:
+      "It is part of the larger Jio World Centre, an 18.5-acre hub for business, leisure, and retail. It is accessible for visitors with disabilities and offers paid parking and valet services.",
+      distance: 7.8,
+      image: "/images/Jio World plaza.webp",
+      transport: {
+        car: 22 ,      // time in minutes
+        walk: 90 ,    // time in minutes
+        bike: 20 ,    // time in minutes
+        transport: 48, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -1770,6 +1906,16 @@ z
   clubs: [
     {
       name: "Bay Club",
+      description:
+      "The Bay Club is an exclusive, by-invitation-only private members club located in the Bandra Kurla Complex (BKC).",
+      distance: 5.2,
+      image: "/images/Bay Club.webp",
+      transport: {
+        car: 15 ,      // time in minutes
+        walk: 67 ,    // time in minutes
+        bike: 14 ,    // time in minutes
+        transport: 46, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -1935,6 +2081,16 @@ z
     },
     {
       name: "Otters Club",
+      description:
+      "Otters Club is a prominent, members-only club located in Bandra West, Mumbai, on Carter Road next to Joggers Park.",
+      distance: 2.0,
+      image: "/images/Otters Club.webp",
+      transport: {
+        car: 10 ,      // time in minutes
+        walk: 27 ,    // time in minutes
+        bike: 9 ,    // time in minutes
+        transport: 25, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -2067,6 +2223,16 @@ z
   schools: [
     {
       name: "American School",
+      description:
+      "The American School of Bombay is located in Bandra East. Founded in 1981, it is an independent, coeducational day school serving students from Pre-K through Grade 12.",
+      distance: 7.6,
+      image: "/images/American School.webp",
+      transport: {
+        car: 21 ,      // time in minutes
+        walk: 90 ,    // time in minutes
+        bike: 19 ,    // time in minutes
+        transport: 51, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -2270,6 +2436,16 @@ z
     },
     {
       name: "Ascend",
+      description:
+      "Ascend International School utilizes the International Baccalaureate curriculum, offering Career-related Programme for various age groups.",
+      distance: 6.2,
+      image: "/images/Ascend.webp",
+      transport: {
+        car: 17 ,      // time in minutes
+        walk: 72 ,    // time in minutes
+        bike: 16 ,    // time in minutes
+        transport: 50, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -2493,6 +2669,16 @@ z
     },
     {
       name: "Ambani School",
+      description:
+      "The Dhirubhai Ambani International School, commonly known as the Ambani School. It is situated in the Bandra Kurla Complex business district.",
+      distance: 7.6,
+      image: "/images/Ambani School.webp",
+      transport: {
+        car: 20 ,      // time in minutes
+        walk: 90 ,    // time in minutes
+        bike: 18 ,    // time in minutes
+        transport: 54, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -2705,6 +2891,16 @@ z
   hotels: [
     {
       name: "Taj Lands End",
+      description:
+      "Taj Lands End is a 5-star hotel located in Bandra West, Mumbai, offering luxury accommodations and views of the Arabian Sea and the Bandra Worli Sea Link.",
+      distance: 0.65,
+      image: "/images/Taj Lands End.webp",
+      transport: {
+        car: 3 ,      // time in minutes
+        walk: 9 ,    // time in minutes
+        bike: 3 ,    // time in minutes
+        transport: 1, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -2751,6 +2947,16 @@ z
   hospitals: [
     {
       name: "Lilavati",
+      description:
+      "Lilavati Hospital & Research Centre is a prominent multi-specialty hospital located in Bandra West, Mumbai.",
+      distance: 1.5,
+      image: "/images/Lilavati.webp",
+      transport: {
+        car: 8 ,      // time in minutes
+        walk: 19 ,    // time in minutes
+        bike: 6 ,    // time in minutes
+        transport: 17, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -2854,6 +3060,16 @@ z
     },
     {
       name: "Hinduja Khar",
+      description:
+      "The multi-specialty hospital provides a wide range of services and has on board specialists across more than 40 specialties.",
+      distance: 3.7,
+      image:  "/images/Hinduja Khar.webp",
+      transport: {
+        car: 17 ,      // time in minutes
+        walk: 49 ,    // time in minutes
+        bike: 15 ,    // time in minutes
+        transport: 30, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -3027,6 +3243,16 @@ z
     },
     {
       name: "Asian Heart",
+      description:
+      "The Asian Heart Institute, is one of India's leading and globally recognized specialty cardiac hospitals. It is renowned for its high success rates in complex heart surgeries.",
+      distance: 6.3,
+      image: "/images/Asian Heart (1).webp",
+      transport: {
+        car: 16 ,      // time in minutes
+        walk: 80 ,    // time in minutes
+        bike: 15 ,    // time in minutes
+        transport: 45, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -3231,6 +3457,16 @@ z
   connectivity_present: [
     {
       name: " Worli Sea Link",
+      description:
+      "The Bandra-Worli Sea Lin, 5.6-kilometer-long cable-stayed bridge that connects the Bandra area in the western suburbs of Mumbai with Worli in South Mumbai.",
+      distance: 1.1,
+      image: "/images/Worli Sea Link.webp",
+      transport: {
+        car: 5 ,      // time in minutes
+        walk: 10 ,    // time in minutes
+        bike: 5 ,    // time in minutes
+        transport: 8, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -3358,6 +3594,16 @@ z
     },
     {
       name: "Western express highway",
+      description:
+      "The Western Express Highway, is a major 8-to-10-lane arterial road in Mumbai that serves as a primary north-south connector for the city and its suburbs.",
+      distance: 5.7,
+      image: "/images/Western express highway.webp",
+      transport: {
+        car: 15 ,      // time in minutes
+        walk: 72 ,    // time in minutes
+        bike: 13 ,    // time in minutes
+        transport: 45, // time in minutes (bus)
+      },
       position: {
         x
         : 
@@ -3501,6 +3747,16 @@ z
     },
     {
       name: "Airport connectivity",
+      description:
+      "Chhatrapati Shivaji Maharaj International Airport, is the primary and second busiest airport in India after Delhi.",
+      distance: 9.6,
+      image: "/images/Airport connectivity.webp",
+      transport: {
+        car: 26,      // time in minutes
+        walk: 95,    // time in minutes
+        bike: 23,    // time in minutes
+        transport: 50, // time in minutes (bus)
+      },
       position: {
         x
         : 

@@ -13,28 +13,23 @@ export default function PathCard({ path, onClose, cardRef }) {
     { id: "car", icon: IoCarSportOutline, label: "Car" },
     { id: "walk", icon: IoWalkOutline, label: "Walk" },
     { id: "bike", icon: IoBicycleOutline, label: "Bike" },
-    { id: "transport", icon: IoBusOutline, label: "Bus" },
+    { id: "transport", icon: IoBusOutline, label: "Other" },
   ];
 
-  // Calculate distance based on transport mode
+  // Distance is constant regardless of transport mode
   const getDistance = () => {
-    const baseDistance = currentPath.distance || 5;
-    switch (selectedTransport) {
-      case "car":
-        return `${baseDistance} km`;
-      case "walk":
-        return `${(baseDistance * 1.2).toFixed(1)} km`;
-      case "bike":
-        return `${(baseDistance * 1.1).toFixed(1)} km`;
-      case "transport":
-        return `${(baseDistance * 1.3).toFixed(1)} km`;
-      default:
-        return `${baseDistance} km`;
-    }
+    const distance = currentPath.distance || 5;
+    return `${distance} km`;
   };
 
-  // Calculate time based on transport mode
+  // Time changes based on transport mode
   const getTime = () => {
+    // Check if transport data exists in the path
+    if (currentPath.transport && currentPath.transport[selectedTransport]) {
+      return `${currentPath.transport[selectedTransport]} min`;
+    }
+    
+    // Fallback to calculation if data not provided
     const baseDistance = currentPath.distance || 5;
     switch (selectedTransport) {
       case "car":
@@ -107,7 +102,7 @@ export default function PathCard({ path, onClose, cardRef }) {
         });
       }
     }
-  }, [path]);
+  }, [path, currentPath.name, isAnimating]);
 
   const handleClose = () => {
     if (internalCardRef.current) {
@@ -131,18 +126,18 @@ export default function PathCard({ path, onClose, cardRef }) {
         internalCardRef.current = el;
         if (cardRef) cardRef.current = el;
       }}
-      className="absolute left-0 top-0  w-75 h-full bg-white rounded-md shadow-2xl overflow-hidden z-40"
+      className="absolute left-0 top-0 w-75 h-full flex flex-col justify-between bg-white rounded-md shadow-2xl overflow-hidden z-40 max-sm:w-27 max-sm:rounded-sm max-sm:justify-normal max-sm:gap-0 max-md:w-27 max-md:rounded-sm max-md:justify-normal max-md:gap-0 max-lg:w-48 max-lg:rounded-sm max-lg:justify-normal max-lg:gap-0 max-xl:w-55 max-xl:rounded-sm max-xl:justify-normal max-xl:gap-0"
     >
       {/* Close Button */}
       <button
         onClick={handleClose}
-        className="absolute top-4 right-4 z-50 bg-white rounded-full p-2 hover:bg-gray-100 transition-colors shadow-md"
+        className="absolute top-4 right-4 z-50 bg-white rounded-full p-2 hover:bg-gray-100 transition-colors shadow-md max-sm:top-1 max-sm:right-1 max-sm:p-1  max-md:top-1 max-md:right-1 max-md:p-1 max-lg:top-1 max-lg:right-1 max-lg:p-1 max-xl:top-1 max-xl:right-1 max-xl:p-1"
       >
-        <MdClose className="text-xl text-gray-700" />
+        <MdClose className="text-xl text-gray-700 max-sm:text-[10px] max-md:text-[12px] max-lg:text-md max-xl:text-md" />
       </button>
 
       {/* Image */}
-      <div className="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 relative overflow-hidden">
+      <div className="w-full h-80 bg-gradient-to-br from-gray-200 to-gray-300 relative overflow-hidden max-sm:h-18 max-md:h-20 max-lg:h-40 max-xl:h-50">
         {currentPath.image ? (
           <img
             src={currentPath.image}
@@ -157,33 +152,36 @@ export default function PathCard({ path, onClose, cardRef }) {
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-6  flex flex-col gap-6 h-125 max-sm:p-2 max-sm:h-40 max-sm:gap-1 max-md:p-2 max-md:h-40 max-md:gap-1 max-lg:p-2 max-lg:h-40 max-lg:gap-3 max-xl:p-2 max-xl:h-40 max-xl:gap-6 ">
         {/* Heading */}
-        <h2 className="text-2xl font-bold text-gray-800 mb-3">{currentPath.name}</h2>
+        <div className="">
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-3 max-sm:text-[12px] max-sm:mb-0 max-md:text-[12px] max-md:mb-1 max-lg:text-md max-lg:mb-1 max-xl:text-md max-xl:mb-2">{currentPath.name}</h2>
 
         {/* Description */}
-        <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+        <p className="text-gray-600  text-sm leading-relaxed max-sm:text-[10px] max-md:text-[10px]  max-lg:text-sm max-xl:text-sm">
           {currentPath.description || "Explore this amazing location and discover what it has to offer."}
         </p>
+        </div>
 
-        {/* Distance Display */}
-        <div className="bg-[#4A5568] text-white bg-opacity-10 rounded-lg p-4 mb-4">
+        {/* Distance Displ  ay */}
+        <div className="bg-[#4A5568] text-white bg-opacity-10 rounded-lg p-4 max-sm:p-1 max-sm:rounded-sm max-md:p-1 max-md:rounded-sm max-lg:p-2 max-lg:rounded-sm max-xl:p-2 max-xl:rounded-sm">
           <div className="flex justify-between items-center">
             <div>
-              <p className="text-xs  mb-1">Distance</p>
-              <p className="text-2xl font-bold ">{getDistance()}</p>
+              <p className="text-xs max-sm:text-[10px] max-md:text-[10px] max-lg:text-md max-xl:text-md">Distance</p>
+              <p className="text-2xl font-bold max-sm:text-[10px] max-md:text-[10px] max-lg:text-sm  max-xl:text-sm">{getDistance()}</p>
             </div>
             <div>
-              <p className="text-xs  mb-1">Est. Time</p>
-              <p className="text-2xl font-bold ">{getTime()}</p>
+              <p className="text-xs max-sm:text-[10px]  max-md:text-[10px] max-lg:text-md max-xl:text-md">Est. Time</p>
+              <p className="text-2xl font-bold max-sm:text-[10px] max-md:text-[10px] max-lg:text-sm max-xl:text-sm">{getTime()}</p>
             </div>
           </div>
         </div>
 
         {/* Transport Buttons */}
-        <div className="space-y-2">
-          <p className="text-sm text-gray-500 mb-3">Choose transport mode:</p>
-          <div className="grid grid-cols-4 gap-2">
+        <div className=" flex flex-col  gap-5 max-sm:gap-1 max-sm:justify-between max-md:gap-1 max-md:justify-between max-lg:gap-2 max-lg:justify-between max-xl:gap-1 max-xl:justify-between">
+          <p className="text-sm text-gray-500 max-sm:text-[10px] max-md:text-[10px] max-lg:text-xs">Choose transport mode:</p>
+          <div className="grid grid-cols-4 gap-1 max-sm:gap-0.5 max-sm:grid-cols-2 max-md:gap-0.5 max-md:grid-cols-2 max-lg:gap-0.5 max-lg:grid-cols-2 max-xl:gap-0.5 max-xl:grid-cols-2">
             {transportModes.map((mode) => (
               <button
                 key={mode.id}
@@ -191,6 +189,10 @@ export default function PathCard({ path, onClose, cardRef }) {
                 className={`
                   flex flex-col items-center justify-center gap-2 p-3 rounded-lg
                   transition-all duration-300 relative overflow-hidden
+                  max-sm:gap-0 max-sm:p-0.5 max-sm:rounded-sm
+                  max-md:gap-0 max-md:p-0.5 max-md:rounded-sm
+                  max-lg:gap-0.5 max-lg:p-1 max-lg:rounded-sm
+                  max-xl:gap-0.5 max-xl:p-1 max-xl:rounded-sm
                   ${
                     selectedTransport === mode.id
                       ? "bg-[#4A5568] text-white shadow-lg"
@@ -198,8 +200,8 @@ export default function PathCard({ path, onClose, cardRef }) {
                   }
                 `}
               >
-                <mode.icon className="text-2xl" />
-                <span className="text-xs font-medium">{mode.label}</span>
+                <mode.icon className="text-2xl max-sm:text-[12px] max-md:text-[12px] max-lg:text-[20px] max-xl:text-[20px]" />
+                <span className="text-xs font-medium max-sm:text-[10px] max-md:text-[10px] max-lg:text-xs max-xl:text-xs">{mode.label}</span>
               </button>
             ))}
           </div>
