@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import gsap from "gsap/all";
+import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 
 export function Birds(props) {
@@ -9,6 +10,10 @@ export function Birds(props) {
   const { actions } = useAnimations(animations, group);
   const circleRef = useRef();
   const angleOffsets = useRef([])
+  const forward = new THREE.Vector3();
+const nextPos = new THREE.Vector3();
+const pos = new THREE.Vector3();
+
 
   React.useEffect(() => {
     if (actions) {
@@ -26,35 +31,53 @@ export function Birds(props) {
     )
   }, [])
 
-  const radius = 1000
+  const radius = props.radius
   const speed = 0.1 // ✅ LOWER = SLOWER
   const height = 300
 
   useFrame((state, delta) => {
-    if (!circleRef.current) return
-
-    circleRef.current.children.forEach((bird, i) => {
-      // update angle slowly
-      angleOffsets.current[i] += speed * delta
-
-      const t = angleOffsets.current[i]
-
-      // circular position
-      const x = Math.cos(t) * radius
-      const z = Math.sin(t) * radius
-
-      bird.position.set(x, height, z)
-
-      // face direction of travel
-      const nextX = Math.cos(t + 0.01) * radius
-      const nextZ = Math.sin(t + 0.01) * radius
-      bird.lookAt(nextX, height, nextZ)
-    })
-  })
+    if (!circleRef.current) return;
+  
+    const birdsContainer = circleRef.current.children[0]; 
+    if (!birdsContainer) return;
+  
+    birdsContainer.children.forEach((bird, i) => {
+      if (!angleOffsets.current[i])
+        angleOffsets.current[i] = Math.random() * Math.PI * 2;
+  
+      angleOffsets.current[i] += speed * delta;
+      const t = angleOffsets.current[i];
+      const eps = 0.02; // small step forward
+  
+      // --- position on orbit (LOCAL space) ---
+      pos.set(
+        Math.cos(t) * radius,
+        height,
+        Math.sin(t) * radius
+      );
+  
+      bird.position.copy(pos);
+  
+      // --- next orbit point for forward direction (LOCAL) ---
+      nextPos.set(
+        Math.cos(t + eps) * radius,
+        height,
+        Math.sin(t + eps) * radius
+      );
+  
+      // --- compute forward direction ---
+      forward.subVectors(nextPos, pos).normalize();
+  
+      // --- apply rotation so bird faces forward ---
+      bird.rotation.y = Math.atan2(forward.x, forward.z);  // yaw
+      bird.rotation.x = 0; // no pitching (optional)
+      bird.rotation.z = 0; // no banking (optional)
+    });
+  });
 
   return (
-    <group ref={circleRef}>
-      <group ref={group} {...props} dispose={null}>
+    <group ref={circleRef}  position={props.position || [0,0,0]}>
+      <group ref={group} dispose={null}>
         <group name="Scene">
           <group
             name="Bird"

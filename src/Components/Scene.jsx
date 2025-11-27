@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { CameraControls, ScreenSpace } from "@react-three/drei";
-import gsap from "gsap/all";
+import { AdaptiveDpr, CameraControls, ScreenSpace } from "@react-three/drei";
 import { City } from "./City";
 import {
   Autofocus,
@@ -23,7 +22,7 @@ const Scene = () => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const targetMouse = useRef({ x: 0, y: 0 });
 
-  //if you want to log camera positions
+  // if you want to log camera positions
   // useControls({
   //   "Log Camera Pos/Target": button(
   //     () => {
@@ -39,6 +38,18 @@ const Scene = () => {
   //   ),
   // });
 
+  // const {posx, posz} = useControls({
+  //   posx:{
+  //     value:390,
+  //     min: -1000,
+  //     max: 2000
+  //   },
+  //   posz:{
+  //     value:1830,
+  //     min: -1000,
+  //     max: 2000
+  //   }
+  // })
   
 
   // ✅ Track mouse movement for parallax
@@ -129,7 +140,9 @@ const Scene = () => {
       <directionalLight position={[0, 5, 0]} />
       <ambientLight />
 
-      <Birds position={[0, 400, 300]} />
+      <Birds radius={1000} />
+      <Birds position={[390,0,1830]} radius={800}/>
+      <AdaptiveDpr  pixelated />
     </>
   );
 };

@@ -1,1 +1,16 @@
+@font-face {
+    font-family: Balgin;
+    src: url("../public/fonts/balgin-extra-light.ttf");
+}
+
+@font-face {
+    font-family: Futura;
+    src: url("../public/fonts/Futura\ Regular.ttf");
+}
+
 @import "tailwindcss";
+
+@theme{
+    --font-balgin: Balgin, "sans-serif";
+    --font-futura: Futura, "sans-serif";
+}

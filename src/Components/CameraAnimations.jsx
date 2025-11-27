@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { usePaths } from "./PathsContext";
 import { pathData } from "./PathData";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from 'three'
 
 const categorycamera = {
@@ -17,7 +17,6 @@ const categorycamera = {
       z: -1370.578218337721,
     },
   },
-
   historical: {
     position: {
       x: 263.8662604526274,
@@ -106,16 +105,39 @@ const categorycamera = {
 
 const CameraAnimations = ({ cameraControlRef }) => {
   const disableAutoRotate = useRef(false);
-  const rotationOffset = useRef(0); // Track rotation offset for smooth resume
+  const rotationOffset = useRef(0);
   const lastTime = useRef(0);
   const { selectedPath, selectedCategory } = usePaths();
+  
+  // Parallax state
+  const mouse = useRef({ x: 0, y: 0 });
+  const smoothMouse = useRef({ x: 0, y: 0 });
+  const { gl } = useThree();
+
+  // Parallax settings - adjust these to your liking
+  const PARALLAX_STRENGTH = 50; // How much the camera moves (in world units)
+  const PARALLAX_SMOOTHING = 0.05; // Lower = smoother/slower (0.01-0.1 range)
+
+  // Track mouse position
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      // Normalize mouse position to -1 to 1 range
+      mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    };
+
+    const canvas = gl.domElement;
+    canvas.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      canvas.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [gl]);
 
   const goToPosition = (px, py, pz, tx, ty, tz) => {
     if (!cameraControlRef.current) return;
     const cam = cameraControlRef.current;
     cam.smoothTime = 0.7;
-
-    // Just one setLookAt call for smooth transition
     cam.setLookAt(px, py, pz, tx, ty, tz, true);
   };
 
@@ -140,17 +162,15 @@ const CameraAnimations = ({ cameraControlRef }) => {
       const { x: px, y: py, z: pz } = cameraData.position;
       const { x: tx, y: ty, z: tz } = cameraData.target;
 
-      // Store current azimuth angle before transitioning
       if (cameraControlRef.current) {
         rotationOffset.current = cameraControlRef.current.azimuthAngle;
       }
 
       goToPosition(px, py, pz, tx, ty, tz);
     } else {
-      // When returning to auto-rotate, capture current angle for smooth resume
       if (cameraControlRef.current) {
         rotationOffset.current = cameraControlRef.current.azimuthAngle;
-        lastTime.current = 0; // Reset time tracking
+        lastTime.current = 0;
       }
       resetPosition();
     }
@@ -158,18 +178,27 @@ const CameraAnimations = ({ cameraControlRef }) => {
 
   useFrame((state, delta) => {
     if (!cameraControlRef.current) return;
-    if (selectedCategory || selectedPath) return;
 
     const cam = cameraControlRef.current;
 
-    if (!disableAutoRotate.current) {
-      const rotationSpeed = 0.1; // Positive for counter-clockwise
-      
-      // Smoothly continue rotation from where it left off
+    // Smoothly interpolate mouse position (lerp)
+    smoothMouse.current.x += (mouse.current.x - smoothMouse.current.x) * PARALLAX_SMOOTHING;
+    smoothMouse.current.y += (mouse.current.y - smoothMouse.current.y) * PARALLAX_SMOOTHING;
+
+    // Apply parallax offset to the camera's focal offset
+    // This moves what the camera is looking at slightly based on mouse position
+    cam.setFocalOffset(
+      smoothMouse.current.x * PARALLAX_STRENGTH,
+      -smoothMouse.current.y * PARALLAX_STRENGTH,
+      0,
+      false // Don't animate, we're doing smooth lerp ourselves
+    );
+
+    // Auto-rotate logic (only when no category/path selected)
+    if (!selectedCategory && !selectedPath && !disableAutoRotate.current) {
+      const rotationSpeed = 0.1;
       lastTime.current += delta;
       const rotation = lastTime.current * rotationSpeed;
-      
-      // Add offset and normalize to 0-2π range
       cam.azimuthAngle = (rotationOffset.current - rotation) % (Math.PI * 2);
     }
 

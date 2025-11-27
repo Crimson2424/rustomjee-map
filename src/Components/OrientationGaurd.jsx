@@ -11,21 +11,39 @@ const OrientationGuard = ({ children }) => {
   // Detect iOS Safari (no fullscreen support)
   const isIOS = () => /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-  // Detect portrait-native devices (phones)
-  const isPortraitNativeDevice = () => {
-    return window.screen.height > window.screen.width;
+  // Detect mobile devices
+  const isMobileDevice = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
   };
 
   // Determines whether fullscreen SHOULD be required
   const shouldRequireFullscreen = () => {
-    // Desktop / laptop / tablets → no fullscreen needed
-    if (!isPortraitNativeDevice()) return false;
+    // Only require fullscreen on mobile devices
+    return isMobileDevice();
+  };
 
-    // iPhone Safari → fullscreen impossible
-    if (isIOS()) return false;
+  // Request fullscreen
+  const requestFullscreen = async () => {
+    const elem = document.documentElement;
 
-    // Android phones, iPhone Chrome, desktop Safari mobile emulation
-    return true;
+    try {
+      if (elem.requestFullscreen) {
+        await elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) {
+        // Safari
+        await elem.webkitRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        // Firefox
+        await elem.mozRequestFullScreen();
+      } else if (elem.msRequestFullscreen) {
+        // IE/Edge
+        await elem.msRequestFullscreen();
+      }
+    } catch (err) {
+      console.error("Fullscreen request failed:", err);
+    }
   };
 
   // GSAP entrance animation
@@ -42,10 +60,7 @@ const OrientationGuard = ({ children }) => {
   const checkOrientation = () => {
     const landscape = window.innerWidth > window.innerHeight;
     setIsLandscape(landscape);
-
-    if (landscape) {
-      setNeedsFullscreen(shouldRequireFullscreen());
-    }
+    setNeedsFullscreen(shouldRequireFullscreen());
   };
 
   const checkFullscreen = () => {
@@ -113,7 +128,7 @@ const OrientationGuard = ({ children }) => {
     );
   }
 
-  // 2. Landscape + fullscreen required + not fullscreen yet → show fullscreen instructions
+  // 2. Landscape + fullscreen required + not fullscreen yet → show fullscreen button
   if (needsFullscreen && !isFullscreen) {
     const mobileBrowser = navigator.userAgent.toLowerCase();
 
@@ -149,26 +164,63 @@ const OrientationGuard = ({ children }) => {
             Enter Fullscreen
           </h2>
 
-          {/* Safari Info */}
-          {isIOS() ? (
-            <p className="text-slate-400 text-sm">
-              Fullscreen is not supported on iOS Safari.  
-              Continue normally.
-            </p>
-          ) : (
-            <p className="text-slate-400 text-sm">
-              Please enter fullscreen using your browser controls.
-            </p>
+          <p className="text-slate-400 text-sm mb-4">
+            {isIOS()
+              ? "For the best experience, enter fullscreen mode"
+              : "Tap the button below to enter fullscreen mode"}
+          </p>
+
+          {/* Fullscreen Button */}
+          <button
+            onClick={requestFullscreen}
+            className="w-full bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+              />
+            </svg>
+            Go Fullscreen
+          </button>
+
+          {/* Continue Without Fullscreen - for iOS or as fallback */}
+          {isIOS() && (
+            <button
+              onClick={() => setNeedsFullscreen(false)}
+              className="w-full mt-3 bg-slate-700 hover:bg-slate-600 active:bg-slate-800 text-slate-200 font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+              Continue Anyway
+            </button>
           )}
 
           {/* Browser-specific tips */}
-          {!isIOS() && (
-            <p className="text-xs text-slate-500 mt-3">
-              {isChromeAndroid && "Tap the menu → Fullscreen"}
-              {isIphoneChrome && "Tap Chrome’s menu → Fullscreen"}
-              {!isChromeAndroid && !isIphoneChrome && "Press F11 or use browser fullscreen"}
-            </p>
-          )}
+          <p className="text-xs text-slate-500 mt-3">
+            {isIOS() && "iOS Safari has limited fullscreen support"}
+            {isChromeAndroid && "Or tap the menu → Fullscreen"}
+            {isIphoneChrome && "Or tap Chrome's menu → Fullscreen"}
+            {!isIOS() && !isChromeAndroid && !isIphoneChrome && "Or press F11 / use browser menu"}
+          </p>
         </div>
       </div>
     );

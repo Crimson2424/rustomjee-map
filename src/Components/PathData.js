@@ -5,11 +5,11 @@ export const pathData = {
       description:
         "Rustomjee Parishram is a high-class residential project that answers all the needs of luxury living in Pali Hill. Designed by the acclaimed Rustomjee developers.",
       distance: 3.6,
-      image:  "/images/parishram.webp",
+      image: "/images/parishram.webp",
       transport: {
-        car: 16,      // time in minutes
-        walk: 50,    // time in minutes
-        bike: 14,    // time in minutes
+        car: 16, // time in minutes
+        walk: 50, // time in minutes
+        bike: 14, // time in minutes
         transport: 50, // time in minutes (bus)
       },
       position: {
@@ -171,9 +171,9 @@ export const pathData = {
       distance: 3.4,
       image: "/images/panorama.webp",
       transport: {
-        car: 15 ,      // time in minutes
-        walk: 49 ,    // time in minutes
-        bike: 13 ,    // time in minutes
+        car: 15, // time in minutes
+        walk: 49, // time in minutes
+        bike: 13, // time in minutes
         transport: 50, // time in minutes (bus)
       },
       position: {
@@ -333,9 +333,9 @@ export const pathData = {
       distance: 3.4,
       image: "/images/crescent.webp",
       transport: {
-        car: 16 ,      // time in minutes
-        walk: 47 ,    // time in minutes
-        bike: 14 ,    // time in minutes
+        car: 16, // time in minutes
+        walk: 47, // time in minutes
+        bike: 14, // time in minutes
         transport: 45, // time in minutes (bus)
       },
       position: {
@@ -480,9 +480,9 @@ export const pathData = {
       distance: 2.0,
       image: "/images/la fontaine.webp",
       transport: {
-        car: 10 ,      // time in minutes
-        walk: 27 ,    // time in minutes
-        bike: 8 ,    // time in minutes
+        car: 10, // time in minutes
+        walk: 27, // time in minutes
+        bike: 8, // time in minutes
         transport: 24, // time in minutes (bus)
       },
       position: {
@@ -606,9 +606,9 @@ export const pathData = {
       distance: 0.3,
       image: "/images/mount mary church.webp",
       transport: {
-        car: 1 ,      // time in minutes
-        walk: 2 ,    // time in minutes
-        bike: 1 ,    // time in minutes
+        car: 1, // time in minutes
+        walk: 2, // time in minutes
+        bike: 1, // time in minutes
         transport: 1, // time in minutes (bus)
       },
       position: {
@@ -644,32 +644,20 @@ export const pathData = {
       distance: 0.7,
       image: "/images/bandra fort.webp",
       transport: {
-        car: 3 ,      // time in minutes
-        walk: 9 ,    // time in minutes
-        bike: 3 ,    // time in minutes
+        car: 3, // time in minutes
+        walk: 9, // time in minutes
+        bike: 3, // time in minutes
         transport: 1, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        301.0500476359952,
-        y
-        : 
-        686.5416018268675,
-        z
-        : 
-        942.3698481757424
+        x: 301.0500476359952,
+        y: 686.5416018268675,
+        z: 942.3698481757424,
       },
       target: {
-        x
-        : 
-        -398.9196612237428,
-        y
-        : 
-        31.8136907026098,
-        z
-        : 
-        52.5529444032373
+        x: -398.9196612237428,
+        y: 31.8136907026098,
+        z: 52.5529444032373,
       },
       points: [
         [-30.956580650830574, 0.42000001192091474, -30.141445962302413],
@@ -701,32 +689,20 @@ export const pathData = {
       distance: 1.1,
       image: "/images/St Andrews Church.webp",
       transport: {
-        car: 5 ,      // time in minutes
-        walk: 15 ,    // time in minutes
-        bike: 5 ,    // time in minutes
+        car: 5, // time in minutes
+        walk: 15, // time in minutes
+        bike: 5, // time in minutes
         transport: 14, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        1159.7779388238978,
-        y
-        : 
-        662.9183133696872,
-        z
-        : 
-        -339.6547836234682
+        x: 1159.7779388238978,
+        y: 662.9183133696872,
+        z: -339.6547836234682,
       },
       target: {
-        x
-        : 
-        29.081961210094065,
-        y
-        : 
-        15.381535632180999,
-        z
-        : 
-        -452.00726846871
+        x: 29.081961210094065,
+        y: 15.381535632180999,
+        z: -452.00726846871,
       },
       points: [
         [-28.886290382971765, 0.42000001192091474, -32.32885946485567],
@@ -802,32 +778,20 @@ export const pathData = {
       distance: 2.6,
       image: "/images/St.Anne's Church.webp",
       transport: {
-        car: 12 ,      // time in minutes
-        walk: 35 ,    // time in minutes
-        bike: 10 ,    // time in minutes
+        car: 12, // time in minutes
+        walk: 35, // time in minutes
+        bike: 10, // time in minutes
         transport: 33, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        1284.8262275335724,
-        y
-        : 
-        599.7386109103348,
-        z
-        : 
-        -1546.123254102808
+        x: 1284.8262275335724,
+        y: 599.7386109103348,
+        z: -1546.123254102808,
       },
       target: {
-        x
-        : 
-        212.3506384579035,
-        y
-        : 
-        25.49661533187165,
-        z
-        : 
-        -1066.0788868652896
+        x: 212.3506384579035,
+        y: 25.49661533187165,
+        z: -1066.0788868652896,
       },
       points: [
         [-29.79510614643823, 0.42000001192090053, -38.365199826529164],
@@ -940,32 +904,20 @@ export const pathData = {
       distance: 0.85,
       image: "/images/Bandstand Promenade.webp",
       transport: {
-        car: 4 ,      // time in minutes
-        walk: 11 ,    // time in minutes
-        bike: 1 ,    // time in minutes
+        car: 4, // time in minutes
+        walk: 11, // time in minutes
+        bike: 1, // time in minutes
         transport: 1, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        -892.8867358539027,
-        y
-        : 
-        461.4078112052157,
-        z
-        : 
-        133.06211907983317
+        x: -892.8867358539027,
+        y: 461.4078112052157,
+        z: 133.06211907983317,
       },
       target: {
-        x
-        : 
-        116.98633118268063,
-        y
-        : 
-        -231.26175776359483,
-        z
-        : 
-        -326.0300392765202
+        x: 116.98633118268063,
+        y: -231.26175776359483,
+        z: -326.0300392765202,
       },
       points: [
         [-32.16748121320893, 0.42000001192092895, -30.586298401577807],
@@ -997,36 +949,24 @@ export const pathData = {
     {
       name: "Carter Road",
       description:
-      "Carter Road is a popular waterfront promenade in Bandra West, known for its scenic views of the Arabian Sea, vibrant food scene, and various recreational and cultural activities.",
-    distance: 1.9,
-    image: "/images/Carter Road.webp",
-    transport: {
-      car: 10 ,      // time in minutes
-      walk: 26 ,    // time in minutes
-      bike: 9 ,    // time in minutes
-      transport: 24, // time in minutes (bus)
-    },
+        "Carter Road is a popular waterfront promenade in Bandra West, known for its scenic views of the Arabian Sea, vibrant food scene, and various recreational and cultural activities.",
+      distance: 1.9,
+      image: "/images/Carter Road.webp",
+      transport: {
+        car: 10, // time in minutes
+        walk: 26, // time in minutes
+        bike: 9, // time in minutes
+        transport: 24, // time in minutes (bus)
+      },
       position: {
-        x
-        : 
-        -1024.1953659237895,
-        y
-        : 
-        713.678031006564,
-        z
-        : 
-        -1335.551944408126
+        x: -1024.1953659237895,
+        y: 713.678031006564,
+        z: -1335.551944408126,
       },
       target: {
-        x
-: 
-219.79920144138276,
-y
-: 
--165.68984599481985,
-z
-: 
--1040.7372132419555
+        x: 219.79920144138276,
+        y: -165.68984599481985,
+        z: -1040.7372132419555,
       },
       points: [
         [-28.512042231950772, 0.42000001192092895, -39.2431692531442],
@@ -1146,36 +1086,24 @@ z
     {
       name: "Joggers Park",
       description:
-      "Jogger's Park is a seaside oval-shaped park with walking and jogging paths that overlooks the Arabian Sea.",
-    distance: 1.9,
-    image: "/images/Joggers Park (1).webp",
-    transport: {
-      car: 10 ,      // time in minutes
-      walk: 26 ,    // time in minutes
-      bike: 8 ,    // time in minutes
-      transport: 24, // time in minutes (bus)
-    },
+        "Jogger's Park is a seaside oval-shaped park with walking and jogging paths that overlooks the Arabian Sea.",
+      distance: 1.9,
+      image: "/images/Joggers Park (1).webp",
+      transport: {
+        car: 10, // time in minutes
+        walk: 26, // time in minutes
+        bike: 8, // time in minutes
+        transport: 24, // time in minutes (bus)
+      },
       position: {
-        x
-        : 
-        930.1413978285607,
-        y
-        : 
-        1129.9665260309926,
-        z
-        : 
-        -507.38941773540677
+        x: 930.1413978285607,
+        y: 1129.9665260309926,
+        z: -507.38941773540677,
       },
       target: {
-        x
-        : 
-        59.78641759528631,
-        y
-        : 
-        -150.21664965658493,
-        z
-        : 
-        -613.8756493250844
+        x: 59.78641759528631,
+        y: -150.21664965658493,
+        z: -613.8756493250844,
       },
       points: [
         [-29.683438081181976, 0.42000001192092895, -38.68480936153685],
@@ -1288,36 +1216,24 @@ z
     {
       name: "NMACC",
       description:
-      "The NMACC is a modern cultural hub that features a variety of venues for performing and visual arts.",
+        "The NMACC is a modern cultural hub that features a variety of venues for performing and visual arts.",
       distance: 7.7,
       image: "/images/NMACC.webp",
       transport: {
-        car: 24 ,      // time in minutes
-        walk: 90 ,    // time in minutes
-        bike: 22 ,    // time in minutes
+        car: 24, // time in minutes
+        walk: 90, // time in minutes
+        bike: 22, // time in minutes
         transport: 49, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        1675.9453797883805,
-        y
-        : 
-        2441.1607824288,
-        z
-        : 
-        1528.2619184982916
+        x: 1675.9453797883805,
+        y: 2441.1607824288,
+        z: 1528.2619184982916,
       },
       target: {
-        x
-        : 
-        1232.734890063027,
-        y
-        : 
-        -699.1130055553782,
-        z
-        : 
-        -1417.5215835691668
+        x: 1232.734890063027,
+        y: -699.1130055553782,
+        z: -1417.5215835691668,
       },
       points: [
         [109.44909015667531, 0.42000001192090053, -18.267005580033754],
@@ -1481,36 +1397,24 @@ z
     {
       name: "Jio World Drive",
       description:
-      "Jio World Drive is a shopping and lifestyle destination. The 17.5-acre complex features a mix of international and Indian brands, dining options, and entertainment.",
+        "Jio World Drive is a shopping and lifestyle destination. The 17.5-acre complex features a mix of international and Indian brands, dining options, and entertainment.",
       distance: 5.0,
-      image:  "/images/Jio World Drive.webp",
+      image: "/images/Jio World Drive.webp",
       transport: {
-        car: 17 ,      // time in minutes
-        walk: 65 ,    // time in minutes
-        bike: 15 ,    // time in minutes
+        car: 17, // time in minutes
+        walk: 65, // time in minutes
+        bike: 15, // time in minutes
         transport: 40, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        2839.329201292375,
-        y
-        : 
-        3416.569862478283,
-        z
-        : 
-        410.54179542741804
+        x: 2839.329201292375,
+        y: 3416.569862478283,
+        z: 410.54179542741804,
       },
       target: {
-        x
-        : 
-        1784.677176769015,
-        y
-        : 
-        -693.0984593714361,
-        z
-        : 
-        -994.5658463469683
+        x: 1784.677176769015,
+        y: -693.0984593714361,
+        z: -994.5658463469683,
       },
       points: [
         [110.7085176412188, 0.4200000119209574, -17.746926340049697],
@@ -1690,36 +1594,24 @@ z
     {
       name: "Jio World Plaza",
       description:
-      "It is part of the larger Jio World Centre, an 18.5-acre hub for business, leisure, and retail. It is accessible for visitors with disabilities and offers paid parking and valet services.",
+        "It is part of the larger Jio World Centre, an 18.5-acre hub for business, leisure, and retail. It is accessible for visitors with disabilities and offers paid parking and valet services.",
       distance: 7.8,
       image: "/images/Jio World plaza.webp",
       transport: {
-        car: 22 ,      // time in minutes
-        walk: 90 ,    // time in minutes
-        bike: 20 ,    // time in minutes
+        car: 22, // time in minutes
+        walk: 90, // time in minutes
+        bike: 20, // time in minutes
         transport: 48, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        2595.958725129989,
-        y
-        : 
-        3440.069092076823,
-        z
-        : 
-        519.716305070824
+        x: 2595.958725129989,
+        y: 3440.069092076823,
+        z: 519.716305070824,
       },
       target: {
-        x
-        : 
-        1618.1830811101543,
-        y
-        : 
-        -658.3776650090039,
-        z
-        : 
-        -971.149571764967
+        x: 1618.1830811101543,
+        y: -658.3776650090039,
+        z: -971.149571764967,
       },
       points: [
         [110.30408089961952, 0.42000001192092895, -18.162464227727554],
@@ -1907,36 +1799,24 @@ z
     {
       name: "Bay Club",
       description:
-      "The Bay Club is an exclusive, by-invitation-only private members club located in the Bandra Kurla Complex (BKC).",
+        "The Bay Club is an exclusive, by-invitation-only private members club located in the Bandra Kurla Complex (BKC).",
       distance: 5.2,
       image: "/images/Bay Club.webp",
       transport: {
-        car: 15 ,      // time in minutes
-        walk: 67 ,    // time in minutes
-        bike: 14 ,    // time in minutes
+        car: 15, // time in minutes
+        walk: 67, // time in minutes
+        bike: 14, // time in minutes
         transport: 46, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        1911.812395789054,
-        y
-        : 
-        1505.4536140670093,
-        z
-        : 
-        -2762.5466910227797
+        x: 1911.812395789054,
+        y: 1505.4536140670093,
+        z: -2762.5466910227797,
       },
       target: {
-        x
-        : 
-        1749.8176056007721,
-        y
-        : 
-        180.50779116703657,
-        z
-        : 
-        -944.4744475679545
+        x: 1749.8176056007721,
+        y: 180.50779116703657,
+        z: -944.4744475679545,
       },
       points: [
         [109.9946331871979, 0.42000001192092895, -17.440612125147908],
@@ -2082,36 +1962,24 @@ z
     {
       name: "Otters Club",
       description:
-      "Otters Club is a prominent, members-only club located in Bandra West, Mumbai, on Carter Road next to Joggers Park.",
+        "Otters Club is a prominent, members-only club located in Bandra West, Mumbai, on Carter Road next to Joggers Park.",
       distance: 2.0,
       image: "/images/Otters Club.webp",
       transport: {
-        car: 10 ,      // time in minutes
-        walk: 27 ,    // time in minutes
-        bike: 9 ,    // time in minutes
+        car: 10, // time in minutes
+        walk: 27, // time in minutes
+        bike: 9, // time in minutes
         transport: 25, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        1440.512602489265,
-        y
-        : 
-        979.0382605272641,
-        z
-        : 
-        -898.8469751654957
+        x: 1440.512602489265,
+        y: 979.0382605272641,
+        z: -898.8469751654957,
       },
       target: {
-        x
-        : 
-        814.639084152969,
-        y
-        : 
-        471.4997335698867,
-        z
-        : 
-        -832.194784670093
+        x: 814.639084152969,
+        y: 471.4997335698867,
+        z: -832.194784670093,
       },
       points: [
         [-28.610057290224404, 0.4200000119209574, -33.443164122082266],
@@ -2224,36 +2092,24 @@ z
     {
       name: "American School",
       description:
-      "The American School of Bombay is located in Bandra East. Founded in 1981, it is an independent, coeducational day school serving students from Pre-K through Grade 12.",
+        "The American School of Bombay is located in Bandra East. Founded in 1981, it is an independent, coeducational day school serving students from Pre-K through Grade 12.",
       distance: 7.6,
       image: "/images/American School.webp",
       transport: {
-        car: 21 ,      // time in minutes
-        walk: 90 ,    // time in minutes
-        bike: 19 ,    // time in minutes
+        car: 21, // time in minutes
+        walk: 90, // time in minutes
+        bike: 19, // time in minutes
         transport: 51, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        3395.0819089766333,
-        y
-        : 
-        1967.176289820458,
-        z
-        : 
-        -3962.7967468944707
+        x: 3395.0819089766333,
+        y: 1967.176289820458,
+        z: -3962.7967468944707,
       },
       target: {
-        x
-        : 
-        3296.3203071250477,
-        y
-        : 
-        -208.9423763780477,
-        z
-        : 
-        -1026.6403236493645
+        x: 3296.3203071250477,
+        y: -208.9423763780477,
+        z: -1026.6403236493645,
       },
       points: [
         [109.61632951427327, 0.42000001192092895, -17.06415630903706],
@@ -2437,36 +2293,24 @@ z
     {
       name: "Ascend",
       description:
-      "Ascend International School utilizes the International Baccalaureate curriculum, offering Career-related Programme for various age groups.",
+        "Ascend International School utilizes the International Baccalaureate curriculum, offering Career-related Programme for various age groups.",
       distance: 6.2,
       image: "/images/Ascend.webp",
       transport: {
-        car: 17 ,      // time in minutes
-        walk: 72 ,    // time in minutes
-        bike: 16 ,    // time in minutes
+        car: 17, // time in minutes
+        walk: 72, // time in minutes
+        bike: 16, // time in minutes
         transport: 50, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        555.3139975723161,
-        y
-        : 
-        1770.574098196877,
-        z
-        : 
-        -3229.213701698392
+        x: 555.3139975723161,
+        y: 1770.574098196877,
+        z: -3229.213701698392,
       },
       target: {
-        x
-        : 
-        2211.4484687835024,
-        y
-        : 
-        -605.0104431839859,
-        z
-        : 
-        -997.6049669154181
+        x: 2211.4484687835024,
+        y: -605.0104431839859,
+        z: -997.6049669154181,
       },
       points: [
         [111.37665715034814, 0.42000001192092895, -18.64006105053545],
@@ -2670,36 +2514,24 @@ z
     {
       name: "Ambani School",
       description:
-      "The Dhirubhai Ambani International School, commonly known as the Ambani School. It is situated in the Bandra Kurla Complex business district.",
+        "The Dhirubhai Ambani International School, commonly known as the Ambani School. It is situated in the Bandra Kurla Complex business district.",
       distance: 7.6,
       image: "/images/Ambani School.webp",
       transport: {
-        car: 20 ,      // time in minutes
-        walk: 90 ,    // time in minutes
-        bike: 18 ,    // time in minutes
+        car: 20, // time in minutes
+        walk: 90, // time in minutes
+        bike: 18, // time in minutes
         transport: 54, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        3304.43869692257,
-        y
-        : 
-        3474.8027607261515,
-        z
-        : 
-        -2695.0660042184236
+        x: 3304.43869692257,
+        y: 3474.8027607261515,
+        z: -2695.0660042184236,
       },
       target: {
-        x
-        : 
-        3351.6126535718836,
-        y
-        : 
-        -760.8614256777723,
-        z
-        : 
-        -1330.195649567003
+        x: 3351.6126535718836,
+        y: -760.8614256777723,
+        z: -1330.195649567003,
       },
       points: [
         [110.86776622685966, 0.42000001192092895, -18.63374322234168],
@@ -2892,36 +2724,24 @@ z
     {
       name: "Taj Lands End",
       description:
-      "Taj Lands End is a 5-star hotel located in Bandra West, Mumbai, offering luxury accommodations and views of the Arabian Sea and the Bandra Worli Sea Link.",
+        "Taj Lands End is a 5-star hotel located in Bandra West, Mumbai, offering luxury accommodations and views of the Arabian Sea and the Bandra Worli Sea Link.",
       distance: 0.65,
       image: "/images/Taj Lands End.webp",
       transport: {
-        car: 3 ,      // time in minutes
-        walk: 9 ,    // time in minutes
-        bike: 3 ,    // time in minutes
+        car: 3, // time in minutes
+        walk: 9, // time in minutes
+        bike: 3, // time in minutes
         transport: 1, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        -138.0240123393548,
-        y
-        : 
-        845.7518679461165,
-        z
-        : 
-        -1359.713108220963
+        x: -138.0240123393548,
+        y: 845.7518679461165,
+        z: -1359.713108220963,
       },
       target: {
-        x
-        : 
-        -190.87594831390683,
-        y
-        : 
-        -724.0958410233519,
-        z
-        : 
-        1000.358920279304
+        x: -190.87594831390683,
+        y: -724.0958410233519,
+        z: 1000.358920279304,
       },
       points: [
         [-31.79078311692456, 0.42000001192092895, -31.98768966800057],
@@ -2948,36 +2768,24 @@ z
     {
       name: "Lilavati",
       description:
-      "Lilavati Hospital & Research Centre is a prominent multi-specialty hospital located in Bandra West, Mumbai.",
+        "Lilavati Hospital & Research Centre is a prominent multi-specialty hospital located in Bandra West, Mumbai.",
       distance: 1.5,
       image: "/images/Lilavati.webp",
       transport: {
-        car: 8 ,      // time in minutes
-        walk: 19 ,    // time in minutes
-        bike: 6 ,    // time in minutes
+        car: 8, // time in minutes
+        walk: 19, // time in minutes
+        bike: 6, // time in minutes
         transport: 17, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        1406.022461897165,
-        y
-        : 
-        1380.7787819859784,
-        z
-        : 
-        -1250.8688329533884
+        x: 1406.022461897165,
+        y: 1380.7787819859784,
+        z: -1250.8688329533884,
       },
       target: {
-        x
-: 
-382.887713561042,
-y
-: 
--185.7946440202704,
-z
-: 
--505.94571299063335
+        x: 382.887713561042,
+        y: -185.7946440202704,
+        z: -505.94571299063335,
       },
       points: [
         [-29.253456023177478, 0.42000001192092895, -34.43724469907252],
@@ -3061,36 +2869,24 @@ z
     {
       name: "Hinduja Khar",
       description:
-      "The multi-specialty hospital provides a wide range of services and has on board specialists across more than 40 specialties.",
+        "The multi-specialty hospital provides a wide range of services and has on board specialists across more than 40 specialties.",
       distance: 3.7,
-      image:  "/images/Hinduja Khar.webp",
+      image: "/images/Hinduja Khar.webp",
       transport: {
-        car: 17 ,      // time in minutes
-        walk: 49 ,    // time in minutes
-        bike: 15 ,    // time in minutes
+        car: 17, // time in minutes
+        walk: 49, // time in minutes
+        bike: 15, // time in minutes
         transport: 30, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        1701.5088069147596,
-        y
-        : 
-        1985.6568162885692,
-        z
-        : 
-        422.99895854862643
+        x: 1701.5088069147596,
+        y: 1985.6568162885692,
+        z: 422.99895854862643,
       },
       target: {
-        x
-: 
-378.9193137848721,
-y
-: 
--90.09282694110611,
-z
-: 
--983.8327966718109
+        x: 378.9193137848721,
+        y: -90.09282694110611,
+        z: -983.8327966718109,
       },
       points: [
         [-29.19248426943841, 0.42000001192092895, -37.27587026841417],
@@ -3244,36 +3040,24 @@ z
     {
       name: "Asian Heart",
       description:
-      "The Asian Heart Institute, is one of India's leading and globally recognized specialty cardiac hospitals. It is renowned for its high success rates in complex heart surgeries.",
+        "The Asian Heart Institute, is one of India's leading and globally recognized specialty cardiac hospitals. It is renowned for its high success rates in complex heart surgeries.",
       distance: 6.3,
       image: "/images/Asian Heart (1).webp",
       transport: {
-        car: 16 ,      // time in minutes
-        walk: 80 ,    // time in minutes
-        bike: 15 ,    // time in minutes
+        car: 16, // time in minutes
+        walk: 80, // time in minutes
+        bike: 15, // time in minutes
         transport: 45, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        2812.9762914298494,
-        y
-        : 
-        3109.873433746346,
-        z
-        : 
-        -2193.081292609394
+        x: 2812.9762914298494,
+        y: 3109.873433746346,
+        z: -2193.081292609394,
       },
       target: {
-        x
-        : 
-        2859.045618826764,
-        y
-        : 
-        -423.7250857754902,
-        z
-        : 
-        -1226.0882514232792
+        x: 2859.045618826764,
+        y: -423.7250857754902,
+        z: -1226.0882514232792,
       },
       points: [
         [109.69805620337183, 0.42000001192092895, -19.08844724691653],
@@ -3458,173 +3242,147 @@ z
     {
       name: " Worli Sea Link",
       description:
-      "The Bandra-Worli Sea Lin, 5.6-kilometer-long cable-stayed bridge that connects the Bandra area in the western suburbs of Mumbai with Worli in South Mumbai.",
+        "The Bandra-Worli Sea Lin, 5.6-kilometer-long cable-stayed bridge that connects the Bandra area in the western suburbs of Mumbai with Worli in South Mumbai.",
       distance: 1.1,
       image: "/images/Worli Sea Link.webp",
       transport: {
-        car: 5 ,      // time in minutes
-        walk: 10 ,    // time in minutes
-        bike: 5 ,    // time in minutes
+        car: 5, // time in minutes
+        walk: 10, // time in minutes
+        bike: 5, // time in minutes
         transport: 8, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        1489.9498835221934,
-        y
-        : 
-        1757.8250464020769,
-        z
-        : 
-        488.7022949721729
+        x: -2297.6322802566533,
+        y: 445.3633049004953,
+        z: 1660.5941587244206,
       },
       target: {
-        x
-: 
-103.84200804892289,
-y
-: 
--247.6920888789985,
-z
-: 
--422.69505398518754
+        x: 82.713268678212,
+        y: -317.41867551023444,
+        z: 567.8514940311617,
       },
       points: [
-        [109.47944432296845, 0.42000001192092895, -17.5862041515488],
-        [119.82689085351308, 0.42000001192092895, -24.467197762560318],
-        [143.86361418630622, 0.42000001192092895, -40.31498769574546],
-        [160.77021693025563, 0.42000001192094316, -49.05390581212677],
-        [173.10321363908088, 0.42000001192092895, -49.76278574118436],
-        [183.06199159066387, 0.42000001192092895, -47.01899466082932],
-        [192.5615375492673, 0.42000001192092895, -42.4313796860354],
-        [201.54661274792193, 0.42000001192092895, -29.918090056567166],
-        [225.69995029075812, 0.42000001192092895, 4.312812604155226],
-        [227.07858315233284, 0.42000001192092895, 6.179027787094071],
-        [228.47873440805802, 0.42000001192092895, 7.466380510671968],
-        [229.8707083215022, 0.42000001192092895, 8.49501599957216],
-        [232.27560370046513, 0.42000001192094316, 9.409376773428278],
-        [235.22420947606588, 0.42000001192092895, 8.792821571252091],
-        [242.54431387591217, 0.42000001192094316, 3.3280178697837073],
-        [263.684663948286, 0.42000001192092895, -10.819247766664972],
-        [267.75243802017553, 0.42000001192092895, -20.325936007524263],
-        [285.6265340798336, 0.42000001192092895, -54.01235462559197],
-        [288.97058887819253, 0.42000001192092895, -92.94736845173458],
-        [292.8990455453336, 0.42000001192092895, -139.55192799361032],
-        [296.6087691418652, 0.42000001192092895, -167.68783434902429],
-        [302.7747046014465, 0.42000001192094316, -195.5098848741524],
-        [304.0900371615844, 0.42000001192094316, -210.97349489856487],
-        [302.06727069087583, 0.42000001192092895, -218.33589223535486],
-        [301.77798786012113, 0.42000001192092895, -219.59408977300754],
-        [301.35966631439214, 0.42000001192094316, -220.9335670885332],
-        [301.39246281222677, 0.42000001192092895, -221.99097038104725],
-        [302.09472406083887, 0.42000001192092895, -223.25883327814665],
-        [303.7978067805625, 0.42000001192092895, -224.26094703565278],
-        [308.95866555837756, 0.42000001192094316, -227.3465390105913],
-        [323.96627815063994, 0.42000001192091474, -233.3689367595642],
-        [341.95035577916383, 0.42000001192092895, -246.75099020455292],
-        [354.1340831009077, 0.42000001192092895, -268.7333050472129],
-        [358.8455185109492, 0.42000001192092895, -289.4957865548257],
-        [363.19945938517276, 0.42000001192094316, -339.0928738070279],
-        [365.80640481724026, 0.42000001192092895, -346.4735784495884],
-        [375.66499771765575, 0.42000001192092895, -363.85025414150414],
-        [390.4656987663001, 0.42000001192094316, -400.11174988023214],
-        [400.3186048307631, 0.42000001192094316, -437.6318969485361],
-        [405.91382470424, 0.42000001192092895, -458.0877478512854],
-        [421.30181369239904, 0.42000001192092895, -498.95640067131194],
-        [432.8467507465427, 1.1707166385650636, -524.91338253313],
-        [469.64750157362744, 1.1707166385650778, -550.7965373357385],
-        [508.1490502076144, 1.1707166385650636, -578.4528340818428],
-        [560.9647317881456, 1.1707166385650636, -610.7604584463376],
-        [616.9468608278461, 1.1707166385650494, -627.817692929006],
-        [636.4890268005734, 1.1707166385650636, -635.8256184284455],
-        [701.4636123484618, 1.1707166385650636, -661.792619636026],
-        [703.3708778275698, 1.1707166385650707, -662.3447198622597],
-        [704.9281094385776, 1.1707166385650636, -662.9844570828865],
-        [706.4468584703181, 1.1707166385650636, -663.2420398473156],
-        [707.3777150859145, 1.1707166385650636, -663.5338471274434],
-        [709.2114505580275, 1.1707166385650636, -663.3186871769216],
-        [710.7454141627677, 1.1707166385650636, -662.3171868852213],
-        [712.7475218454742, 1.1707166385650707, -659.9461004552311],
-        [715.2486394895624, 1.1707166385650636, -655.7471256277983],
-        [737.452106577381, 1.1707166385650636, -623.2293677506666],
-        [758.6273617189402, 1.1707166385650636, -585.0174089120951],
-        [760.5511340699275, 1.1707166385650636, -581.654374041669],
-        [760.9782667181133, 1.1707166385650636, -580.8726968007317],
-        [761.8067656054058, 1.1707166385650565, -579.2713098595527],
-        [762.1090714272282, 1.1707166385650636, -577.6310549011338],
-        [761.6919504396757, 1.1707166385650636, -576.2465521265868],
-        [760.5971419490535, 1.1707166385650636, -574.593095848369],
-        [759.1967717837585, 1.1707166385650636, -572.8130236094993],
-        [749.7565147346594, 1.1707166385650636, -565.341981871884],
-        [721.3591523319985, 1.1707166385650352, -546.5661311199187],
-        [683.3246159332397, 1.1707166385650494, -522.6015842761225],
-        [633.0589691640547, 1.1707166385650778, -488.8097874571899],
-        [584.7977331653052, 1.1707166385650636, -456.5562189660597],
-        [568.2609833965337, 1.1707166385650636, -442.7864898390985],
-        [542.5773259333117, 1.1707166385650494, -403.077773119867],
-        [521.8665984928199, 1.1707166385650636, -370.7622575941519],
-        [507.22027248165693, 1.170716638565092, -334.6019775844019],
-        [492.7575968457795, 1.1707166385650352, -293.4682350686195],
-        [484.62663392300806, 1.1707166385650636, -268.5233342076616],
-        [483.3514894055656, 1.1707166385650636, -246.4316540268963],
-        [485.619169737095, 1.1707166385650636, -237.1589855672187],
-        [486.89047038626126, 1.1707166385650636, -233.43945217733673],
-        [489.807809534233, 1.1707166385650636, -229.6467406984473],
-        [495.4764150713389, 1.1707166385650636, -223.86420421974097],
-        [559.0045922648433, 1.1707166385650636, -164.7262735301233],
-        [585.9294727630155, 1.1707166385650636, -139.71234267535175],
-        [602.4279172066849, 1.1707166385650636, -123.8950346137211],
-        [611.2050282202811, 1.1707166385650636, -112.78373981583351],
-        [617.710241964744, 1.1707166385650636, -101.95735642979126],
-        [623.9473993542003, 1.1707166385650636, -84.5995014197364],
-        [627.6474795602447, 1.1707166385650352, -55.95044893466283],
-        [622.5600433598086, 1.1707166385650636, -28.18541624968467],
-        [611.1343549603052, 1.1707166385650636, -0.5478175985689262],
-        [596.3548371481667, 1.1707166385650636, 29.293209478958214],
-        [591.6057695059936, 1.170716638565092, 39.505339699592746],
-        [580.1528787112047, 1.170716638565092, 54.94385013177945],
-        [569.3513537561065, 1.170716638565092, 62.099205951323725],
-        [514.2352823906708, 1.1707166385650352, 94.45204019581266],
-        [416.5805317841352, 1.1707166385650636, 152.04964625375143],
-        [341.10587944387555, 1.1707166385650778, 189.36926863591242],
-        [234.1548312704949, 1.1707166385650636, 240.58404927450323],
-        [199.45757464053892, 1.1707166385650636, 257.58035907201423],
-        [71.24669197364182, 1.1707166385650636, 313.73354736341304],
+        [111.21904746835548, 0.42000001192090053, -18.561056429864493],
+        [151.1044240427832, 0.42000001192090053, -44.49478429072772],
+        [160.57329668700777, 0.42000001192090053, -48.63931459792474],
+        [172.96594148190457, 0.42000001192090053, -49.598174641763336],
+        [182.61829782269433, 0.42000001192092895, -47.14057967657007],
+        [192.6461111446206, 0.42000001192092895, -42.58869015799695],
+        [211.56120385371696, 0.42000001192092895, -15.416295152723393],
+        [226.71102081456252, 0.42000001192094316, 5.509948850869932],
+        [228.04193394861113, 0.42000001192092895, 7.583962546899102],
+        [228.88820912246342, 0.42000001192094316, 9.021448270339306],
+        [230.07640905340645, 0.42000001192094316, 10.200520374205155],
+        [231.4415633900369, 0.42000001192091474, 10.560852383139832],
+        [233.91286408489123, 0.42000001192092895, 10.306495610283207],
+        [263.1678187062653, 0.42000001192092895, -10.158897655830145],
+        [284.9839972647824, 0.42000001192092895, -54.54641619539666],
+        [290.34219242591803, 0.42000001192092895, -111.51539522253131],
+        [296.5814238025598, 0.4200000119208721, -168.4460622026494],
+        [302.2872790636118, 0.42000001192092895, -195.18933138145343],
+        [303.3183177715166, 0.42000001192092895, -210.09230842593638],
+        [302.097713819755, 0.42000001192092895, -217.83046980601262],
+        [301.89615676065137, 0.42000001192090053, -218.71362457872704],
+        [301.5932115868077, 0.42000001192092895, -220.0410277336501],
+        [301.4962418083667, 0.42000001192092895, -221.57008227013964],
+        [302.0936589563905, 0.42000001192092895, -223.5390610651345],
+        [304.6731227611722, 0.42000001192092895, -225.08610023035763],
+        [316.88208145449244, 0.42000001192092895, -231.00207279582406],
+        [324.05556485484044, 0.42000001192092895, -233.96125598031395],
+        [341.731775941882, 0.42000001192090053, -246.40561909570636],
+        [354.6523153095866, 0.42000001192092895, -269.07209095851334],
+        [358.51519358178484, 0.42000001192092895, -289.53645595344545],
+        [361.1305824620681, 0.42000001192090053, -326.6995985450692],
+        [364.10372702555287, 0.42000001192092895, -342.2159507909935],
+        [376.249779099035, 0.42000001192092895, -363.8385862901759],
+        [390.86764614435185, 0.42000001192090053, -401.5838466523637],
+        [406.3000221074507, 0.4200000119209574, -457.8425230781569],
+        [421.7639630517581, 0.42000001192092895, -498.04426780206785],
+        [430.52115651241644, 1.1707166385650636, -522.359072682857],
+        [481.9587426037806, 1.1707166385650636, -560.1738503244723],
+        [517.7208303422346, 1.1707166385650067, -584.7627142534808],
+        [554.4910636289146, 1.1707166385650636, -607.0032283802226],
+        [563.3888914111394, 1.1707166385650067, -611.4915117954672],
+        [636.6303345275464, 1.1707166385651204, -636.3965984526765],
+        [703.9757547471036, 1.1707166385650636, -663.5182553668795],
+        [708.3382093594207, 1.1707166385650636, -663.8787240472992],
+        [711.276233743099, 1.1707166385650636, -663.5511882435762],
+        [713.9216677628895, 1.1707166385650636, -661.1717418478261],
+        [738.4815536936142, 1.170716638565092, -620.4558418270448],
+        [758.4065280108764, 1.1707166385650352, -586.6997636338731],
+        [761.7446364044249, 1.1707166385650636, -581.4650124004011],
+        [763.4128929709764, 1.1707166385650352, -579.4364737172732],
+        [764.6121147929204, 1.1707166385650352, -577.7820393901882],
+        [764.7230537275871, 1.1707166385650352, -575.905258376768],
+        [763.3292895983519, 1.1707166385650636, -573.7556392670417],
+        [754.96160219433, 1.170716638565092, -567.2456805353191],
+        [703.7081729093063, 1.1707166385650636, -531.033027387923],
+        [645.0220981639301, 1.1707166385650778, -491.81896219023736],
+        [573.0396111892505, 0.42000001192092895, -438.9674364777129],
+        [539.1755431925081, 1.1707166385650636, -388.54256119300976],
+        [519.2162693163647, 1.1707166385650636, -352.6882613399729],
+        [493.54235777283907, 1.1707166385650636, -282.24812516100076],
+        [486.7988922270922, 1.1707166385651204, -253.71459651012822],
+        [491.310594278523, 1.1707166385650636, -233.52964438812563],
+        [640.9347116450975, 1.1707166385650636, -100.4625837851972],
+        [681.5080969437588, 1.1707166385650636, -65.73236918451299],
+        [684.6044791641242, 1.1707166385650636, -63.254682578838214],
+        [686.8616837237371, 1.1707166385650352, -61.53541402389705],
+        [688.5803349456878, 1.1707166385650636, -59.55216593591935],
+        [688.5157560973677, 1.1707166385650636, -57.52267598043227],
+        [686.2228644347638, 1.1707166385650636, -53.56961652229617],
+        [599.4226890538498, 1.17071663856495, 36.70858065854043],
+        [579.8220525452623, 1.1707166385650067, 55.615508417112295],
+        [420.92626663417246, 1.1707166385650636, 149.15258141507962],
+        [239.83866197655186, 1.1707166385650636, 235.4857892492078],
+        [76.45258355036916, 1.1707166385650067, 310.10555656776876],
+        [65.54394824033781, 1.4872378681231408, 316.6643636616867],
+        [3.759380954683621, 8.546049148081972, 344.70948130198644],
+        [-146.20590520993235, 25.876846322806525, 417.3643454096845],
+        [-150.47100609012497, 26.218035812378044, 418.2885696772085],
+        [-173.2886468444965, 26.21803581237793, 430.8749854408367],
+        [-244.66165013233737, 26.218035812377874, 466.37492909627383],
+        [-280.3358673849468, 26.21803581237793, 490.2193716157958],
+        [-321.5851432619817, 26.218035812377874, 522.4322442039878],
+        [-357.8090738532676, 26.21803581237793, 553.3241781933995],
+        [-395.4246727150441, 26.21803581237793, 594.2698015477436],
+        [-427.3427026367065, 26.218035812377902, 633.886614021467],
+        [-456.7425804557362, 26.21803581237793, 678.6878720594947],
+        [-482.0410950164024, 26.218035812377988, 721.5171282193832],
+        [-502.2462175513545, 26.218035812377902, 770.1043392742823],
+        [-519.2774273276895, 26.218035812377988, 816.7945248591718],
+        [-531.9734901410078, 26.21803581237793, 864.5891830203888],
+        [-549.3357880331876, 26.21803581237796, 932.1499613365573],
+        [-570.2981216020454, 26.21803581237793, 1020.6361638152632],
+        [-619.4954347187316, 26.21803581237793, 1218.7356568935982],
+        [-677.9253235692231, 26.218035812377874, 1462.9663261832345],
+        [-723.7539573318684, 26.21803581237793, 1647.9969879387497],
+        [-785.6395272653247, 26.21803581237793, 1907.5052703802914],
+        [-843.9040148887649, 26.218035812377902, 2148.0661114326726],
+        [-959.762521127734, 26.21803581237793, 2627.9578352751632],
       ],
     },
     {
       name: "Western express highway",
       description:
-      "The Western Express Highway, is a major 8-to-10-lane arterial road in Mumbai that serves as a primary north-south connector for the city and its suburbs.",
+        "The Western Express Highway, is a major 8-to-10-lane arterial road in Mumbai that serves as a primary north-south connector for the city and its suburbs.",
       distance: 5.7,
       image: "/images/Western express highway.webp",
       transport: {
-        car: 15 ,      // time in minutes
-        walk: 72 ,    // time in minutes
-        bike: 13 ,    // time in minutes
+        car: 15, // time in minutes
+        walk: 72, // time in minutes
+        bike: 13, // time in minutes
         transport: 45, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        1148.843165361391,
-        y
-        : 
-        2018.283604059103,
-        z
-        : 
-        767.7160056478551
+        x: 1148.843165361391,
+        y: 2018.283604059103,
+        z: 767.7160056478551,
       },
       target: {
-        x
-: 
-802.7209941552744,
-y
-: 
--548.279780004608,
-z
-: 
--914.1724891178942
+        x: 802.7209941552744,
+        y: -548.279780004608,
+        z: -914.1724891178942,
       },
       points: [
         [109.7705476157546, 0.42000001192092895, -17.5896825188004],
@@ -3748,36 +3506,24 @@ z
     {
       name: "Airport connectivity",
       description:
-      "Chhatrapati Shivaji Maharaj International Airport, is the primary and second busiest airport in India after Delhi.",
+        "Chhatrapati Shivaji Maharaj International Airport, is the primary and second busiest airport in India after Delhi.",
       distance: 9.6,
       image: "/images/Airport connectivity.webp",
       transport: {
-        car: 26,      // time in minutes
-        walk: 95,    // time in minutes
-        bike: 23,    // time in minutes
+        car: 26, // time in minutes
+        walk: 95, // time in minutes
+        bike: 23, // time in minutes
         transport: 50, // time in minutes (bus)
       },
       position: {
-        x
-        : 
-        2147.4109955863437,
-        y
-        : 
-        3241.314615823617,
-        z
-        : 
-        -460.6748665298344
+        x: 2147.4109955863437,
+        y: 3241.314615823617,
+        z: -460.6748665298344,
       },
       target: {
-        x
-: 
-989.8707074444161,
-y
-: 
--538.9393367887246,
-z
-: 
--1559.0163209513873
+        x: 989.8707074444161,
+        y: -538.9393367887246,
+        z: -1559.0163209513873,
       },
       points: [
         [109.67889796248141, 0.42000001192092895, -17.654487821191367],
@@ -3952,6 +3698,885 @@ z
         [2369.1355591799806, 1.1707166385650636, -5118.464227052475],
       ],
     },
+    {
+      name: "Versova Bandra sea link (Future)",
+      description:
+        "The Versova-Bandra Sea Link, is a 17.17-kilometer sea bridge being built in Mumbai to connect Bandra to Versova",
+        distance: 1.5,
+        image: "/images/versova.webp",
+        transport: {
+          car: 7, // time in minutes
+          walk: 15, // time in minutes
+          bike: 8, // time in minutes
+          transport: 10, // time in minutes (bus)
+        },
+      position: {
+        x
+        : 
+        -3026.9308070061365,
+        y
+        : 
+        1211.8725451742428,
+        z
+        : 
+        -253.472251857909
+      },
+      target: {
+        x
+        : 
+        -755.1047139040253,
+        y
+        : 
+        -78.49325293502126,
+        z
+        : 
+        -1488.838926253103,
+      },
+      points: [
+        [
+          109.82874419819518,
+          0.42000001192092895,
+          -17.695344846445124
+        ],
+        [
+          150.1676476335199,
+          0.42000001192092895,
+          -44.83453355710242
+        ],
+        [
+          160.35477850357347,
+          0.4200000119209574,
+          -48.01944419996158
+        ],
+        [
+          173.20868146933913,
+          0.42000001192092895,
+          -49.34472544797052
+        ],
+        [
+          181.45011250351672,
+          0.4200000119209574,
+          -46.682714981892275
+        ],
+        [
+          192.76946432983527,
+          0.42000001192092895,
+          -41.49924870805859
+        ],
+        [
+          225.9195156073713,
+          0.42000001192092895,
+          5.073840341370783
+        ],
+        [
+          227.91108990865746,
+          0.42000001192092895,
+          7.301303363084401
+        ],
+        [
+          229.11494222849433,
+          0.42000001192091474,
+          8.710774492511291
+        ],
+        [
+          231.48270394561882,
+          0.42000001192091474,
+          10.200438878899831
+        ],
+        [
+          263.7294662083966,
+          0.42000001192094316,
+          -10.003306129189781
+        ],
+        [
+          285.5167933046105,
+          0.4200000119209574,
+          -54.03814691012741
+        ],
+        [
+          286.43490830908786,
+          0.42000001192092895,
+          -58.61724818882948
+        ],
+        [
+          290.40368686323745,
+          0.42000001192092895,
+          -113.35220231926462
+        ],
+        [
+          297.33287844500296,
+          0.4200000119209574,
+          -168.2591318319059
+        ],
+        [
+          302.455931208244,
+          0.4200000119209574,
+          -194.3465788031521
+        ],
+        [
+          303.9653331870395,
+          0.42000001192090053,
+          -210.18132720788182
+        ],
+        [
+          302.24422810082615,
+          0.42000001192091474,
+          -217.65102860736414
+        ],
+        [
+          301.69042052447844,
+          0.42000001192091474,
+          -219.20828757723828
+        ],
+        [
+          301.1089777603129,
+          0.42000001192094316,
+          -220.53778911873832
+        ],
+        [
+          301.2604215269969,
+          0.42000001192092895,
+          -222.0521487503367
+        ],
+        [
+          302.23671345790217,
+          0.42000001192094316,
+          -223.01748922178353
+        ],
+        [
+          304.80053747445095,
+          0.42000001192092895,
+          -224.50291995147873
+        ],
+        [
+          327.1225903390641,
+          0.42000001192091474,
+          -235.6363148404857
+        ],
+        [
+          341.6403905118009,
+          0.42000001192091474,
+          -246.25956047920636
+        ],
+        [
+          354.3063672949834,
+          0.42000001192092895,
+          -268.6561340217629
+        ],
+        [
+          358.554100918843,
+          0.42000001192092895,
+          -288.9655444375856
+        ],
+        [
+          359.4909359187998,
+          0.42000001192092895,
+          -305.47935257704376
+        ],
+        [
+          364.5033896414633,
+          0.42000001192092895,
+          -343.6672836359203
+        ],
+        [
+          375.37177299215773,
+          0.42000001192092895,
+          -363.7690717687009
+        ],
+        [
+          400.1278647285375,
+          0.42000001192090053,
+          -437.651428436979
+        ],
+        [
+          431.7738481474521,
+          1.1707166385650636,
+          -523.8164592367885
+        ],
+        [
+          434.8129250497486,
+          1.170716638565092,
+          -526.310930068314
+        ],
+        [
+          514.5307550166752,
+          1.1707166385650352,
+          -582.4533011884153
+        ],
+        [
+          562.7705224506232,
+          1.1707166385650636,
+          -611.3150000744438
+        ],
+        [
+          636.622123862429,
+          1.1707166385650636,
+          -635.447966147764
+        ],
+        [
+          688.1316790043534,
+          1.170716638565092,
+          -655.7397673085544
+        ],
+        [
+          701.25686892121,
+          1.1707166385650636,
+          -660.7743670271836
+        ],
+        [
+          705.9487905330536,
+          1.1707166385650636,
+          -661.755721899975
+        ],
+        [
+          708.4549295461237,
+          1.1707166385650636,
+          -662.0616586573619
+        ],
+        [
+          710.6467813040482,
+          1.1707166385650636,
+          -661.8689396076039
+        ],
+        [
+          711.8904561714725,
+          1.1707166385650636,
+          -661.3647982693942
+        ],
+        [
+          712.6543203389116,
+          1.1707166385650636,
+          -660.1159140071337
+        ],
+        [
+          737.4042702969219,
+          1.1707166385650636,
+          -623.1182487670709
+        ],
+        [
+          761.0313356288249,
+          1.1707166385650636,
+          -583.0671683496026
+        ],
+        [
+          761.9741686758497,
+          1.1707166385650636,
+          -580.0937709070394
+        ],
+        [
+          763.1783133281272,
+          1.1707166385650636,
+          -578.4071364395393
+        ],
+        [
+          763.323081406839,
+          1.1707166385650636,
+          -576.295156865853
+        ],
+        [
+          762.9649126676688,
+          1.1707166385650636,
+          -574.2369707548004
+        ],
+        [
+          761.7939200484471,
+          1.170716638565092,
+          -570.643261080843
+        ],
+        [
+          704.362398056505,
+          0.42000001192092895,
+          -530.7255178491715
+        ],
+        [
+          573.0185075961211,
+          0.42000001192092895,
+          -440.04051768999625
+        ],
+        [
+          538.4865788074989,
+          1.1707166385650636,
+          -387.44007231498375
+        ],
+        [
+          519.1019220738849,
+          1.1707166385650636,
+          -347.07969766459803
+        ],
+        [
+          492.9998130173065,
+          1.1707166385650636,
+          -280.50273866106477
+        ],
+        [
+          490.83855511945274,
+          0.42000001192092895,
+          -236.24786884654512
+        ],
+        [
+          637.7851291053735,
+          1.1707166385650352,
+          -103.59186330547575
+        ],
+        [
+          682.3892493513666,
+          1.1707166385650636,
+          -65.29741547281876
+        ],
+        [
+          685.528860679981,
+          1.1707166385650636,
+          -63.34814125017496
+        ],
+        [
+          687.5724356669594,
+          1.1707166385650636,
+          -60.8975323356377
+        ],
+        [
+          689.474969411283,
+          1.1707166385650636,
+          -58.69912177582987
+        ],
+        [
+          689.3032071281127,
+          1.1707166385650636,
+          -56.61788417730354
+        ],
+        [
+          687.6084798208902,
+          1.170716638565092,
+          -54.01859610277105
+        ],
+        [
+          603.9272654997875,
+          1.1707166385650636,
+          33.601164336938965
+        ],
+        [
+          580.699640291489,
+          1.1707166385650636,
+          56.474863156401746
+        ],
+        [
+          523.1255438960629,
+          1.1707166385650636,
+          91.69685133383001
+        ],
+        [
+          419.6852906709988,
+          1.170716638565092,
+          149.54919581570095
+        ],
+        [
+          245.81337052416706,
+          1.1707166385650352,
+          234.3798128139078
+        ],
+        [
+          73.32133236950176,
+          0.1205635307262537,
+          313.1011760913825
+        ],
+        [
+          -113.78838128472307,
+          9.480956263772663,
+          376.9854078475564
+        ],
+        [
+          -262.29730005788815,
+          18.01998593165376,
+          398.25950887610816
+        ],
+        [
+          -570.0731721055217,
+          25.886419593736147,
+          414.93568816033076
+        ],
+        [
+          -665.897773645308,
+          25.844120637258012,
+          398.3570374705123
+        ],
+        [
+          -811.5854210729212,
+          25.88102472506625,
+          357.39706220830885
+        ],
+        [
+          -903.0502703323141,
+          25.887064230299014,
+          318.9350838416449
+        ],
+        [
+          -989.6408898373434,
+          25.867269185982533,
+          268.916838540732
+        ],
+        [
+          -1029.8784342545364,
+          25.890640095311934,
+          239.18464045678775
+        ],
+        [
+          -1065.5638849723855,
+          25.897995168206474,
+          203.93194218748613
+        ],
+        [
+          -1093.103013450629,
+          25.88952976875407,
+          164.74491388517345
+        ],
+        [
+          -1115.498964869208,
+          25.870057481534896,
+          120.26809542953742
+        ],
+        [
+          -1133.8475688229742,
+          25.90409549439931,
+          73.92168837497047
+        ],
+        [
+          -1154.9187723432633,
+          25.88803114443959,
+          -23.830651364165533
+        ],
+        [
+          -1163.6123638343474,
+          25.887858595946792,
+          -125.50897238859034
+        ],
+        [
+          -1162.460713330644,
+          25.902307122597445,
+          -355.27007273689014
+        ],
+        [
+          -1124.2368098881193,
+          25.920366521460945,
+          -682.1747521908146
+        ],
+        [
+          -1081.9816659471312,
+          25.906805292964517,
+          -1037.2157643251867
+        ],
+        [
+          -1048.2453146551115,
+          26.173583145141603,
+          -1310.2823790361326
+        ],
+        [
+          -1002.958300606083,
+          25.878735656168995,
+          -1697.0292328921896
+        ],
+        [
+          -968.6577112480268,
+          25.917853721890648,
+          -2000.1801249311593
+        ],
+        [
+          -912.8387364771293,
+          25.86625926228498,
+          -2457.015949780982
+        ],
+        [
+          -875.0930064060572,
+          25.89207933700879,
+          -2762.5878520285696
+        ],
+        [
+          -731.147305952938,
+          26.44718765854577,
+          -3776.047606591863
+        ],
+        [
+          -656.2302267724381,
+          26.173583145141603,
+          -4487.368696760692
+        ],
+        [
+          -651.0050927487946,
+          25.61553108215332,
+          -4796.819666523397
+        ],
+        [
+          -655.8127475885763,
+          24.793093833303143,
+          -4950.4112730225115
+        ],
+        [
+          -663.3931978739497,
+          24.23752671576761,
+          -5053.454814141935
+        ],
+        [
+          -668.9016310843631,
+          24.240907620284414,
+          -5104.315811715347
+        ],
+        [
+          -680.3340342858087,
+          23.383326644897462,
+          -5206.411084701556
+        ],
+        [
+          -713.6695885218278,
+          22.027455670961498,
+          -5407.1352831496115
+        ],
+        [
+          -765.392931063092,
+          20.03502571105957,
+          -5640.471827108595
+        ],
+        [
+          -811.1410458245277,
+          19.208625439822978,
+          -5835.948267816373
+        ],
+        [
+          -855.1167892709573,
+          18.91892158508301,
+          -6032.932924792038
+        ]
+      ],
+    },
+    {
+      name: "Mumbai Coastal Road Project (Future)",
+      description:
+        "The Mumbai Coastal Road Project, is a major 29.2 km expressway designed to decongest traffic along Mumbai's western coastline",
+        distance: 1.1,
+        image: "/images/coastal road.webp",
+        transport: {
+          car: 5, // time in minutes
+          walk: 10, // time in minutes
+          bike: 5, // time in minutes
+          transport: 8, // time in minutes (bus)
+        },
+      position: {
+        x
+        : 
+        -771.066041520575,
+        y
+        : 
+        793.9182738413781,
+        z
+        : 
+        -1624.9259850737374
+      },
+      target: {
+        x
+        : 
+        165.6565063710866,
+        y
+        : 
+        -303.8777756143918,
+        z
+        : 
+        -78.23203327486466
+      },
+      points: [
+        [
+          110.03292958023326,
+          0.42000001192092895,
+          -17.948170547468806
+        ],
+        [
+          150.56806802175083,
+          0.42000001192092895,
+          -44.4643333053464
+        ],
+        [
+          159.89101898807917,
+          0.4200000119209574,
+          -48.18370942533426
+        ],
+        [
+          173.46728572457255,
+          0.42000001192092895,
+          -50.01020948033684
+        ],
+        [
+          183.1211610639332,
+          0.4200000119209574,
+          -47.08764154871335
+        ],
+        [
+          192.45393871620217,
+          0.4200000119209574,
+          -41.984602268065686
+        ],
+        [
+          227.12082844770475,
+          0.42000001192092895,
+          5.962285690382828
+        ],
+        [
+          228.07874194198666,
+          0.42000001192094316,
+          7.903927992344279
+        ],
+        [
+          229.1780711480983,
+          0.42000001192092895,
+          8.992692820457478
+        ],
+        [
+          230.3697954767688,
+          0.42000001192094316,
+          9.766922224738039
+        ],
+        [
+          232.05659977233427,
+          0.42000001192091474,
+          10.363280284175005
+        ],
+        [
+          263.09743469526006,
+          0.42000001192091474,
+          -10.43361624885162
+        ],
+        [
+          284.890835298095,
+          0.42000001192091474,
+          -54.86504998062327
+        ],
+        [
+          290.1142081243588,
+          0.42000001192092895,
+          -113.7728174739417
+        ],
+        [
+          296.47958708183455,
+          0.4200000119209574,
+          -169.27521860142548
+        ],
+        [
+          304.0227819276081,
+          0.42000001192092895,
+          -209.41857847928136
+        ],
+        [
+          301.248487703974,
+          0.42000001192090053,
+          -217.79475105077688
+        ],
+        [
+          300.79282207063875,
+          0.42000001192092895,
+          -219.4866694547547
+        ],
+        [
+          300.6196453916657,
+          0.4200000119209574,
+          -220.82401466923682
+        ],
+        [
+          301.1252923799175,
+          0.42000001192092895,
+          -222.42676833161474
+        ],
+        [
+          303.2413875832092,
+          0.42000001192092895,
+          -224.40669394866205
+        ],
+        [
+          322.9997329937944,
+          0.4200000119209574,
+          -234.2482079354537
+        ],
+        [
+          341.04893008923364,
+          0.42000001192092895,
+          -245.91824180070608
+        ],
+        [
+          354.3770603230025,
+          0.42000001192090053,
+          -269.0751700660774
+        ],
+        [
+          359.67629868113045,
+          0.42000001192090053,
+          -316.619718278104
+        ],
+        [
+          364.0693728673764,
+          0.4200000119209574,
+          -341.29157290477417
+        ],
+        [
+          368.6847127808238,
+          0.42000001192090053,
+          -351.6110715859522
+        ],
+        [
+          375.4229503921707,
+          0.42000001192092895,
+          -363.823770075326
+        ],
+        [
+          391.66312592001225,
+          0.42000001192092895,
+          -405.8291246489496
+        ],
+        [
+          404.35940824368254,
+          0.42000001192090053,
+          -451.96166167711567
+        ],
+        [
+          432.33646817330833,
+          1.1707166385650636,
+          -523.8949579231956
+        ],
+        [
+          437.5509688520995,
+          1.1707166385650636,
+          -527.4234375873555
+        ],
+        [
+          514.8962814458481,
+          1.1707166385650352,
+          -583.53029890475
+        ],
+        [
+          562.6397096138251,
+          1.1707166385650636,
+          -611.2282496133842
+        ],
+        [
+          636.4655579962971,
+          1.1707166385650636,
+          -634.8431274622801
+        ],
+        [
+          700.4072525395335,
+          1.1707166385650636,
+          -662.1020932790207
+        ],
+        [
+          707.5367895807981,
+          1.1707166385650636,
+          -664.2190028669881
+        ],
+        [
+          711.5196933201818,
+          1.1707166385650636,
+          -665.6451571449919
+        ],
+        [
+          713.4698968071154,
+          1.1707166385650636,
+          -664.0687312632828
+        ],
+        [
+          730.1110311319416,
+          1.170716638565092,
+          -637.9303863026087
+        ],
+        [
+          758.1453643310434,
+          1.1707166385650067,
+          -587.2629947637917
+        ],
+        [
+          760.9307419452957,
+          1.1707166385650352,
+          -582.4939572480507
+        ],
+        [
+          763.1054115919701,
+          1.1707166385650636,
+          -580.2808336319637
+        ],
+        [
+          765.2982963396556,
+          1.170716638565092,
+          -575.3914862230771
+        ],
+        [
+          762.6874765368452,
+          1.170716638565092,
+          -571.015852923821
+        ],
+        [
+          704.2317449652314,
+          0.42000001192092895,
+          -531.0812866315669
+        ],
+        [
+          572.0811438410453,
+          0.42000001192092895,
+          -438.75310190426154
+        ],
+        [
+          540.9423895829763,
+          1.1707166385650636,
+          -394.84169447963984
+        ],
+        [
+          517.7995093189312,
+          1.1707166385650636,
+          -350.872667702658
+        ],
+        [
+          493.98526103687306,
+          1.170716638565092,
+          -282.70835431107247
+        ],
+        [
+          491.9818869744154,
+          0.42000001192092895,
+          -234.95872369252436
+        ],
+        [
+          638.1293904460832,
+          1.1707166385650352,
+          -103.68258245261642
+        ],
+        [
+          677.8023952752931,
+          1.1707166385650636,
+          -66.15250070445539
+        ],
+        [
+          684.2551630370078,
+          1.1707166385650636,
+          -60.44235394233114
+        ],
+        [
+          687.0287100434242,
+          1.1707166385650636,
+          -58.56594093184373
+        ],
+        [
+          687.9051115948374,
+          1.1707166385650636,
+          -55.287987227553764
+        ],
+        [
+          675.083757334031,
+          1.1707166385650067,
+          -40.92178672823162
+        ],
+        [
+          586.3733608447385,
+          1.1707166385650636,
+          51.070498329595964
+        ],
+        [
+          542.8000513342975,
+          1.1707166385650636,
+          79.0247677603792
+        ]
+      ],
+    },
   ],
-  connectivity_future: [],
+  
 };

@@ -1,8 +1,4 @@
-import {
-  MeshReflectorMaterial,
-  useGLTF,
-  useKTX2,
-} from "@react-three/drei";
+import { MeshReflectorMaterial, useGLTF, useKTX2 } from "@react-three/drei";
 import * as THREE from "three";
 import { Underwaterland } from "./UnderwaterLand";
 import { Sea } from "./Sea";
@@ -18,7 +14,6 @@ import { MainBuilding } from "./MainBuilding";
 
 export function City(props) {
   const { nodes, materials } = useGLTF("models/rustomjeeEditedmap2.glb");
-
 
   const roadNames = [
     "Road-1",
@@ -342,6 +337,31 @@ export function City(props) {
     [-110.81537458481944, 4.042808678030549, -1728.6307847902208],
   ];
 
+  const newBridgeSamples5 = [
+    [-1012.675777915254, 26.051394577026425, -1957.2232312707065],
+    [-1040.7529119959036, 26.051394577026368, -1909.1739608115704],
+    [-1109.4907661538527, 26.051394577026368, -1835.686949505638],
+    [-1160.7240489953183, 26.051394577026368, -1789.2143492247815],
+    [-1191.852268750823, 26.05139457702631, -1750.9098570258247],
+    [-1211.2048849637558, 26.051394577026368, -1717.9225784739137],
+    [-1226.3684566405373, 25.15897569686552, -1667.9911033752396],
+    [-1226.8936722741855, 23.80452006068037, -1616.6761132547954],
+    [-1213.8617510152908, 22.459387979675792, -1567.2836728388766],
+    [-1189.8158059060133, 21.084631007940228, -1522.5601683702635],
+    [-1155.4563281771007, 20.189632671552484, -1485.1237127216054],
+    [-1118.1694623563744, 19.72209068975729, -1452.4171797112267],
+    [-1074.5796851341638, 19.716461663685646, -1423.6306778799908],
+    [-977.3624561836277, 21.532784483357883, -1392.7119509588802],
+    [-925.4120572973534, 23.278221844517358, -1393.360607805218],
+    [-875.7567773672672, 24.66638608642617, -1407.027156599066],
+    [-833.452298656126, 25.566810920709482, -1434.135267364576],
+    [-799.234883180241, 26.03016692597077, -1471.3137612403543],
+    [-776.5988074304423, 26.05139457702634, -1504.1041909630967],
+    [-725.2974133384196, 26.05139457702634, -1604.128392056772],
+    [-657.1719304297221, 26.051394577026368, -1678.8541773516854],
+    [-609.9697258060678, 26.051394577026368, -1701.37406205148],
+  ];
+
   const {
     bakedLandTexture,
     bakedLand2Texture,
@@ -455,7 +475,7 @@ export function City(props) {
           key === "Road-10" ||
           key === "Plane"
         ) {
-          mat = new THREE.MeshBasicMaterial({ color: '#324357' }); // change color if needed
+          mat = new THREE.MeshBasicMaterial({ color: "#324357" }); // change color if needed
         }
 
         // if (key === "Bridge_Baked") {
@@ -513,6 +533,7 @@ export function City(props) {
       <NewBridges
         newBridgeOneTexture={newBridgeOneTexture}
         newBridgeTwoTexture={newBridgeTwoTexture}
+        roadNames={roadNames}
       />
       <MainBuilding />
       {/* <SmallSand /> */}
@@ -669,11 +690,21 @@ export function City(props) {
         laneOffset={0} // optional lateral offset to create a "lane" look
         showDebug={false} // set false to hide debug lines & points
         speedRange={[0.03, 0.03]}
-        // reversed
+        reversed
       />
 
       <TrafficFromSamples
         samples={newBridgeSamples4}
+        particleCount={30}
+        particleScale={9.0}
+        laneOffset={0} // optional lateral offset to create a "lane" look
+        showDebug={false} // set false to hide debug lines & points
+        speedRange={[0.03, 0.03]}
+        reversed
+      />
+
+      <TrafficFromSamples
+        samples={newBridgeSamples5}
         particleCount={30}
         particleScale={9.0}
         laneOffset={0} // optional lateral offset to create a "lane" look
