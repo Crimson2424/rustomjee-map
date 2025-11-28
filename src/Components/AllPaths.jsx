@@ -42,41 +42,51 @@ function PathMarker({ position, duration, isActive }) {
       }}
     >
       <svg
-        width="48"
-        height="48"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{
-          filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 6px rgba(34, 121, 192, 0.8))',
-          animation: 'markerEntrance 0.6s ease-out forwards',
-        }}
-      >
-        <style>
-          {`
-            @keyframes markerEntrance {
-              0% {
-                opacity: 0;
-                transform: scale(0) translateY(-50px);
-              }
-              60% {
-                opacity: 1;
-                transform: scale(1.15) translateY(5px);
-              }
-              80% {
-                transform: scale(0.95) translateY(-2px);
-              }
-              100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-              }
-            }
-          `}
-        </style>
-        <path
-          fill="#2279C0"
-          d="M14,10a2,2,0,1,1-2-2A2.006,2.006,0,0,1,14,10Zm5.5,0c0,6.08-4.67,9.89-6.67,11.24a1.407,1.407,0,0,1-.83.26,1.459,1.459,0,0,1-.84-.26C9.16,19.89,4.5,16.09,4.5,10A7.33,7.33,0,0,1,12,2.5,7.336,7.336,0,0,1,19.5,10ZM16,10a4,4,0,1,0-4,4A4,4,0,0,0,16,10Z"
-        />
-      </svg>
+  width="45"
+  height="45"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+  style={{
+    filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 8px rgba(34, 121, 192, 0.9))',
+    animation: 'markerEntrance 0.6s ease-out forwards',
+  }}
+>
+  <style>
+    {`
+      @keyframes markerEntrance {
+        0% {
+          opacity: 0;
+          transform: scale(0) translateY(-50px);
+        }
+        60% {
+          opacity: 1;
+          transform: scale(1.15) translateY(5px);
+        }
+        80% {
+          transform: scale(0.95) translateY(-2px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+    `}
+  </style>
+  {/* White outline behind */}
+  <path
+    fill="white"
+    stroke="white"
+    strokeWidth="1.5"
+    d="M14,10a2,2,0,1,1-2-2A2.006,2.006,0,0,1,14,10Zm5.5,0c0,6.08-4.67,9.89-6.67,11.24a1.407,1.407,0,0,1-.83.26,1.459,1.459,0,0,1-.84-.26C9.16,19.89,4.5,16.09,4.5,10A7.33,7.33,0,0,1,12,2.5,7.336,7.336,0,0,1,19.5,10ZM16,10a4,4,0,1,0-4,4A4,4,0,0,0,16,10Z"
+  />
+  {/* Blue fill on top */}
+  <path
+    fill="#2279C0"
+    d="M14,10a2,2,0,1,1-2-2A2.006,2.006,0,0,1,14,10Zm5.5,0c0,6.08-4.67,9.89-6.67,11.24a1.407,1.407,0,0,1-.83.26,1.459,1.459,0,0,1-.84-.26C9.16,19.89,4.5,16.09,4.5,10A7.33,7.33,0,0,1,12,2.5,7.336,7.336,0,0,1,19.5,10ZM16,10a4,4,0,1,0-4,4A4,4,0,0,0,16,10Z"
+  />
+  {/* White center dot */}
+  {/* <circle cx="12" cy="10" r="2" fill="white" /> */}
+</svg>
     </Html>
   );
 }

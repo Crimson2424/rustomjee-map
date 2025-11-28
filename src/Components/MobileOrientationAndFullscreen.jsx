@@ -1,74 +1,158 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
+// Better mobile detection
 const isMobile = () =>
   /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
     navigator.userAgent
   );
 
-const MobileOrientationAndFullscreen = ({ onReady }) => {
-  const [landscape, setLandscape] = useState(false);
-  const [fullscreen, setFullscreen] = useState(
-    document.fullscreenElement != null
+// Helper to check fullscreen status across browsers
+const isInFullscreen = () => {
+  return !!(
+    document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement
   );
+};
 
-  // Detect orientation changes
+const MobileOrientationAndFullscreen = ({ onReady }) => {
+  const [isLandscape, setIsLandscape] = useState(
+    () => window.innerWidth > window.innerHeight
+  );
+  const [isFullscreen, setIsFullscreen] = useState(isInFullscreen);
+  const [showOverlay, setShowOverlay] = useState(true);
+  const hasCalledReady = useRef(false);
+  const resizeTimer = useRef(null);
+
+  /* -------------------------------
+     Orientation Detection (Debounced)
+     ------------------------------- */
   useEffect(() => {
-    const checkOrientation = () => {
-      setLandscape(window.innerWidth > window.innerHeight);
+    const updateOrientation = () => {
+      const landscape = window.innerWidth > window.innerHeight;
+      setIsLandscape(landscape);
     };
 
-    checkOrientation();
-    window.addEventListener("resize", checkOrientation);
-    return () => window.removeEventListener("resize", checkOrientation);
+    const onResize = () => {
+      clearTimeout(resizeTimer.current);
+      resizeTimer.current = setTimeout(updateOrientation, 120);
+    };
+
+    // Listen to both resize and orientationchange for better mobile support
+    window.addEventListener("resize", onResize);
+    window.addEventListener("orientationchange", () => {
+      // Delay to let the browser finish rotating
+      setTimeout(updateOrientation, 100);
+    });
+
+    return () => {
+      clearTimeout(resizeTimer.current);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("orientationchange", updateOrientation);
+    };
   }, []);
 
-  // Detect fullscreen
+  /* -------------------------------
+     Fullscreen Detection
+     ------------------------------- */
   useEffect(() => {
     const handler = () => {
-      setFullscreen(document.fullscreenElement != null);
+      const fullscreen = isInFullscreen();
+      console.log("Fullscreen changed:", fullscreen); // Debug log
+      setIsFullscreen(fullscreen);
     };
+
+    // Listen to all vendor-prefixed fullscreen change events
     document.addEventListener("fullscreenchange", handler);
-    return () => document.removeEventListener("fullscreenchange", handler);
+    document.addEventListener("webkitfullscreenchange", handler);
+    document.addEventListener("mozfullscreenchange", handler);
+    document.addEventListener("MSFullscreenChange", handler);
+
+    return () => {
+      document.removeEventListener("fullscreenchange", handler);
+      document.removeEventListener("webkitfullscreenchange", handler);
+      document.removeEventListener("mozfullscreenchange", handler);
+      document.removeEventListener("MSFullscreenChange", handler);
+    };
   }, []);
 
-  // If not mobile → allow directly
-  if (!isMobile()) {
-    onReady();
-    return null;
-  }
+  /* -------------------------------
+     Core Enforcement Logic
+     ------------------------------- */
+  useEffect(() => {
+    // Desktop → allow immediately
+    if (!isMobile()) {
+      setShowOverlay(false);
+      if (!hasCalledReady.current) {
+        hasCalledReady.current = true;
+        onReady?.();
+      }
+      return;
+    }
 
-  // If both conditions satisfied → allow Experience to continue
-  if (landscape && fullscreen) {
-    onReady();
-    return null;
-  }
+    console.log("State check - Landscape:", isLandscape, "Fullscreen:", isFullscreen); // Debug log
 
-  const requestFullscreen = () => {
+    // If both conditions are satisfied → hide overlay, notify parent
+    if (isLandscape && isFullscreen) {
+      setShowOverlay(false);
+      if (!hasCalledReady.current) {
+        hasCalledReady.current = true;
+        onReady?.();
+      }
+    } else {
+      // If user breaks any condition → show overlay again
+      setShowOverlay(true);
+    }
+  }, [isLandscape, isFullscreen, onReady]);
+
+  /* -------------------------------
+     Fullscreen Request
+     ------------------------------- */
+  const requestFullscreen = useCallback(() => {
     const el = document.documentElement;
-    if (el.requestFullscreen) el.requestFullscreen();
-    if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-  };
+
+    const request =
+      el.requestFullscreen ||
+      el.webkitRequestFullscreen ||
+      el.mozRequestFullScreen ||
+      el.msRequestFullscreen;
+
+    if (request) {
+      request.call(el).catch((err) => {
+        console.warn("Fullscreen request failed:", err);
+      });
+    }
+  }, []);
+
+  /* -------------------------------
+     UI Overlay
+     ------------------------------- */
+  if (!showOverlay) return null;
 
   return (
-    <div className="fixed inset-0 bg-black text-white flex flex-col items-center justify-center text-center p-6 z-[9999]">
-      {!landscape && (
-        <p className="text-xl font-semibold mb-4">
-          Please rotate your device to <span className="text-blue-400">landscape</span> mode
-        </p>
+    <div className="fixed inset-0 text-center bg-black/95 backdrop-blur-md text-white z-[99999] flex flex-col items-center justify-center p-6 transition-opacity">
+      {!isLandscape && (
+        <div className="animate-fade-in flex flex-col items-center gap-4">
+          <div className="w-20 h-10 border-4 border-white/70 rounded-xl rotate-90" />
+          <p className="text-xl font-semibold">
+            Rotate your device to <span className="">landscape</span>
+          </p>
+        </div>
       )}
 
-      {landscape && !fullscreen && (
-        <>
-          <p className="text-lg font-medium mb-3">
-            Tap the button below to enter fullscreen mode
+      {isLandscape && !isFullscreen && (
+        <div className="animate-fade-in flex flex-col items-center">
+          <p className="text-lg mb-4 opacity-90">
+            Tap below to enter fullscreen mode
           </p>
           <button
             onClick={requestFullscreen}
-            className="bg-blue-500 px-6 py-3 rounded-xl text-lg font-semibold"
+            className="bg-blue-600 px-8 py-3 rounded-xl shadow-lg active:scale-95 transition"
           >
             Enter Fullscreen
           </button>
-        </>
+        </div>
       )}
     </div>
   );
