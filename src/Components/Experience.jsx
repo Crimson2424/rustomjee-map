@@ -48,6 +48,7 @@ import MobileOrientationAndFullscreen from "./MobileOrientationAndFullscreen";
                 near: 10,
                 far: 5500,
               }}
+              dpr={[0.5,2]}
               shadows
             >
               <color attach="background" args={["#7fa4c9"]} />

@@ -67,10 +67,6 @@ const MusicController = ({ play }) => {
           onClick={toggleMute}
           className="
             fixed top-6 right-6 z-[120]
-             
-            border border-black/10
-            rounded-full p-3 shadow-lg
-            hover:bg-white transition
             flex items-center justify-center
           "
         >
@@ -80,7 +76,7 @@ const MusicController = ({ play }) => {
               <div
                 key={i}
                 ref={(el) => (bars.current[i] = el)}
-                className="w-[4px] bg-black rounded-sm"
+                className="w-[4px] bg-white rounded-sm"
                 style={{ height: "10px", opacity: 1 }}
               ></div>
             ))}
