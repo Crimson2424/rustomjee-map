@@ -14,9 +14,14 @@
 }
 
 @font-face {
+    font-family: Futura-Medium;
+    src: url("/fonts/futura-medium.ttf");
+}
+
+/* @font-face {
     font-family: Futura;
     src: url("/fonts/Futura\ Regular.ttf");
-}
+} */
 
 @import "tailwindcss";
 
@@ -24,5 +29,5 @@
     --font-balgin: Balgin, "sans-serif";
     --font-regular: Balgin-Regular, "sans-serif";
     --font-light: Balgin-Light, "sans-serif";
-    --font-futura: Futura, "sans-serif";
+    --font-futura-medium: Futura-Medium, "sans-serif";
 }

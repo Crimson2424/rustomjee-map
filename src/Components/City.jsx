@@ -652,7 +652,7 @@ import React from "react";
         laneOffset={0} // optional lateral offset to create a "lane" look
         showDebug={false} // set false to hide debug lines & points
         speedRange={[0.005, 0.005]}
-        reversed={true}
+        // reversed={true}
       />
 
       <TrafficFromSamples
@@ -662,6 +662,8 @@ import React from "react";
         laneOffset={0} // optional lateral offset to create a "lane" look
         showDebug={false} // set false to hide debug lines & points
         speedRange={[0.005, 0.005]}
+        reversed={true}
+
       />
 
       <TrafficFromSamples
@@ -671,6 +673,8 @@ import React from "react";
         laneOffset={0} // optional lateral offset to create a "lane" look
         showDebug={false} // set false to hide debug lines & points
         speedRange={[0.01, 0.01]}
+        reversed={true}
+
       />
 
       <TrafficFromSamples
@@ -680,7 +684,7 @@ import React from "react";
         laneOffset={0} // optional lateral offset to create a "lane" look
         showDebug={false} // set false to hide debug lines & points
         speedRange={[0.005, 0.005]}
-        reversed
+        // reversed
       />
 
       <TrafficFromSamples
@@ -690,7 +694,7 @@ import React from "react";
         laneOffset={0} // optional lateral offset to create a "lane" look
         showDebug={false} // set false to hide debug lines & points
         speedRange={[0.03, 0.03]}
-        reversed
+        // reversed
       />
 
       <TrafficFromSamples
@@ -700,7 +704,7 @@ import React from "react";
         laneOffset={0} // optional lateral offset to create a "lane" look
         showDebug={false} // set false to hide debug lines & points
         speedRange={[0.03, 0.03]}
-        reversed
+        // reversed
       />
 
       <TrafficFromSamples
@@ -710,7 +714,7 @@ import React from "react";
         laneOffset={0} // optional lateral offset to create a "lane" look
         showDebug={false} // set false to hide debug lines & points
         speedRange={[0.03, 0.03]}
-        // reversed
+        reversed
       />
 
       {/* Boats Meshes  */}

@@ -174,10 +174,10 @@ useEffect(() => {
         {/* Heading */}
         <div className="">
 
-        <h2 className="text-2xl font-bold text-gray-800 font-regular mb-3 max-sm:text-[12px] max-sm:mb-0 max-md:text-[12px] max-md:mb-1 max-lg:text-[22px] max-lg:mb-1 max-xl:text-md max-xl:mb-2">{currentPath.name}</h2>
+        <h2 className="text-2xl font-bold text-gray-800 font-futura-medium  mb-3 max-sm:text-[12px] max-sm:mb-0 max-md:text-[12px] max-md:mb-1 max-lg:text-[22px] max-lg:mb-1 max-xl:text-md max-xl:mb-2">{currentPath.name}</h2>
 
         {/* Description */}
-        <p className="text-gray-600  text-sm  font-regular max-sm:text-[10px] max-md:text-[10px]  max-lg:text-xs max-xl:text-sm">
+        <p className="text-gray-600  text-sm  font-futura-medium  max-sm:text-[10px] max-md:text-[10px]  max-lg:text-xs max-xl:text-sm">
           {currentPath.description || "Explore this amazing location and discover what it has to offer."}
         </p>
         </div>
@@ -186,19 +186,19 @@ useEffect(() => {
         <div className="bg-[#4A5568] tracking-tight text-white bg-opacity-10 rounded-lg p-4 max-sm:p-1 max-sm:rounded-sm max-md:p-1 max-md:rounded-sm max-lg:p-2 max-lg:rounded-sm max-xl:p-2 max-xl:rounded-sm">
           <div className="flex justify-between items-center">
             <div>
-              <p className="text-xs font-light max-sm:text-[10px] max-md:text-[8px] max-lg:text-[13px] max-xl:text-md">Distance</p>
-              <p className="text-2xl  font-bold font-light max-sm:text-[10px] max-md:text-[8px] max-lg:text-[14px]  max-xl:text-sm">{getDistance()}</p>
+              <p className="text-xs font-futura-medium  max-sm:text-[10px] max-md:text-[8px] max-lg:text-[13px] max-xl:text-md">Distance</p>
+              <p className="text-2xl  font-bold font-futura-medium  max-sm:text-[10px] max-md:text-[8px] max-lg:text-[14px]  max-xl:text-sm">{getDistance()}</p>
             </div>
             <div>
-              <p className="text-xs font-light max-sm:text-[10px]  max-md:text-[8px] max-lg:text-[13px] max-xl:text-md">Est. Time</p>
-              <p className="text-2xl font-bold  font-light max-sm:text-[10px] max-md:text-[8px] max-lg:text-[14px] max-xl:text-sm">{getTime()}</p>
+              <p className="text-xs font-futura-medium  max-sm:text-[10px]  max-md:text-[8px] max-lg:text-[13px] max-xl:text-md">Est. Time</p>
+              <p className="text-2xl font-bold  font-futura-medium  max-sm:text-[10px] max-md:text-[8px] max-lg:text-[14px] max-xl:text-sm">{getTime()}</p>
             </div>
           </div>
         </div>
 
         {/* Transport Buttons */}
         <div className=" flex flex-col tracking-tight gap-5 max-sm:gap-1 max-sm:justify-between max-md:gap-0.5 max-md:justify-between max-lg:gap-2 max-lg:justify-between max-xl:gap-1 max-xl:justify-between">
-          <p className="text-sm text-gray-500 font-light max-sm:text-[10px] max-md:text-[10px] max-lg:text-xs">Choose transport mode:</p>
+          <p className="text-sm text-gray-500 font-futura-medium  max-sm:text-[10px] max-md:text-[10px] max-lg:text-xs">Choose transport mode:</p>
           <div className="grid grid-cols-4 gap-1 max-sm:gap-0.5 max-sm:grid-cols-2 max-md:gap-0.5 max-md:grid-cols-2 max-lg:gap-0.5 max-lg:grid-cols-2 max-xl:gap-0.5 max-xl:grid-cols-2">
             {transportModes.map((mode) => (
               <button

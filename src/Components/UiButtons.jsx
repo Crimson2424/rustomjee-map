@@ -361,7 +361,7 @@ export default function UIButtons() {
               />
               <span
                 ref={(el) => (textRefs.current[cat.id] = el)}
-                className="text-xs text-center uppercase tracking-tight font-regular  z-10 max-sm:text-[7.5px] max-md:text-[10px] max-lg:text-[10.5px] max-xl:text-[12px] "
+                className="text-xs text-center uppercase tracking-tight font-futura-medium  z-10 max-sm:text-[7.5px] max-md:text-[10px] max-lg:text-[10.5px] max-xl:text-[12px] "
               >
                 {cat.label}
               </span>
@@ -372,7 +372,7 @@ export default function UIButtons() {
           {selectedCategory && (
             <div
               ref={pathButtonsRef}
-              className="absolute bottom-full font-regular tracking-tight p-2 mb-2 bg-white text-[#4A5568] flex flex-col rounded-md shadow-2xl gap-2 -translate-x-1/2 max-sm:p-1 max-sm:gap-0.5 max-sm:rounded-xs max-md:p-1 max-md:gap-0.5 max-md:rounded-xs max-lg:p-1 max-lg:gap-0.5 max-lg:rounded-xs max-xl:p-2 max-xl:gap-0.5 max-xl:rounded-xs"
+              className="absolute bottom-full font-futura-medium  tracking-tight p-2 mb-2 bg-white text-[#4A5568] flex flex-col rounded-md shadow-2xl gap-2 -translate-x-1/2 max-sm:p-1 max-sm:gap-0.5 max-sm:rounded-xs max-md:p-1 max-md:gap-0.5 max-md:rounded-xs max-lg:p-1 max-lg:gap-0.5 max-lg:rounded-xs max-xl:p-2 max-xl:gap-0.5 max-xl:rounded-xs"
               style={{ left: `${pathButtonsPosition.left}px` }}
             >
               {pathData[selectedCategory].map((item, i) => (
