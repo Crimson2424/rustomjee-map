@@ -46,13 +46,13 @@ import MobileOrientationAndFullscreen from "./MobileOrientationAndFullscreen";
                 position: [80, 120, 200],
                 fov: 50,
                 near: 10,
-                far: 5500,
+                far: 9500,
               }}
               dpr={[0.5,2]}
               shadows
             >
               <color attach="background" args={["#7fa4c9"]} />
-              <fog attach="fog" args={["#7fa4c9", 2500, 6000]} />
+              <fog attach="fog" args={["#7fa4c9", 3000, 9000]} />
 
               <Environment preset="city" />
 
