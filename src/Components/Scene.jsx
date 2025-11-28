@@ -1,25 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
-import { AdaptiveDpr, CameraControls, ScreenSpace } from "@react-three/drei";
-import { City } from "./City";
-import {
-  Autofocus,
-  Bloom,
-  ChromaticAberration,
-  DepthOfField,
-  EffectComposer,
-  SSAO,
-  ToneMapping,
-} from "@react-three/postprocessing";
+import React, { useEffect, useRef } from "react";
+import { AdaptiveDpr, CameraControls, Html } from "@react-three/drei";
+import  City  from "./City";
 import { Birds } from "./Birds";
 import Effects from "./Effects";
 import CameraAnimations from "./CameraAnimations";
 
 const Scene = () => {
-  const birdsRef = useRef();
   const cameraControlRef = useRef();
   const disableAutoRotate = useRef(false);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const targetMouse = useRef({ x: 0, y: 0 });
 
   // if you want to log camera positions
@@ -113,20 +101,6 @@ const Scene = () => {
     };
   }, []);
 
-  // ✅ Auto-rotate in animation loop (like the native example)
-  // useFrame((state, delta) => {
-  //   if (!cameraControlRef.current) return;
-
-  //   const cam = cameraControlRef.current;
-
-  //   // Auto-rotate by incrementing azimuth angle
-  //   if (!disableAutoRotate.current) {
-  //     cam.azimuthAngle -= 5 * delta * THREE.MathUtils.DEG2RAD;
-  //   }
-
-  //   // Update camera controls
-  //   cam.update(delta);
-  // });
 
   return (
     <>
@@ -134,6 +108,13 @@ const Scene = () => {
       mouseButtons={{left:0, middle:0, right:0, wheel:0}} 
       touches={{one:0, two:0, three:0}}
       />
+      <Html center position={[0,200,0]} distanceFactor={1900} zIndexRange={[0, 0]} >
+        <div className="w-30 pointer-events-none">
+
+        <img className="w-full"  src="/Cliff_Tower.png"/>
+        </div>
+       
+      </Html>
       <CameraAnimations cameraControlRef={cameraControlRef}/>
       <City />
       <Effects />

@@ -476,7 +476,7 @@ export const pathData = {
     {
       name: "La Fontaine ",
       description:
-        "The Rustomjee La Fontaine located in Bandra, is a luxurious project that has a total super-built-up area of over 50,000 sq.ft.",
+        "The Rustomjee La Fontaine located in Bandra, is a luxurious project that has a total super built up area of over 50,000 sq.ft.",
       distance: 2.0,
       image: "/images/la fontaine.webp",
       transport: {
@@ -2725,6 +2725,48 @@ export const pathData = {
       name: "Taj Lands End",
       description:
         "Taj Lands End is a 5-star hotel located in Bandra West, Mumbai, offering luxury accommodations and views of the Arabian Sea and the Bandra Worli Sea Link.",
+      distance: 0.65,
+      image: "/images/Taj Lands End.webp",
+      transport: {
+        car: 3, // time in minutes
+        walk: 9, // time in minutes
+        bike: 3, // time in minutes
+        transport: 1, // time in minutes (bus)
+      },
+      position: {
+        x: -138.0240123393548,
+        y: 845.7518679461165,
+        z: -1359.713108220963,
+      },
+      target: {
+        x: -190.87594831390683,
+        y: -724.0958410233519,
+        z: 1000.358920279304,
+      },
+      points: [
+        [-31.79078311692456, 0.42000001192092895, -31.98768966800057],
+        [-49.447716552444035, 0.42000001192092895, -27.828286059334204],
+        [-67.55173232490802, 0.42000001192092895, -26.013863210325212],
+        [-151.2968555023217, 0.4200000119209574, -30.73023659189022],
+        [-264.7305639442334, 0.42000001192092895, -39.953811095208835],
+        [-300.64429225451954, 0.4200000119209574, -52.284458150312844],
+        [-302.55936368783296, 0.42000001192092895, -52.6694077874229],
+        [-304.0948490812634, 0.42000001192092895, -52.95897584591984],
+        [-305.19478469500564, 0.42000001192092895, -51.807207990079974],
+        [-308.3744594812297, 0.42000001192092895, -44.863108243203186],
+        [-329.1681600896204, 0.42000001192092895, 12.293553179597836],
+        [-346.27287023869894, 0.42000001192091474, 58.73475282386977],
+        [-372.1295330713649, 0.42000001192091474, 119.35417132157579],
+        [-386.4559557212049, 0.42000001192094316, 180.56964918388928],
+        [-396.56366501835805, 0.42000001192092895, 221.84182368073004],
+        [-395.13753931187625, 0.42000001192092895, 222.82832766251846],
+        [-394.33443239166536, 0.42000001192092895, 223.38183259815577],
+      ],
+    },
+    {
+      name: "Taj Bandstand (Future)",
+      description:
+        "Taj Bandstand project, a new landmark set to redefine Mumbai's skyline, spread over 2 acres will house 330 rooms and 85 apartments.",
       distance: 0.65,
       image: "/images/Taj Lands End.webp",
       transport: {

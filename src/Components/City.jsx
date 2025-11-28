@@ -1,9 +1,8 @@
-import { MeshReflectorMaterial, useGLTF, useKTX2 } from "@react-three/drei";
+import {  useGLTF, useKTX2 } from "@react-three/drei";
 import * as THREE from "three";
 import { Underwaterland } from "./UnderwaterLand";
 import { Sea } from "./Sea";
 import { InstancedTrees } from "./Improvedinstancedtrees";
-import { RoadClickSampler } from "./Roadsampler";
 import { TrafficFromSamples } from "./TrafficFromSamples";
 import { FishingBoat } from "./FishingBoat";
 import { Yatch } from "./Yatch";
@@ -11,8 +10,9 @@ import { FishingBoat2 } from "./FishingBoat2";
 import AllPaths from "./AllPaths";
 import { NewBridges } from "./NewBridges";
 import { MainBuilding } from "./MainBuilding";
+import React from "react";
 
-export function City(props) {
+ function City(props) {
   const { nodes, materials } = useGLTF("models/rustomjeeEditedmap2.glb");
 
   const roadNames = [
@@ -714,11 +714,11 @@ export function City(props) {
       />
 
       {/* Boats Meshes  */}
-      <FishingBoat position={[-600, -10, -400]} scale={6} />
+      <FishingBoat position={[-600, -10, -400]} scale={3} />
       <FishingBoat2
         position={[355, -8, 500]}
         rotation={[0, 3.0, 0]}
-        scale={6}
+        scale={4}
       />
       {/* <Yatch2 position={[768, -8, 201]} rotation={[0, -0.3, 0.0]} scale={0.1} /> */}
       <Yatch position={[-375, -8, -678]} scale={12} />
@@ -795,5 +795,7 @@ export function City(props) {
     </group>
   );
 }
+
+export default React.memo(City);
 
 useGLTF.preload("models/Rustomjee-3d-without-treess.glb");

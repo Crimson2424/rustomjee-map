@@ -115,7 +115,7 @@ const CameraAnimations = ({ cameraControlRef }) => {
   const { gl } = useThree();
 
   // Parallax settings - adjust these to your liking
-  const PARALLAX_STRENGTH = 50; // How much the camera moves (in world units)
+  const PARALLAX_STRENGTH = 35; // How much the camera moves (in world units)
   const PARALLAX_SMOOTHING = 0.05; // Lower = smoother/slower (0.01-0.1 range)
 
   // Track mouse position
@@ -137,7 +137,7 @@ const CameraAnimations = ({ cameraControlRef }) => {
   const goToPosition = (px, py, pz, tx, ty, tz) => {
     if (!cameraControlRef.current) return;
     const cam = cameraControlRef.current;
-    cam.smoothTime = 0.7;
+    cam.smoothTime = 1.2;
     cam.setLookAt(px, py, pz, tx, ty, tz, true);
   };
 
